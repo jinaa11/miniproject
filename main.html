@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no, address=no, email=no" />
+	<meta name="viewport" content="width=device-width, user-scalable=yes" />
+	<meta name="description" content="수서고속철도, SRT, 수서~부산(경부선), ~목포(호남선), 승차권 예매, 운행정보 안내" />
+	<meta name="naver-site-verification" content="0a893b6cf32c1efffb45bae4d7f442b5b74f7f84" />
+	<title>승차권 예약/발매 - 국민철도 SR</title>
+	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="/css/swiper-bundle.min.css" />
+</head>
+<body>
+<div id="wrap">
+	<div class="skip_nav">
+		<a href="#gnb">대메뉴 바로가기</a>
+		<a href="#container">본문 바로가기</a>
+	</div>
+	<div class="header header-e">
+		<div class="global clear">
+			<div class="login_wrap val_m fl_r">
+					<a href="/main.do" class="gohome" title="홈으로"><img src="/images/ico_loc_home_top.png" alt="홈"></a>
+					<a href="">로그인</a>
+					<a href="/cmc/02/selectJoinInfo.do?pageId=TK0702000000">회원가입</a>
+					<a href="/cms/archive.do?pageId=TK9902000000" class="bg">사이트맵</a>
+					<a href="https://www.srail.co.kr/main.do" class="bg">
+						<strong>회사소개</strong></a>
+				<label for="chgLang" class="blind">언어를 선택하세요.</label>
+				<select style="padding: 1px;width: 90px;background: #572b4c;color: white;height: 25px;" onchange="chgLang(this);" id="chgLang">
+					<option value="javascript:void(0);" data-class="lang" style="padding-left:0;">Language</option>
+					<option value="/main.do" data-class="flag_kr">한국어</option>
+					<option value="/main.do?language=EN" data-class="flag_en">English</option>
+					<option value="/main.do?language=CN" data-class="flag_cn">中文(简)</option>
+					<option value="/main.do?language=TW" data-class="flag_tw">中文(繁)</option>
+					<option value="/main.do?language=JA" data-class="flag_ja">日本語</option>
+				</select>
+				<a href="#" class="topmovebtn">Move</a>
+				<div class="zoom clear pc">
+					<button type="button" class="zoomIn" title="최대 150%"><img src="/images/zoom_e_1.png" alt="화면 10%씩 확대" /></button>
+					<button type="button" class="zoomOrg" title="100%"><img src="/images/zoom_e_2.png" alt="화면 비율 100% 복원" /></button>
+					<button type="button" class="zoomOut" title="최소 70%"><img src="/images/zoom_e_3.png" alt="화면 10%씩 축소" /></button>
+				</div>
+			</div><!-- //login_wrap -->
+		</div><!-- //global -->
+		<div class="gnb_wrap">
+			<h1><a href="/main.do"><img src="/images/logo-e.png" alt="SRT" /></a></h1>
+			<div class="gnb">
+				<!-- <a href="" class="blind" id="gnb">대메뉴 시작지점</a> -->
+				<ul class="clear">
+							<li><a href="javascript:void(0);"  id="gnb" title="대메뉴 시작지점">승차권</a>
+								<ul>
+											<li><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">승차권예약</a></li>
+											<li class="depth3"><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">일반승차권 조회</a></li>
+											<li class="depth3"><a href="/hpg/hra/01/selectGroupScheduleList.do?pageId=TK0101020000">단체승차권 조회</a></li>
+											<li class="depth3"><a href="/hpg/hra/01/selectConditionGoodsScheduleList.do?pageId=TK0101060000">할인승차권 조회</a></li>
+											<li><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">발권ㆍ취소ㆍ변경</a></li>
+											<li class="depth3"><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">발권/취소</a></li>
+											<li class="depth3"><a href="/hpg/hca/01/selectChangeList.do?pageId=TK0102020000">예약변경</a></li>
+											<li class="depth3"><a href="/hpg/hta/03/selectBreakdownList.do?pageId=TK0102030100">이용내역/영수증</a></li>
+											<li class="depth3"><a href="/hpg/hta/03/selectBreakdownList2File.do?pageId=TK0102050000">이용내역 내려받기</a></li>
+											<li class="depth3"><a href="/hpg/hta/02/selectWctRfndInfo.do?pageId=TK0102040000">인터넷환불접수</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:void(0);" >고객안내</a>
+								<ul>
+											<li><a href="/cms/article/list.do?pageId=TK0502000000">공지사항</a></li>
+											<li><a href="/cms/article/list.do?pageId=TK0504000000">자주찾는질문(FAQ)</a></li>
+											<li><a href="/sss/scb/01/auth.do?pageId=TK0405030000">고객의 소리</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0406010000">SR 고객센터</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0404010000">유실물안내</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0501010000">고객서비스헌장</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0404410000">기업성장응답센터</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0501020000">여객운송약관</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0501050000">안내사항</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:void(0);" >이용안내</a>
+								<ul>
+											<li><a href="/cms/archive.do?pageId=TK0401010000">종합이용안내</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0402010000">승차권이용안내</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0403010100">정차역이용안내</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0403020000">운행구간</a></li>
+											<li><a href="/cms/archive.do?pageId=TK0407010800">부대사업안내</a></li>
+											<li><a href="/cms/archive.do?htmlNo=1&amp;pageId=TK0408010000">지연배상신청</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:void(0);" >회원서비스</a>
+								<ul>
+									<li><a href="/cms/archive.do?pageId=TK0503010000">회원제도소개</a></li>
+									<li><a href="/cms/archive.do?htmlNo=1&amp;pageId=TK0503070100">제휴서비스 안내</a></li>
+									<li><a href="/cms/archive.do?pageId=TK0503030000">자가발권이용실적</a></li>
+									<li><a href="/cmc/02/selectJoinInfo.do?pageId=TK0702000000">회원가입신청</a></li>
+									<li><a href="/cmc/03/selectWithdrawInfo.do?pageId=TK0503050000">회원탈퇴안내</a></li>
+									<li><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 예매</a></li>
+									<li class="depth3"><a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100">미등록고객 예약ㆍ발권</a></li>
+									<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 환불</a></li>
+									<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104030000">미등록고객 재발권</a></li>
+									<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104040000">미등록고객 이용내역</a></li>
+									<li class="depth3"><a href="/hpg/hma/04/selectReceiptForm.do?pageId=TK0104050000">비회원 승차권 영수증</a></li>
+									<li><a href="/cms/archive.do?pageId=TK0401010000&amp;category=pbs">공공할인 이용신청</a></li>
+							</ul>
+					</li>
+					<li><a href="javascript:void(0);" >여행상품</a>
+							<ul>
+									<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=001&amp;pageId=TK0901000000" target="_blank" title="새창 열기">SRT BEST 여행상품</a></li>
+									<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=002&amp;pageId=TK0902000000" target="_blank" title="새창 열기">지역별 여행상품</a></li>
+									<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=003&amp;pageId=TK0903000000" target="_blank" title="새창 열기">당일 여행상품</a></li>
+									<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=004&amp;pageId=TK0904000000" target="_blank" title="새창 열기">1박2일 여행상품</a></li>
+									<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=005&amp;pageId=TK0905000000" target="_blank" title="새창 열기">2박3일 여행상품</a></li>
+									<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=006&amp;pageId=TK0906000000" target="_blank" title="새창 열기">계절여행 특별관</a></li>
+							</ul>
+						</li>
+					</ul>
+			</div>
+		</div><!-- //gnb_wrap -->
+		<div class="gnb_bg"></div>
+	</div><!-- //header -->
+	<!---->	<div class="container container-e">
+		<a href="" class="blind" id="container" tabindex="-1">본문 시작지점</a>
+		<div class="content_top_bg">
+		<div class="slogan_bg">
+			<div class="slogan">
+				<h1><img src="/images/skin/etk_kr/main/txt-e_main1.png" alt="혁신선도, 국민의 철도 플랫폼" /></h1>
+			</div>
+		</div>
+		<div class="content_top clear">
+			<div class="content_l">
+				<div class="inquire drop100p">
+					<form name="search-form" id="search-form" action="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000" onsubmit="return false;" method="post">
+						<fieldset>
+							<legend>잔여석조회영역</legend>
+							<input type="hidden" name="stlbTrnClsfCd" value="05" />
+							<input type="hidden" name="trnGpCd" value="109" />
+							<input type="hidden" name="psgNum" value="" />
+							<input type="hidden" name="seatAttCd" value="015" />
+							<input type="hidden" name="isRequest" value="Y" />
+							<div class="drop50p point">
+								<label for="dptRsStnCd" class="blind">출발지 선택</label>
+								<select name="dptRsStnCd" id="dptRsStnCd" class="dropDownNoJqueryUi" style="color: #6f135e;">
+									<option value='' selected>출발역</option>
+									<option value='0551' >수서</option>
+									<option value='0552' >동탄</option>
+									<option value='0553' >평택지제</option>
+									<option value='0049' >곡성</option>
+									<option value='0514' >공주</option>
+									<option value='0036' >광주송정</option>
+									<option value='0050' >구례구</option>
+									<option value='0507' >김천구미</option>
+									<option value='0037' >나주</option>
+									<option value='0048' >남원</option>
+									<option value='0010' >대전</option>
+									<option value='0015' >동대구</option>
+									<option value='0059' >마산</option>
+									<option value='0041' >목포</option>
+									<option value='0017' >밀양</option>
+									<option value='0020' >부산</option>
+									<option value='0506' >서대구</option>
+									<option value='0051' >순천</option>
+									<option value='0508' >경주</option>
+									<option value='0053' >여수EXPO</option>
+									<option value='0139' >여천</option>
+									<option value='0297' >오송</option>
+									<option value='0509' >울산(통도사)</option>
+									<option value='0030' >익산</option>
+									<option value='0045' >전주</option>
+									<option value='0033' >정읍</option>
+									<option value='0056' >진영</option>
+									<option value='0063' >진주</option>
+									<option value='0057' >창원</option>
+									<option value='0512' >창원중앙</option>
+									<option value='0502' >천안아산</option>
+									<option value='0515' >포항</option>
+								</select>
+							</div>
+							<div class="drop50p point">
+								<label for="arvRsStnCd" class="blind">도착지 선택</label>
+								<select name="arvRsStnCd" id="arvRsStnCd" class="dropDownNoJqueryUi" style="color: #6f135e;">
+									<option value='' selected>도착역</option>
+									<option value='0551' >수서</option>
+									<option value='0552' >동탄</option>										<option value='0553' >평택지제</option>										<option value='0049' >곡성</option>										<option value='0514' >공주</option>										<option value='0036' >광주송정</option>										<option value='0050' >구례구</option>										<option value='0507' >김천구미</option>										<option value='0037' >나주</option>										<option value='0048' >남원</option>										<option value='0010' >대전</option>										<option value='0015' >동대구</option>										<option value='0059' >마산</option>										<option value='0041' >목포</option>										<option value='0017' >밀양</option>										<option value='0020' >부산</option>										<option value='0506' >서대구</option>										<option value='0051' >순천</option>										<option value='0508' >경주</option>										<option value='0053' >여수EXPO</option>										<option value='0139' >여천</option>										<option value='0297' >오송</option>										<option value='0509' >울산(통도사)</option>										<option value='0030' >익산</option>										<option value='0045' >전주</option>										<option value='0033' >정읍</option>										<option value='0056' >진영</option>										<option value='0063' >진주</option>										<option value='0057' >창원</option>										<option value='0512' >창원중앙</option>										<option value='0502' >천안아산</option>										<option value='0515' >포항</option>								</select>
+							</div>
+							<div class="drop50p">
+								<div class="pos_r">
+									<input type="text" name="dptDt" value="2024.07.22" readonly="readonly" title="출발일자 입력" class="calendar1" style="margin:5px"/>
+									<input type="button" value="달력" onclick="selectCalendarInfo(this.form.dptDt);" title="새창열기" class="calendar2" style="top: 7px;"/>
+								</div>
+							</div>
+							<div class="drop50p">
+								<label for="dptTm" class="blind">시간 선택</label>
+								<em class="blind">22시 이후</em>
+								<select name="dptTm" id="dptTm" class="dropDownNoJqueryUi" title="출발시각 선택">										<option value="000000">00시 이후</option>										<option value="020000">02시 이후</option>										<option value="040000">04시 이후</option>										<option value="060000">06시 이후</option>										<option value="080000">08시 이후</option>										<option value="100000">10시 이후</option>										<option value="120000">12시 이후</option>										<option value="140000">14시 이후</option>										<option value="160000">16시 이후</option>										<option value="180000">18시 이후</option>										<option value="200000">20시 이후</option>										<option value="220000" selected="selected">22시 이후</option>								</select>
+							</div>
+							<div class="drop50p">
+								<label for="psgInfoPerPrnb1" class="blind">어른수 선택</label>
+								<select name="psgInfoPerPrnb1" id="psgInfoPerPrnb1" class="dropDownNoJqueryUi">
+									<option value="0">어른(만 13세 이상) 0명</option>
+									<option value="1" selected="selected">어른(만 13세 이상) 1명</option>
+									<option value="2">어른(만 13세 이상) 2명</option>
+									<option value="3">어른(만 13세 이상) 3명</option>
+									<option value="4">어른(만 13세 이상) 4명</option>
+									<option value="5">어른(만 13세 이상) 5명</option>
+									<option value="6">어른(만 13세 이상) 6명</option>
+									<option value="7">어른(만 13세 이상) 7명</option>
+									<option value="8">어른(만 13세 이상) 8명</option>
+									<option value="9">어른(만 13세 이상) 9명</option>
+								</select>
+							</div>
+							<div class="drop50p">
+								<label for="psgInfoPerPrnb5" class="blind">어린이수 선택</label>
+								<select name="psgInfoPerPrnb5" id="psgInfoPerPrnb5"	class="dropDownNoJqueryUi">
+									<option value="0">어린이(만 6~12세) 0명</option>
+									<option value="1">어린이(만 6~12세) 1명</option>
+									<option value="2">어린이(만 6~12세) 2명</option>
+									<option value="3">어린이(만 6~12세) 3명</option>
+									<option value="4">어린이(만 6~12세) 4명</option>
+									<option value="5">어린이(만 6~12세) 5명</option>
+									<option value="6">어린이(만 6~12세) 6명</option>
+									<option value="7">어린이(만 6~12세) 7명</option>
+									<option value="8">어린이(만 6~12세) 8명</option>
+									<option value="9">어린이(만 6~12세) 9명</option>
+								</select>
+							</div>
+							<a href="#none" style="margin: 5px 0 0 2px;" onclick="selectScheduleList(); return false;" class="btn_midium wp100 btn_burgundy_dark corner val_m"><img class="ico_srch" src="/images/ico_srch2.png" alt="" /> <span>간편조회하기</span></a>
+						</fieldset>
+					</form>
+				</div>
+				<div class="quick">
+					<ul>
+						<li><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000"><img src="/images/skin/etk_kr/main/ico-e_q1_on.png" alt="" /><span>예매내역·환불</span></a></li>
+						<li><a href="/cms/archive.do?pageId=TK0402050000"><img src="/images/skin/etk_kr/main/ico-e_q2.png" alt="" /><span>열차운임·시간표</span></a></li>
+						<li><a href="https://chatbot.ips.go.kr/chatbotPop.ndo?bnrId=fze362JCClFwsp9" onclick="window.open(this.href,'','width=432, height=850');return false;" title="새창열림"><img src="/images/skin/etk_kr/main/ico-e_q6.png" alt="" /><span>AI 챗봇</span></a></li>
+						<li style="display:none;"><a href="/sss/scb/01/auth.do?pageId=TK0405030000"><img src="/images/skin/etk_kr/main/ico-e_q3.png" alt="" /><span>고객센터</span></a></li>
+						<li><a href="/cms/archive.do?pageId=TK0404010000"><img src="/images/skin/etk_kr/main/ico-e_q4.png" alt="" /><span>유실물센터</span></a></li>
+						<li><a href="https://www.srail.or.kr/hpg/haa/03/form.do?pageId=KR0208010000"><img src="/images/skin/etk_kr/main/ico-e_q5.png" alt=""><span>안전신문고</span></a></li>
+					</ul>
+				</div>
+				<div class="etk_li1 pos_r">
+					<h2 class="fs17 mgl10 mgb5">공지사항</h2>							<ul>									<li><a href="/cms/article/view.do?postNo=651&pageId=TK0502000000">집중호우에 따른 열차 운행 조정 및 지연안내</a><span>2024-07-10</span></li>									<li><a href="/cms/article/view.do?postNo=649&pageId=TK0502000000">SRT 승차권 예약발매일 조정 추가 알림</a><span>2024-07-04</span></li>									<li><a href="/cms/article/view.do?postNo=648&pageId=TK0502000000">2024년 2분기 SR 회원 등급조회 및 혜택 안내</a><span>2024-07-03</span></li>							</ul>
+					<a href="/cms/article/list.do?pageId=TK0502000000" class="more_e" title="공지사항 더보기">+ 더보기</a><!-- 200122 이상희수정
+					<a href="/cms/article/list.do?pageId=TK0502000000" class="more_e"> -->
+				</div>
+			</div><!-- //content_l -->
+			<div class="content_r">
+				<div class="slider_wrap">
+					<ul class="slider">
+									<li>
+										<a href="https://adventure.lotteworld.com/kor/price/benefit/information/view.do?detailsKey=2964&pageIndex=&bnftGbCd=&bnftClasCd=" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/07/17/20240717095512867.498643.png" alt="SRT - 롯데월드 연계 고객프로모션" /></a>
+									</li>
+									<li>
+										<a href="https://www.lotterentacar.net/tcompany/reserv/srtrain.do" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/03/20/20240320164940897.198538.jpg" alt="SRT × 대한민국 NO.1 롯데렌터카
+SRT 고객전용 롯데렌터카 프로모션
+내륙전지역 최대할인 60%
+제주할인" /></a>
+									</li>
+									<li>
+										<a href="https://www.busanparadisehotel.co.kr/front/reservation/list?PAGE=1&SEARCH_RP_SEQ=&FROMDATE=&TODATE=&SEARCH_ADULT=1&SEARCH_STDN=0&SEARCH_CHILD=0&SEARCH_BABY=0&SEARCH_P_SEQ=621&SEARCH_P_CODE=s2024" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/07/19/20240719155241955.788234.jpg" alt="파라다이스호텔부산 스페셜 딜" /></a>
+									</li>
+									<li>
+										<a href="https://be4.wingsbooking.com/RPY1" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/04/25/20240425140348392.865821.jpg" alt="" /></a>
+									</li>
+									<li>
+										<a href="https://leisure-web.yanolja.com/leisure/10116215" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/04/04/20240404162541877.577679.jpg" alt="SRT * 아쿠아플라넷 여수 홍보" /></a>
+									</li>
+									<li>
+										<a href="https://eworld.kr/home/price/benefit/detail/181" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/07/01/20240701093451771.799742.png" alt="SRT 제휴서비스 홍보(이월드)" /></a>
+									</li>
+									<li>
+										<a href="http://www.bfo.or.kr/FESTIVAL_SEA/info/01.asp?MENUDIV=1" target="_blank" title="새창 열기"><img src="https://www.srail.co.kr//banner/2024/07/19/20240719124459621.289613.png" alt="제 28회 부산바다축제" /></a>
+									</li>
+								</ul>
+
+						<a href="javascript:void(0);" class="left slider_ctrl_l"><img src="/images/btn_slide_l.png" alt="이전"></a><!-- 200122 이상희수정 -->
+						<a href="javascript:void(0);" class="right fl_r slider_ctrl_r"><img src="/images/btn_slide_r.png" alt="다음"></a><!-- 200122 이상희수정 -->
+						<div class="slider_point">
+							<a href="javascript:void(0);" class="hold"><img src="/images/btn_slide_hold.png" alt="정지" /></a>
+							<a href="javascript:void(0);" class="play dis_none"><img src="/images/btn_slide_play.png" alt="재생" /></a><!-- 200122 이상희수정 -->
+						</div>
+					</div>
+				<div class="banner clear">
+					<a href="https://etk.srail.kr/cms/article/view.do?postNo=369&pageId=TK0502000000"><img src="https://www.srail.co.kr//banner/2024/07/15/20240715112319471.835798.png" alt="SRT 올바른 승차권 이용안내" /></a>						<a href="https://etk.srail.kr/cms/archive.do?pageId=TK0402090000"><img src="https://www.srail.co.kr//banner/2024/07/15/20240715112330818.927749.png" alt="반려동물 동반탑승 이용안내" /></a>				</div>
+			</div><!-- //content_r -->
+		</div><!-- //content_top -->
+		<div class="scroll">
+				<img src="/images/skin/etk_kr/main/ico-e_scroll.png" alt="scroll down" class="floating" />
+		</div>
+			</div><!-- //content_top_bg -->
+			<div class="best_wrap_bg">
+				<div class="best_wrap">
+					<div class="best_inside">
+						<div class="best_tit">
+							<h1><img src="/images/skin/etk_kr/main/txt-e_main2.png" alt="베스트 여행상품" /></h1>
+						</div>
+						<ul class="best clear" id="shuffle">
+							<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/05/20230405143200066.281856.jpg);">													부산이야기 기차여행 1탄(당일)
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">부산이야기 기차여행 1탄(당일)</strong>
+										<p tabindex="0">[여행공방]</p>
+									</div>
+									<a href="https://www.tour08.co.kr/home/goods_view/index.asp?ts=goods_day&strApart=B&strBpart=2&strCpart=2&goodsNum=1229" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411112815670.795253.jpg);">
+											통영 미륵산 케이블카 / 남해 보물섬명품 맛집 [1박2일]
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">통영 미륵산 케이블카 / 남해 보물섬명품 맛집 [1박2일]</strong>
+										<p tabindex="0">[여행공방]</p>
+									</div>
+									<a href="https://www.tour08.co.kr/home/goods_view/index.asp?ts=goods_day&strApart=B&strBpart=2&strCpart=2&goodsNum=4883" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113017426.755945.jpg);">
+											해운대로맨스-구석구석 부산시티투어(1박2일)
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">해운대로맨스-구석구석 부산시티투어(1박2일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/95" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113053561.446178.jpg);">
+											슬로우시티 청산도~보길도~땅끝마을&amp;두륜산(1박2일)
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">슬로우시티 청산도~보길도~땅끝마을&amp;두륜산(1박2일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/70" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113419148.762392.jpg);">
+											사도탐방 홍도, 흑산도, 비금, 도초도(2박3일)
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">사도탐방 홍도, 흑산도, 비금, 도초도(2박3일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/51" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113458831.578662.jpg);">
+											그섬에 가고싶다!, 홍도, 흑산도(3일)
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">그섬에 가고싶다!, 홍도, 흑산도(3일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/50" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							</ul>
+						<a href="https://s-tour.or.kr/goods/goods_list.php?cateCd=001" class="best_more val_m" target="_blank" title="새창 열기"><span>더보기</span> <img src="/images/btn_more1.png" alt="베스트여행상품 더보기" /></a>
+						<!-- <a href="#" class="best_more val_m" onClick="alert('시스템 점검 중 입니다.')" title="새창 열기"><span>더보기</span> <img src="/images/btn_more1.png" alt="베스트여행상품 더보기" /></a> -->
+					</div><!-- //best_inside -->
+				</div><!-- //best_wrap -->
+			</div><!-- //best_wrap_bg -->	</div><!-- //container -->
+</body>
+</html>
