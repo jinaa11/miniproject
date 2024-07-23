@@ -1,0 +1,446 @@
+body {
+    padding-top: 170px; /* 헤더 높이만큼 상단에 패딩을 줘서 헤더에 내용이 가려지지 않도록 함 */
+}
+
+header {
+    background-color: #fff;
+}
+
+/* header start */
+.header-user {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 20px; 
+    background: #fff;
+}
+
+.img-logo {
+    margin: 10px;
+    height: 80px; 
+    width: auto;
+}
+
+.header-main {
+    padding-left: 100px;
+    padding-right: 100px;;
+    background: #fff;
+}
+
+.user-menu a {
+    margin-right: 70px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.user-menu a:hover {
+    text-decoration: underline;
+}
+
+.menu-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.divider {
+    margin: 0 10px; 
+}
+
+.border-divider {
+    border-bottom: 2px solid #ccc;
+}
+/* header end */
+
+/* menus start */
+.dropdown-section {
+    display: none; /* Initially hidden */
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%; /* Adjust based on layout */
+    top: 100%; /* Position below the menu */
+}
+
+.dropdown-section.active {
+    display: block;
+}
+#menuDropdown {
+    display: none; /* 기본적으로 숨김 */
+    position: absolute; /* 위치 조정 */
+    background-color: #fff; /* 배경 색상 */
+    width: 100%; /* 전체 너비 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.menu-section {
+    border-right: 1px solid #ccc; /* 오른쪽 경계선 */
+    padding: 20px; /* 패딩 */
+    float: left; /* 왼쪽 정렬 */
+}
+
+.menu-section:last-child {
+    border-right: none; /* 마지막 요소의 경계선 제거 */
+}   
+
+.menu-section h3 {
+    margin-bottom: 10px; /* 제목 아래 마진 */
+    font-weight: bold; /* 볼드체 */
+}
+
+.menu-link-sub {
+    display: block; /* 블록 레벨로 표시 */
+    margin-bottom: 5px; /* 링크 간 마진 */
+    color: #000; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 없음 */
+}
+
+.menu-link-sub:hover {
+    font-weight: bold; /* 호버 시 볼드체 */
+}
+
+/* menu end */
+
+/* quick menu start */
+.custom-img {
+    width: 80px; /* 이미지 너비 조절 */
+    height: auto; /* 높이는 자동으로 설정하여 비율 유지 */
+}
+
+.quick-access-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #000; /* 텍스트 색상 */
+    margin-bottom: 10px; /* 마진으로 요소 간 간격 조정 */
+}
+
+.quick-access-container {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 상위 요소의 텍스트 색상 상속 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quick-access-icon {
+    background-color: #5e68ff; /* 아이콘 배경색 */
+    border-radius: 50%; /* 원형 디자인 */
+    padding: 10px; /* 아이콘 패딩 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quick-access-icon img {
+    display: block; /* 이미지 블록 레벨 */
+    width: 40px; /* 이미지 크기 조정 */
+    height: auto; /* 비율 유지 */
+}
+
+.quick-access {
+    background: #fff;
+}
+/* quick menu end */
+
+/* notice start */
+.announcement-section {
+    display: flex;
+    justify-content: space-between;
+    background: #fff; /* 배경색 변경 */
+    padding: 40px; /* 패딩 조정 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
+}
+.announcement-list h4 {
+    margin-bottom: 20px;
+}
+.announcement-item {
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #ddd; /* 경계선 스타일 */
+}
+.announcement-item:last-child {
+    border-bottom: 1px solid #ddd;
+}
+.announcement-item a {
+    color: #007BFF; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    color: #000;
+}
+.announcement-item a:hover {
+    text-decoration: underline; /* 마우스 오버시 밑줄 */
+}
+.announcement-item span {
+    float: right;
+    color: #666;
+}
+.banner-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* 이미지 둥근 모서리 */
+}
+/* notice end */
+
+/* body  travel packages start */
+.text-container {
+    margin-bottom: 10px; /* 텍스트와 버튼 간의 간격 조정 */
+    font-size: 30px; /* 텍스트 크기 조정 */
+    font-weight: bold; /* 텍스트 두께 조정 */
+  }
+  
+  .sub-text-container {
+    font-size: 20px; /* 서브 텍스트 크기 조정 */
+    color: #666; /* 서브 텍스트 색상 조정 */
+    margin-bottom: 20px; /* 버튼과 서브 텍스트 간의 간격 조정 */
+  }
+  
+  .btn-container-wrapper {
+    width: 100%;
+    display: inline-block; /* 컨테이너를 버튼의 너비에 맞게 설정 */
+    padding: 10px 0; /* 상하 패딩 추가 */
+  }
+  
+  .btn-container {
+    display: flex; /* 가로로 배치 */
+    gap: 50px; /* 버튼 간 간격 */
+    justify-content: center; /* 버튼을 중앙에 배치 */
+    padding: 40px; /* 상하 여백 */
+    border-top: 1px solid #c8c8c8;
+    border-bottom: 1px solid #c8c8c8;
+  }
+  
+  .btn-circle {
+    width: 100px; /* 버튼의 너비 */
+    height: 100px; /* 버튼의 높이 */
+    padding: 0; /* 내부 여백 제거 */
+    border-radius: 50%; /* 동그란 모양 */
+    overflow: hidden; /* 이미지가 버튼 영역을 넘지 않도록 설정 */
+    position: relative; /* 텍스트 위치 조정 */
+  }
+  
+  .btn-circle img {
+    width: 100%; /* 이미지가 버튼 영역을 가득 채우도록 설정 */
+    height: 100%; /* 이미지가 버튼 영역을 가득 채우도록 설정 */
+    object-fit: cover; /* 이미지 비율 유지하며 영역에 맞추기 */
+    filter: brightness(0.6); /* 이미지 밝기를 조절 */
+}
+  
+  .btn-text {
+    position: absolute; /* 절대 위치로 설정 */
+    top: 50%; /* 상단에서 50% 위치 */
+    left: 50%; /* 왼쪽에서 50% 위치 */
+    transform: translate(-50%, -50%); /* 중앙으로 이동 */
+    font-size: 25px; /* 텍스트 크기 */
+    color: #f5f2f2; /* 텍스트 색상 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  }
+  
+  /* body  travel packages end */
+
+
+/*body slide menu start*/
+  .notice_content {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    align-content: center;
+    color: #EB1C23;
+}
+
+.distinct-content {
+    background-color: rgba(255, 255, 255, 0.75); /* 연한 흰색 배경 */
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    align-content: center;
+    z-index: 10;
+}
+
+.distinct-content form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.distinct-content form > div {
+    flex: 1 1 calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.distinct-content select,
+.distinct-content input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.distinct-content button {
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.distinct-content button:hover {
+    background-color: #0056b3;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
+    height: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.main-content-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.distinct-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    max-width: 100%;
+    max-height: 100%;
+    height: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.dis_content_txt {
+    padding-right: 20px;
+    margin-left: 89px;
+    margin-bottom: 22px;
+    align-content: center;
+    text-align: center;
+}
+
+.dis_content_txt a {
+    padding-right: 65px;
+    margin-bottom: 20px;
+    color:#000000;
+    text-decoration: unset;
+}
+
+.notice_content img {
+    margin-bottom: 3px;
+}
+
+.dis_content_txt .on {
+text-decoration: underline;
+text-underline-offset: 6px;
+}
+
+.search_ticket img {
+width: 17px;
+margin-right: 5px;
+}
+/*body slide menu end*/
+
+
+/* footer start */
+footer {
+    border-top: 1px solid #c8c8c8;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+  
+  .footer-links-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+  
+  .footer-links {
+    background-color: #c8c8c8;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+  
+  .footer-links a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+  
+  .footer-links span {
+    font-weight: normal;
+}
+  
+  .footer-banner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+  
+  .footer-banner li {
+    margin-right: 10px;
+}
+
+  .footer-banner img {
+    display: block;
+    max-width: 100%;
+}
+  
+  .list-unstyled img {
+    margin-right: 50px;
+    max-width: 110px;
+}
+  
+  .footer-info .info-line span:not(:last-child)::after {
+    content: " |";
+    margin-left: 5px;
+}
+  
+  .footer-info {
+    color: #717171;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 20px;
+    font-size: 16px;
+    display: flex;
+}
+  
+  .footer-info .info-line {
+    display: flex;
+    flex-wrap: wrap; /* 줄 바꿈 설정 */
+    gap: 10px; /* 항목 간 간격 */
+}
+/* footer end */
