@@ -67,34 +67,47 @@ header {
 #menuDropdown {
     display: none; /* 기본적으로 숨김 */
     position: absolute; /* 위치 조정 */
-    background-color: #fff; /* 배경 색상 */
+    background-color: #ffffff; /* 배경 색상 */
     width: 100%; /* 전체 너비 */
     z-index: 1000; /* 다른 요소 위에 표시 */
+    opacity: 0.95;
+}
+
+#menuDropdown .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure full width to maintain even spacing */
 }
 
 .menu-section {
-    border-right: 1px solid #ccc; /* 오른쪽 경계선 */
-    padding: 20px; /* 패딩 */
-    float: left; /* 왼쪽 정렬 */
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    flex: 1; /* Ensures equal width for all sections */
+    box-sizing: border-box; /* Includes padding and border in the width calculation */
 }
 
 .menu-section:last-child {
-    border-right: none; /* 마지막 요소의 경계선 제거 */
-}   
+    border-right: none; /* Removes border from the last section */
+}
 
-.menu-section h3 {
+.menu-section h4 {
+    text-align: center;
     margin-bottom: 10px; /* 제목 아래 마진 */
     font-weight: bold; /* 볼드체 */
 }
 
 .menu-link-sub {
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
     display: block; /* 블록 레벨로 표시 */
     margin-bottom: 5px; /* 링크 간 마진 */
-    color: #000; /* 링크 색상 */
+    color: #979797; /* 링크 색상 */
     text-decoration: none; /* 밑줄 없음 */
 }
 
 .menu-link-sub:hover {
+    color: #000; /* 호버 시 색상 변경 */
     font-weight: bold; /* 호버 시 볼드체 */
 }
 
