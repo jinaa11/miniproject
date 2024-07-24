@@ -3,26 +3,26 @@
 	font-family: 'ng';
 	font-style: normal;
 	font-weight: normal;
-	src: local(â€»),
-		url('/fonts/NanumGothic-Regular.eot'),
-		url('/fonts/NanumGothic-Regular.eot'),
-		url('/fonts/NanumGothic-Regular.woff') format('woff'),
-		url('/fonts/NanumGothic-Regular.otf') format('opentype'),
-		url('/fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
-		url('/fonts/NanumGothic-Regular.woff2') format('woff2'),
-		url('/fonts/NanumGothic-Regular.ttf') format('truetype');
+	src: local(¡Ø),
+		url('./fonts/NanumGothic-Regular.eot'),
+		url('./fonts/NanumGothic-Regular.eot'),
+		url('./fonts/NanumGothic-Regular.woff') format('woff'),
+		url('./fonts/NanumGothic-Regular.otf') format('opentype'),
+		url('./fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/NanumGothic-Regular.woff2') format('woff2'),
+		url('./fonts/NanumGothic-Regular.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'ng_bold';
 	font-style: normal;
 	font-weight: bold;
-	src: local(â€»),
-		url('/fonts/NanumGothic-Bold.eot'),
-		url('/fonts/NanumGothic-Bold.woff') format('woff'),
-		url('/fonts/NanumGothic-Bold.otf') format('opentype'),
-		url('/fonts/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
-		url('/fonts/NanumGothic-Bold.woff2') format('woff2'),
-		url('/fonts/NanumGothic-Bold.ttf') format('truetype');
+	src: local(¡Ø),
+		url('./fonts/NanumGothic-Bold.eot'),
+		url('./fonts/NanumGothic-Bold.woff') format('woff'),
+		url('./fonts/NanumGothic-Bold.otf') format('opentype'),
+		url('./fonts/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/NanumGothic-Bold.woff2') format('woff2'),
+		url('./fonts/NanumGothic-Bold.ttf') format('truetype');
 }
 
 html, body, div, p, span, strong, b, em, iframe, pre,
@@ -34,11 +34,11 @@ li, li span, li strong, li p {font-size:15px;}
 /* select {padding-bottom:2px; box-sizing: content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;} */
 
 body {
-	font-family: 'ng',MalgunGothic, 'ë§‘ì€ ê³ ë”•','ë‹ì›€', Dotum, AppleGothic, Sans-serif, Arial;
+	font-family: 'ng',MalgunGothic, '¸¼Àº °íµñ','µ¸¿ò', Dotum, AppleGothic, Sans-serif, Arial;
 	font-size: 14px;
 	line-height: 1.5;
 	color: #333;
-	padding-top: 170px; /* í—¤ë” ë†’ì´ë§Œí¼ ìƒë‹¨ì— íŒ¨ë”©ì„ ì¤˜ì„œ í—¤ë”ì— ë‚´ìš©ì´ ê°€ë ¤ì§€ì§€ ì•Šë„ë¡ í•¨ */
+	padding-top: 170px; /* Çì´õ ³ôÀÌ¸¸Å­ »ó´Ü¿¡ ÆĞµùÀ» Áà¼­ Çì´õ¿¡ ³»¿ëÀÌ °¡·ÁÁöÁö ¾Êµµ·Ï ÇÔ */
 }
 
 
@@ -101,11 +101,11 @@ body {
 	display: block;
 }
 #menuDropdown {
-	display: none; /* ê¸°ë³¸ì ìœ¼ë¡œ ìˆ¨ê¹€ */
-	position: absolute; /* ìœ„ì¹˜ ì¡°ì • */
-	background-color: #ffffff; /* ë°°ê²½ ìƒ‰ìƒ */
-	width: 100%; /* ì „ì²´ ë„ˆë¹„ */
-	z-index: 1000; /* ë‹¤ë¥¸ ìš”ì†Œ ìœ„ì— í‘œì‹œ */
+	display: none; /* ±âº»ÀûÀ¸·Î ¼û±è */
+	position: absolute; /* À§Ä¡ Á¶Á¤ */
+	background-color: #ffffff; /* ¹è°æ »ö»ó */
+	width: 100%; /* ÀüÃ¼ ³Êºñ */
+	z-index: 1000; /* ´Ù¸¥ ¿ä¼Ò À§¿¡ Ç¥½Ã */
 	opacity: 0.95;
 }
 
@@ -128,23 +128,23 @@ body {
 
 .menu-section h4 {
 	text-align: center;
-	margin-bottom: 10px; /* ì œëª© ì•„ë˜ ë§ˆì§„ */
-	font-weight: bold; /* ë³¼ë“œì²´ */
+	margin-bottom: 10px; /* Á¦¸ñ ¾Æ·¡ ¸¶Áø */
+	font-weight: bold; /* º¼µåÃ¼ */
 }
 
 .menu-link-sub {
 	text-align: center;
 	margin-left: 10px;
 	margin-right: 10px;
-	display: block; /* ë¸”ë¡ ë ˆë²¨ë¡œ í‘œì‹œ */
-	margin-bottom: 5px; /* ë§í¬ ê°„ ë§ˆì§„ */
-	color: #979797; /* ë§í¬ ìƒ‰ìƒ */
-	text-decoration: none; /* ë°‘ì¤„ ì—†ìŒ */
+	display: block; /* ºí·Ï ·¹º§·Î Ç¥½Ã */
+	margin-bottom: 5px; /* ¸µÅ© °£ ¸¶Áø */
+	color: #979797; /* ¸µÅ© »ö»ó */
+	text-decoration: none; /* ¹ØÁÙ ¾øÀ½ */
 }
 
 .menu-link-sub:hover {
-	color: #000; /* í˜¸ë²„ ì‹œ ìƒ‰ìƒ ë³€ê²½ */
-	font-weight: bold; /* í˜¸ë²„ ì‹œ ë³¼ë“œì²´ */
+	color: #000; /* È£¹ö ½Ã »ö»ó º¯°æ */
+	font-weight: bold; /* È£¹ö ½Ã º¼µåÃ¼ */
 }
 /* menu end */
 
@@ -220,7 +220,7 @@ footer {
 
 .footer-info .info-line {
 	display: flex;
-	flex-wrap: wrap; /* ì¤„ ë°”ê¿ˆ ì„¤ì • */
-	gap: 10px; /* í•­ëª© ê°„ ê°„ê²© */
+	flex-wrap: wrap; /* ÁÙ ¹Ù²Ş ¼³Á¤ */
+	gap: 10px; /* Ç×¸ñ °£ °£°İ */
 }
 /* footer end */

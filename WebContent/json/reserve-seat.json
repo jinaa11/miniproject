@@ -1,0 +1,44 @@
+{
+    "KTX": [
+        {
+        "trainNumber": "101",
+        "coaches": [
+            {"coachNumber": 1, "seats": {"A": 14, "B": 14, "C": 14, "D": 14}},
+            {"coachNumber": 2, "seats": {"A": 15, "B": 15, "C": 15, "D": 15}},
+            {"coachNumber": 3, "seats": {"A": 14, "B": 14, "C": 14, "D": 14}},
+            {"coachNumber": 4, "seats": {"A": 15, "B": 15, "C": 15, "D": 15}},
+            {"coachNumber": 5, "seats": {"A": 14, "B": 14, "C": 14, "D": 14}},
+            {"coachNumber": 6, "seats": {"A": 14, "B": 14, "C": 14, "D": 14}},
+            {"coachNumber": 7, "seats": {"A": 14, "B": 14, "C": 14, "D": 14}},
+            {"coachNumber": 8, "seats": {"A": 15, "B": 15, "C": 15, "D": 15}}
+        ]
+        },
+        {
+        "trainNumber": "102",
+        "coaches": [
+            {"coachNumber": 1, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 2, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 3, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}},
+            {"coachNumber": 4, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}},
+            {"coachNumber": 5, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 6, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 7, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}},
+            {"coachNumber": 8, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}}
+        ]
+        },
+        {
+        "trainNumber": "103",
+        "coaches": [
+            {"coachNumber": 1, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 2, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 3, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}},
+            {"coachNumber": 4, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}},
+            {"coachNumber": 5, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 6, "seats": {"A": 20, "B": 18, "C": 18, "D": 20}},
+            {"coachNumber": 7, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}},
+            {"coachNumber": 8, "seats": {"A": 15, "B": 18, "C": 18, "D": 15}}
+        ]
+        }
+    ]
+}
+  
