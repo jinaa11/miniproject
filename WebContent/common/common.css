@@ -32,7 +32,13 @@ ul, ol, li, a, input, select, textarea {margin: 0;padding: 0; border: 0 none; fo
 li, li span, li strong, li p {font-size:15px;}
 /* select {padding-bottom:2px; box-sizing: content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;} */
 
-body {font-family: 'ng', MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial; font-size: 14px; line-height: 1.5; color: #333;}
+body {
+	font-family: 'ng',MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #333;
+	padding-top: 170px; /* 헤더 높이만큼 상단에 패딩을 줘서 헤더에 내용이 가려지지 않도록 함 */
+}
 
 
 /* header start */
