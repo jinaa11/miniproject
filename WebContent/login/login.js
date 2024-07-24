@@ -1,17 +1,25 @@
 const userId = 1004;
 const password = '1234!';
+
 const idKey = "USER-ID";
 const rememberChk = "REMEMBER-ID";
 
+// 로그아웃
 let urlSearch = new URLSearchParams(location.search);
 let type = urlSearch.get('type');
-
 if (type == 'logout') {
   localStorage.removeItem(idKey);
   window.location.replace("/WebContent/main.html");
 }
 
 $(function () {
+  // 회원번호 저장 클릭 시 저장된 회원번호 불러오기
+  const rememberInfo = localStorage.getItem(rememberChk);
+  if (rememberInfo != null) {
+    $("#memberId").val(rememberInfo);
+  }
+
+  // 회원번호 숫자만 입력 가능
   $("#memberId").keyup(function() {    
     var replace_text = $(this).val().replace(/[^-0-9]/g, '');
     $(this).val(replace_text);
@@ -68,7 +76,6 @@ $(function () {
       localStorage.removeItem(rememberChk);
     }
   }
-
 
   $('#mem_email').hide();
   $('#mem_phone').hide();

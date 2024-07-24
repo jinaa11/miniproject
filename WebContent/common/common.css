@@ -40,6 +40,32 @@ body {
 	color: #333;
 	padding-top: 170px; /* 헤더 높이만큼 상단에 패딩을 줘서 헤더에 내용이 가려지지 않도록 함 */
 }
+/* stage start */
+#stage span {
+	background-color: #f2f2f2fa;
+	color: #333;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-weight: normal;
+	display: inline-block; /* Inline-block for proper spacing */
+	margin: 2px; /* Slight margin for spacing between steps */
+	cursor: pointer; /* Pointer cursor on hover */
+	border: 1px solid #d8d8d8fa; /* Border for the steps */
+}
+
+#stage .on {
+	background-color: #4291ff; /* Blue background for the active step */
+	color: white; /* White text for visibility */
+}
+
+.fw-bold{
+	font-weight: 700 !important;
+	font-size: calc(1.375rem + 1.5vw);
+	margin-bottom: .5rem;
+	line-height: 1.2;
+}
+/* stage end */
+
 
 
 /* header start */
