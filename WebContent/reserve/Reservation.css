@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 #stage span {
     background-color: #f2f2f2fa;
     color: #333;
@@ -34,7 +38,8 @@
     height: 40px;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
-    color: rgb(124, 132, 225);
+    color: rgb(98, 108, 219);
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,6 +50,7 @@
 .location {
     color: rgb(254, 254, 254);
     font-size: 20px;
+    font-weight: bold;
 }
 
 .container-with-line {
@@ -158,11 +164,10 @@
 }
 
 .window {
-    height: 3px; /* 창문의 높이 */
-    border-top: 3px dotted #b0e0e6; /* 상단에 점선 */
-    border-bottom: 3px dotted #b0e0e6; /* 하단에 점선 */
-    margin: 5px 0; /* 위아래 마진 */
-    border-radius: 2px; /* 창문의 모서리를 약간 둥글게 */
+    width: 140px;
+    height: 3px;
+    background-color: #b0e0e6;
+    margin: 6px;
 }
 
 .seat-row {
