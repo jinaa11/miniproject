@@ -1,0 +1,79 @@
+#stage span {
+    background-color: #f2f2f2fa;
+    color: #333;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: normal;
+    display: inline-block; /* Inline-block for proper spacing */
+    margin: 2px; /* Slight margin for spacing between steps */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: 1px solid #d8d8d8fa; /* Border for the steps */
+}
+
+#stage .on {
+    background-color: #4291ff; /* Blue background for the active step */
+    color: white; /* White text for visibility */
+}
+
+.re-0 {
+    height: 500px;
+}
+
+.re-1 {
+    height: 20%;
+    background-color: #5ca3ff;
+    
+    
+}
+
+.timeline-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(124, 132, 225);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px; /* Adjust font size as needed */
+    box-sizing: border-box; /* Include padding and borders in width/height */
+}
+
+.location {
+    color: rgb(254, 254, 254);
+    font-size: 20px;
+}
+
+.container-with-line {
+    height: 1.2px; /* Set to the required height of your div */
+    background-color: #f8f9fa; /* Background color of the div */
+    width: 50px;
+}
+
+.sub-info-rev {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight:300;
+}
+
+.rev-text {
+    color: #3d3d3d;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.train-top {
+    height: 85%;
+    background-image: url(../images/reserve/train-top.png);
+    background-repeat: no-repeat;
+    background-position: center; /* This will center the image */
+    background-size: contain; /* Optional: Adjusts the size of the image to fit within the container */
+}
+
+.train-top-rail{
+    width: 70px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-image: url(../images/reserve/scar.png);
+}
