@@ -12,7 +12,7 @@ $(document).ready(function() {
 $(document).on("headerLoaded", function() {
   $("#header1").on("mouseenter", ".menu-link", function() {
       showAllMenus($(this));
-  }).on("mouseleave", ".menu-link", function() {
+  }).on("mouseleave", "#menuDropdown", function() {
       hideAllMenus();
   });
 });

@@ -33,3 +33,187 @@ li, li span, li strong, li p {font-size:15px;}
 /* select {padding-bottom:2px; box-sizing: content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;} */
 
 body {font-family: 'ng', MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial; font-size: 14px; line-height: 1.5; color: #333;}
+
+
+/* header start */
+.header-user {
+	display: flex; 
+	align-items: center; 
+	justify-content: space-between; 
+	padding: 0 20px; 
+	background: #fff;
+}
+
+.img-logo {
+	margin: 10px;
+	height: 80px; 
+	width: auto;
+}
+
+.header-main {
+	padding-left: 100px;
+	padding-right: 100px;;
+	background: #fff;
+}
+
+.user-menu a {
+	margin-right: 70px;
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+}
+
+.user-menu a:hover {
+	text-decoration: underline;
+}
+
+.menu-link {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.divider {
+	margin: 0 10px; 
+}
+
+.border-divider {
+	border-bottom: 2px solid #ccc;
+}
+/* header end */
+
+/* menus start */
+.dropdown-section {
+	display: none; /* Initially hidden */
+	background: #ffffff;
+	padding: 20px;
+	box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+	width: 100%; /* Adjust based on layout */
+	top: 100%; /* Position below the menu */
+}
+
+.dropdown-section.active {
+	display: block;
+}
+#menuDropdown {
+	display: none; /* 기본적으로 숨김 */
+	position: absolute; /* 위치 조정 */
+	background-color: #ffffff; /* 배경 색상 */
+	width: 100%; /* 전체 너비 */
+	z-index: 1000; /* 다른 요소 위에 표시 */
+	opacity: 0.95;
+}
+
+#menuDropdown .container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%; /* Ensure full width to maintain even spacing */
+}
+
+.menu-section {
+	border-right: 1px solid #ccc;
+	padding: 20px;
+	flex: 1; /* Ensures equal width for all sections */
+	box-sizing: border-box; /* Includes padding and border in the width calculation */
+}
+
+.menu-section:last-child {
+	border-right: none; /* Removes border from the last section */
+}
+
+.menu-section h4 {
+	text-align: center;
+	margin-bottom: 10px; /* 제목 아래 마진 */
+	font-weight: bold; /* 볼드체 */
+}
+
+.menu-link-sub {
+	text-align: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	display: block; /* 블록 레벨로 표시 */
+	margin-bottom: 5px; /* 링크 간 마진 */
+	color: #979797; /* 링크 색상 */
+	text-decoration: none; /* 밑줄 없음 */
+}
+
+.menu-link-sub:hover {
+	color: #000; /* 호버 시 색상 변경 */
+	font-weight: bold; /* 호버 시 볼드체 */
+}
+/* menu end */
+
+
+/* footer start */
+footer {
+	border-top: 1px solid #c8c8c8;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+	box-sizing: border-box;
+}
+
+.footer-links-wrapper {
+	width: 100%;
+	overflow: hidden;
+}
+
+.footer-links {
+	background-color: #c8c8c8;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 20px;
+	margin: 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.footer-links a {
+	color: #333;
+	text-decoration: none;
+	margin: 0 10px;
+}
+
+.footer-links span {
+	font-weight: normal;
+}
+
+.footer-banner ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+}
+
+.footer-banner li {
+	margin-right: 10px;
+}
+
+.footer-banner img {
+	display: block;
+	max-width: 100%;
+}
+
+.list-unstyled img {
+	margin-right: 50px;
+	max-width: 110px;
+}
+
+.footer-info .info-line span:not(:last-child)::after {
+	content: " |";
+	margin-left: 5px;
+}
+
+.footer-info {
+	color: #717171;
+	list-style: none;
+	padding: 0;
+	margin: 10px 0 0 20px;
+	font-size: 16px;
+	display: flex;
+}
+
+.footer-info .info-line {
+	display: flex;
+	flex-wrap: wrap; /* 줄 바꿈 설정 */
+	gap: 10px; /* 항목 간 간격 */
+}
+/* footer end */
