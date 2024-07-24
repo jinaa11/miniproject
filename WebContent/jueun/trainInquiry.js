@@ -1,4 +1,8 @@
 $(function(){
+  $('#stage').load('/WebContent/common/stage.html', function () {
+    $(this).find('span:eq(0)').addClass('on');
+  });
+
   $.getJSON('/WebContent/json/trainTime.json', function(data){
     $("#caption").text("출발: "+data[0].출발역+ " > 도착: " +data[0].도착역);
 
@@ -22,7 +26,7 @@ $(function(){
     updateSoldOut();
 
     $(document).on('click', '.highlight', function() {
-      window.location.href = '/WebContent/main.html';
+      window.location.href = '/WebContent/reserve/Reservation.html';
     });
   })
   return false;
