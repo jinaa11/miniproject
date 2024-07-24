@@ -1,9 +1,9 @@
 $(document).ready(function() {
-  $("#header1").load("../WebContent/common/header.html", function() {
+  $("#header1").load("/WebContent/common/header.html", function() {
       $(document).trigger("headerLoaded");
   });
   
-  $("#footer1").load("../WebContent/common/footer.html", function() {
+  $("#footer1").load("/WebContent/common/footer.html", function() {
       
   });
 });
