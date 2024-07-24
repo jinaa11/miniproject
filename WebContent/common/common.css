@@ -1,0 +1,35 @@
+/* fonts */
+@font-face {
+	font-family: 'ng';
+	font-style: normal;
+	font-weight: normal;
+	src: local(※),
+		url('../fonts/NanumGothic-Regular.eot'),
+		url('../fonts/NanumGothic-Regular.woff') format('woff'),
+		url('../fonts/NanumGothic-Regular.otf') format('opentype'),
+		url('../fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NanumGothic-Regular.woff2') format('woff2'),
+		url('../fonts/NanumGothic-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'ng_bold';
+	font-style: normal;
+	font-weight: bold;
+	src: local(※),
+		url('../fonts/NanumGothic-Bold.eot'),
+		url('../fonts/NanumGothic-Bold.woff') format('woff'),
+		url('../fonts/NanumGothic-Bold.otf') format('opentype'),
+		url('../fonts/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NanumGothic-Bold.woff2') format('woff2'),
+		url('../fonts/NanumGothic-Bold.ttf') format('truetype');
+}
+
+html, body, div, p, span, strong, b, em, iframe, pre,
+h1, h2, h3, h4, h5, h6,
+img, dl, dt, dd,
+fieldset, form, legend, label, table, caption, thead, tbody, tfoot, tr, th, td, button,
+ul, ol, li, a, input, select, textarea {margin: 0;padding: 0; border: 0 none; font-family: 'ng'; font-size:14px;}
+li, li span, li strong, li p {font-size:15px;}
+/* select {padding-bottom:2px; box-sizing: content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;} */
+
+body {font-family: 'ng', MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial; font-size: 14px; line-height: 1.5; color: #333;}

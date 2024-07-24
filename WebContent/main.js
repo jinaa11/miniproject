@@ -1,69 +1,27 @@
 $(document).ready(function() {
-    const dropdown = $("#menuDropdown");
-
-    // 모든 메뉴 데이터
-    const menuData = {
-        '승차권예약': ['일반승차권 조회', '단체승차권 조회', '할인승차권 조회'],
-        '관광열차': ['기차 여행 패키지', '레일 바이크', '테마 기차 여행'],
-        '자유여행': ['자유 여행 패키지', '주말 여행 스페셜', '가족 여행 프로모션'],
-        '여행상품': ['1박 2일 여행', '2박 3일 투어', '일일 투어'],
-        '종합이용안내': ['이용 규칙', '티켓 예약 정보', '고객 지원'],
-        '기차역정보/노선도': ['역 정보 조회', '노선도 확인', '역별 서비스']
-    };
-
-    // 메뉴 항목 호버 이벤트
-    $('.menu-link').hover(function() {
-        showAllMenus();
-    });
-
-    function showAllMenus() {
-        dropdown.empty(); // 이전 내용 지우기
-    
-        const container = $('<div>').addClass('container d-flex justify-content-between'); // 새로운 컨테이너 div
-    
-        Object.keys(menuData).forEach(key => {
-            const section = $('<div>').addClass('menu-section');
-            const title = $('<h4>').text(key);
-            section.append(title);
-    
-            menuData[key].forEach(item => {
-                const link = $('<a>').attr('href', '#').addClass('menu-link-sub').text(item);
-                section.append(link);
-            });
-    
-            container.append(section); // 섹션을 컨테이너에 추가
-        });
-    
-        dropdown.append(container); // 컨테이너를 드롭다운에 추가
-        dropdown.show(); // 드롭다운 표시
+    let adult = document.getElementById('adult');
+    // 기존 옵션 제거
+    while (adult.firstChild) {
+        adult.removeChild(adult.firstChild);
     }
-
-    // 드롭다운 메뉴가 위치할 섹션을 벗어났을 때 메뉴 숨기기
-    $('#menuDropdown').mouseleave(function() {
-        $(this).hide();
-    });
-});
-
-
-$(document).ready(function() {
-    $('.dis_content_txt a').click(function () {
-        $(this).siblings().removeClass('on');
-        $(this).addClass('on');
-      });
-    
-      let adult = document.getElementById('adult');
-      for (let i = 1; i <= 9; i++) {
-          let option = document.createElement('option');
-          option.value = i;
-          option.text = '어른(만 13세 이상) ' + i + '명';
-          adult.appendChild(option);
-      }
-    
-      let child = document.getElementById('child');
-      for (let i = 1; i <= 9; i++) {
+    // 새로운 옵션 추가
+    for (let i = 0; i <= 9; i++) {
         let option = document.createElement('option');
         option.value = i;
         option.text = '어른(만 13세 이상) ' + i + '명';
-        child.appendChild(option);
-      }
+        adult.appendChild(option);
+    }
+
+    let child1 = document.getElementById('child1');
+    // 기존 옵션 제거
+    while (child1.firstChild) {
+        child1.removeChild(child1.firstChild);
+    }
+    // 새로운 옵션 추가
+    for (let j = 0; j <= 9; j++) {
+        let option1 = document.createElement('option');
+        option1.value = j;
+        option1.text = '어린이(만 6~12세 이상) ' + j + '명';
+        child1.appendChild(option1);
+    }
 });
