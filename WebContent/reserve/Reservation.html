@@ -57,8 +57,53 @@
                 <button id="rail-8" class="train-top-rail d-flex justify-content-center align-items-center">8호차</button>
             </div>
         </section>
-        <br><br><br><br><br>
-        <section class="re-2 mt-1 container">
+        <br><br><br><br>
+        <section class="container my-control-panel  border border-1 p-3">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label">일반</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display">2</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label">어린이(만 6~12세)</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display">0</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label">경로</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display">0</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label">장애인</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display">0</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>                        
+
+        <section class="re-2 container mt-3">
             <div class="d-flex">
                 <label class="seat-av seat-dis me-auto">휠체어</label>
                 <label class="seat-av seat-av-1">선택 좌석</label>
@@ -66,8 +111,8 @@
                 <label class="seat-av seat-av-3">선택 가능</label>
             </div>
         </section>
-        <section class="re-3 mt-5 container">
-            <div class="windows d-flex justify-content-evenly container mb-1">
+        <section class="re-3 mt-4 container">
+            <div id="windows-1" class="windows d-flex container mb-1">
                 <span class="window"></span>
                 <span class="window"></span>
                 <span class="window"></span>
@@ -77,7 +122,7 @@
                 <span class="window"></span>
             </div>
             <div id="train-seats" class="container"></div>
-            <div class="windows d-flex justify-content-evenly container mt-1">
+            <div id="windows-2" class="windows d-flex container mt-1">
                 <span class="window"></span>
                 <span class="window"></span>
                 <span class="window"></span>
