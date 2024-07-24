@@ -4,24 +4,25 @@
 	font-style: normal;
 	font-weight: normal;
 	src: local(※),
-		url('../fonts/NanumGothic-Regular.eot'),
-		url('../fonts/NanumGothic-Regular.woff') format('woff'),
-		url('../fonts/NanumGothic-Regular.otf') format('opentype'),
-		url('../fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/NanumGothic-Regular.woff2') format('woff2'),
-		url('../fonts/NanumGothic-Regular.ttf') format('truetype');
+		url('/fonts/NanumGothic-Regular.eot'),
+		url('/fonts/NanumGothic-Regular.eot'),
+		url('/fonts/NanumGothic-Regular.woff') format('woff'),
+		url('/fonts/NanumGothic-Regular.otf') format('opentype'),
+		url('/fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/NanumGothic-Regular.woff2') format('woff2'),
+		url('/fonts/NanumGothic-Regular.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'ng_bold';
 	font-style: normal;
 	font-weight: bold;
 	src: local(※),
-		url('../fonts/NanumGothic-Bold.eot'),
-		url('../fonts/NanumGothic-Bold.woff') format('woff'),
-		url('../fonts/NanumGothic-Bold.otf') format('opentype'),
-		url('../fonts/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/NanumGothic-Bold.woff2') format('woff2'),
-		url('../fonts/NanumGothic-Bold.ttf') format('truetype');
+		url('/fonts/NanumGothic-Bold.eot'),
+		url('/fonts/NanumGothic-Bold.woff') format('woff'),
+		url('/fonts/NanumGothic-Bold.otf') format('opentype'),
+		url('/fonts/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/NanumGothic-Bold.woff2') format('woff2'),
+		url('/fonts/NanumGothic-Bold.ttf') format('truetype');
 }
 
 html, body, div, p, span, strong, b, em, iframe, pre,
