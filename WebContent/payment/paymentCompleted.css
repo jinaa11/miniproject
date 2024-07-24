@@ -21,33 +21,32 @@ hr {
   background-color: #000; /* 선의 색상 설정 (검정색) */
 }
 
-.table th {
-  background-color: #f0f0f0;
+.ticket-issuance {
+  border: 1px solid #c8c8c8;
   padding: 10px;
 }
 
-.table tr {
+.ticket-issuance img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.ticket-issuance p {
+  margin: 0; /* 기본 마진 제거 */
+  font-size: 18px;
+}
+
+.table th {
+  background-color: #f0f0f0;
+}
+
+.table tbody {
   border-top: 2px solid black;
   border-bottom: 1px solid #c8c8c8;
 }
 
-.table .amount-value {
+.table tr .amount-value {
   color: #E6383A;
   font-weight: bold;
-
-}
-
-.payment-info {
-  border: 1px solid #c8c8c8;
-  padding: 15px;
-}
-
- /* 상단 테두리 두껍게 */
- .table-top-border th {
-  border-top: 2px solid #000 ;
-}
-
-/* 나머지 테두리 1px */
-.table-custom th, .table-custom td {
-  border: 1px solid #c8c8c8;
 }
