@@ -1,0 +1,28 @@
+#caption{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: blue;
+  cursor: pointer;
+}
+
+.table{
+  text-align: center;
+  align-items: center;
+}
+
+.top-border {
+  border-top: 2px solid #000 ;
+  border-bottom: 2px solid #000 ;
+}
+
+.table-custom td, .table-custom th {
+  border: 1px dotted #bcbbbb ;
+}
+
+/* .table‑wrapper {
+  max-height: 400px;
+  overflow: scroll;
+} */
