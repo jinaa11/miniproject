@@ -58,7 +58,7 @@ body {
 	color: white; /* White text for visibility */
 }
 
-.fw-bold{
+.fw-bold-stage{
 	font-weight: 700 !important;
 	font-size: calc(1.375rem + 1.5vw);
 	margin-bottom: .5rem;
