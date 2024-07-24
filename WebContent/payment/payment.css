@@ -37,6 +37,10 @@ hr {
 
 }
 
+.travel-info-title {
+  font-size: 20px;
+}
+
 .payment-info {
   border: 1px solid #c8c8c8;
   padding: 15px;
