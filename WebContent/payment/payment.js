@@ -1,4 +1,4 @@
-window.onload = function() {
+$(document).ready(function() {
   // 현재 페이지 URL을 가져옴
   const currentPath = window.location.pathname;
 
@@ -11,10 +11,10 @@ window.onload = function() {
   if (currentPath.includes('paymentCompleted.html')) {
     handlePaymentCompletion();
   }
-};
+});
 
 async function main() {
-  const button = document.getElementById("payment-button");
+  const $button = $("#payment-button");
 
   // ------  결제위젯 초기화 ------
   const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
@@ -46,7 +46,7 @@ async function main() {
   ]);
 
   // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
-  button.addEventListener("click", async function() {
+  $button.on("click", async function() {
     await widgets.requestPayment({
       orderId: "Ep2yZQD4N_0Swa_eA-v0F",
       orderName: "토스 티셔츠 외 2건",
@@ -59,11 +59,11 @@ async function main() {
   });
 
   // 취소 버튼 기능 추가
-  const cancelButton = document.getElementById("cancel-button");
-  cancelButton.addEventListener("click", function() {
+  const $cancelButton = $("#cancel-button");
+  $cancelButton.on("click", function() {
     if (confirm("선택하신 승차권 예약내역을 취소하시겠습니까?") == true) {
       //확인
-      // document.removefrm.submit();
+      // $("#removefrm").submit();
     } else {
       //취소
       return false;
@@ -79,6 +79,6 @@ function handlePaymentCompletion() {
   const today = date.toLocaleString();
 
   // 결제 금액을 표의 승인 금액 <td>에 출력
-  document.getElementById('approved-amount').textContent = amount + '원';
-  document.getElementById('approved-date').textContent = today;
+  $('#approved-amount').text(amount + '원');
+  $('#approved-date').text(today);
 }
