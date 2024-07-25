@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승차권 조회</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="trainSelect.css">
+    <link rel="stylesheet" type="text/css" href="/WebContent/trainInfo/mapInfoSub.css">
+    <link rel="stylesheet" type="text/css" href="/WebContent/trainInfo/mapInfo.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./trainSelect.js"></script>
+</head>
+<body>
+
+    <!-- Map Modal start-->
+    <div id="map_info"></div>
+    <!-- Map Modal end-->
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active">일반승차권 조회</button>
+            <button class="tab-btn">단체승차권 조회</button>
+            <button class="tab-btn">할인승차권 조회</button>
+        </div>
+        <div class="form-container">
+            <form name="frm_select_ticket" action="">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="input-container">
+
+                            <input type="text" id="departure" placeholder="서울">
+                            <span class="station_start_map">
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <img src="/WebContent/images/main/ico_maphere.png" alt="출발지 위치선택">
+                              </button>
+                            </span>
+
+                            <span id="change_station">
+                              <img src="/WebContent/images/trainSelect/change_img.png" alt="위치 변경">
+                            </span>
+
+                              <input type="text" id="arrival" placeholder="부산">
+                              <span class="station_end_map">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                  <img src="/WebContent/images/main/ico_maphere.png" alt="도착지 위치선택">
+                                </button>
+                              </span>
+                              <input type="date" id="date" value="2024-07-25">
+
+                              <select id="time">
+                                <option value="00">0 (오전00)  </option>
+                                <option value="01">1 (오전01)   </option>
+                                <option value="02">2 (오전02) </option>
+                                <option value="03">3 (오전03) </option>
+                                <option value="04">4 (오전04) </option>
+                                <option value="05">5 (오전05) </option>
+                                <option value="06">6 (오전06) </option>
+                                <option value="07">7 (오전07) </option>
+                                <option value="08">8 (오전08) </option>
+                                <option value="09">9 (오전09) </option>
+                                <option value="10">10 (오전10) </option>
+                                <option value="11">11 (오전11) </option>
+                                <option value="12">12 (오후00) </option>
+                                <option value="13">13 (오후01) </option>
+                                <option value="14">14 (오후02) </option>
+                                <option selected="selected" value="15">15 (오후03) </option>
+                                <option value="16">16 (오후04) </option>
+                                <option value="17">17 (오후05) </option>
+                                <option value="18">18 (오후06) </option>
+                                <option value="19">19 (오후07) </option>
+                                <option value="20">20 (오후08) </option>
+                                <option value="21">21 (오후09) </option>
+                                <option value="22">22 (오후10) </option>
+                                <option value="23">23 (오후11) </option>
+                              </select>
+                              시
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>· 여정경로</label>
+                    <span class="radio-group">
+                        <label><input type="radio" name="journey" checked> 직통</label>
+                        <label><input type="radio" name="journey"> 환승</label>
+                        <label><input type="radio" name="journey"> 왕복</label>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>· 인원정보</label>
+                      <select id="adult">
+                          <option>어른(만 13세 이상) 1명</option>
+                      </select>
+                      <select id="child1">
+                          <option>어린이(만 6~12세) 0명</option>
+                      </select>
+                      <select id="oldPerson">
+                          <option>경로(만 65세 이상) 0명</option>
+                      </select>
+                      <select id="disabledPerson">
+                          <option>중증장애인 0명</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>· 좌석종류</label>
+                      <select id="seatType">
+                          <option value="000" selected="selected">좌석위치</option>
+                          <option value="001">1인석</option>
+                          <option value="002">창측좌석</option>
+                          <option value="003">내측좌석</option>
+                      </select>
+                      <select id="seatType2">
+                        <option value="015" selected="selected">기본</option>
+                        <option value="019">유아동반</option>
+                        <option value="019">편한대화</option>
+                        <option value="031">노트북</option>
+                        <option value="021">수동휠체어석</option>
+                        <option value="028">전동휠체어석</option>
+                        <option value="XXX">수유실 인접</option>
+                        <option value="018">2층석</option>
+                        <option value="032">자전거거치대</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>· 차종구분</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="trainType" checked> 전체</label>
+                        <label><input type="radio" name="trainType"> SRT</label>
+                        <label><input type="radio" name="trainType"> SRT + KTX</label>
+                    </div>
+                </div>
+                <div class="form-text">
+                    <p>중증 : 장애의 정도가 심한 장애인 (구1-3급)</p>
+                    <p>경증 : 장애의 정도가 심하지 않은 장애인 (구4-6급)</p>
+                </div>
+
+                <button type="submit" class="search_ticket">
+                  <img src="/WebContent/images/main/ico_srch2.png" alt="검색">조회하기
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

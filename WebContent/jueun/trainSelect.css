@@ -1,0 +1,160 @@
+
+.container {
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tab-btn:not(:last-child) {
+  margin-right: 5px;
+}
+
+.tab-btn.active {
+  background-color: #4291ff;
+  color: white;
+}
+
+.form-container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  max-width: 150px;
+  margin-right: 25px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 200px;
+  margin-right: 10px;
+}
+
+.custom-btn {
+  background-color: #4291ff;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.col {
+  flex: 1;
+  padding: 0 5px;
+}
+
+.col select,
+.row select,
+input[type="date"],
+input[type="time"],
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radio-group {
+  display: inline-flex;
+  align-items: center;
+  max-width: 300px;
+}
+
+.radio-group label {
+  margin-right: 15px;
+  font-weight: unset;     /* 설정 해제 */
+}
+
+.form-text {
+  margin-top: 20px;
+}
+
+.form-text p {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+#arrival {
+  margin-left: 10px;
+}
+
+#date {
+  margin-left: 10px;
+}
+
+#time {
+  margin-right: 10px;
+}
+
+#change_station img {
+  margin-left: 15px;
+  margin-right: 7px;
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.search_ticket {
+  margin-top: 10px;
+  width: 200px;
+  height: 45px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 243px;
+  bottom: 0;
+}
+.search_ticket img{
+  width: 23px;
+  margin-right: 5px;
+}
