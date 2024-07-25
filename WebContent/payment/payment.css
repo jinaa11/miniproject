@@ -47,11 +47,11 @@ hr {
 }
 
  /* 상단 테두리 두껍게 */
- .table-top-border th {
+.table-top-border thead {
   border-top: 2px solid #000 ;
 }
 
 /* 나머지 테두리 1px */
 .table-custom th, .table-custom td {
   border: 1px solid #c8c8c8;
-}
+} 
