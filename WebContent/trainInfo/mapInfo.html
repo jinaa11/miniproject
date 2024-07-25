@@ -11,142 +11,175 @@
       <div class="modal-body">
 
         <div class="route-tabs">
-            <button class="btn btn-route active">KTX</button>
-            <button class="btn btn-route">전체역</button>
+            <button class="btn btn-route ktx-station active">KTX</button>
+            <button class="btn btn-route all-station">전체역</button>
         </div>
+
+        <div id="ktx_station_info">
         
-        <div class="route-options">
-            <button class="btn btn-line active">경부선</button>
-            <button class="btn btn-line">호남선</button>
-            <button class="btn btn-line">전라선</button>
-            <button class="btn btn-line">경전선</button>
-        </div>
+          <div class="route-options">
+              <button class="btn btn-line active">경부선</button>
+              <button class="btn btn-line">호남선</button>
+              <button class="btn btn-line">전라선</button>
+              <button class="btn btn-line">경전선</button>
+          </div>
 
+          <div class="cont_info">
+            <div class="type_rol">
 
-        <div class="cont_info">
-          <div class="type_rol">
-
-
-            <div id="mapktx1" class="clsMapKtx">
-              <div class="rig_map">
-                <h5><img src="/WebContent/trainInfo/images/prd/ktx_name01.png" alt="kTX 경부선"></h5>
-                <div class="kb_p">
-                  <p><img src="/WebContent/trainInfo/images/prd/map_ktx01.png" alt="kTX 경부선 노선"></p>
-                  <ul class="ul-map-list">
-                    <li class="ps01"><a href="#">행신</a></li>
-                    <li class="ps02"><a href="#">서울</a></li>
-                    <li class="ps04"><a href="#">영등포</a></li>
-                    <li class="ps05"><a href="#">광명</a></li>
-                    <li class="ps06"><a href="#">수원</a></li>
-                    <li class="ps07"><a href="#">천안아산(온양온천)</a></li>
-                    <li class="ps08"><a href="#">오송</a></li>
-                    <li class="ps09"><a href="#">대전</a></li>
-                    <li class="ps11"><a href="#">김천(구미)</a></li>
-                    <li class="ps12"><a href="#">동대구</a></li>
-                    <li class="ps16"><a href="#">경주</a></li>
-                    <li class="ps17"><a href="#">울산</a></li>
-                    <li class="ps18"><a href="#">부산</a></li>
-                    <li class="ps19"><a href="#">구포</a></li>
-                    <li class="ps13"><a href="#">밀양</a></li>
-                    <li class="ps40"><a href="#">포항</a></li>
-                    <li class="ps56"><a href="#">서대구</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-
-            <div id="mapktx2" class="clsMapKtx">
-              <div class="rig_map">
-                  <h5><img src="/WebContent/trainInfo/images/prd/ktx_name02.png" alt="kTX 호남선"></h5>
-                  <div class="kb_p">
-                      <p><img src="/WebContent/trainInfo/images/prd/map_ktx02.png" alt="kTX 호남선 노선"></p>
-                        <ul class="ul-map-list">
-                          <li class="ps01"><a href="javascript:void(0);">행신</a></li>
-                          <li class="ps03"><a href="javascript:void(0);">용산</a></li>
-                          <li class="ps05"><a href="javascript:void(0);">광명</a></li>
-                          <li class="ps07"><a href="javascript:void(0);">천안아산(온양온천)</a></li>
-                          <li class="ps08"><a href="javascript:void(0);">오송</a></li>
-                          <li class="ps10"><a href="javascript:void(0);">서대전</a></li>
-                          <li class="ps20"><a href="javascript:void(0);">계룡</a></li>
-                          <li class="ps41"><a href="javascript:void(0);">공주</a></li>
-                          <li class="ps14"><a href="javascript:void(0);">논산</a></li>
-                          <li class="ps15"><a href="javascript:void(0);">익산</a></li>
-                          <li class="ps22"><a href="javascript:void(0);">정읍</a></li>
-                          <li class="ps25"><a href="javascript:void(0);">광주송정</a></li>
-                          <li class="ps26"><a href="javascript:void(0);">나주</a></li>
-                          <li class="ps27"><a href="javascript:void(0);">목포</a></li>
-                      </ul>
-                  </div>
-                </div>
-              </div>
-
-
-              <div id="mapktx4" class="clsMapKtx">
+              <div id="mapktx1" class="clsMapKtx">
                 <div class="rig_map">
-                  <h5><img src="/WebContent/trainInfo/images/prd/ktx_name04.png" alt="kTX 전라선"></h5>
-                    <div class="kb_p">
-                     <p><img src="/WebContent/trainInfo/images/prd/map_ktx04.png" alt="kTX 전라선 노선"></p>
-                     <ul class="ul-map-list">
-                      <li class="ps01"><a href="javascript:void(0);">행신</a></li>
-                      <li class="ps03"><a href="javascript:void(0);">용산</a></li>
-                      <li class="ps05"><a href="javascript:void(0);">광명</a></li>
-                      <li class="ps07"><a href="javascript:void(0);">천안아산(온양온천)</a></li>
-                      <li class="ps08"><a href="javascript:void(0);">오송</a></li>
-                      <li class="ps10"><a href="javascript:void(0);">서대전</a></li>
-                      <li class="ps20"><a href="javascript:void(0);">계룡</a></li>
-                      <li class="ps41"><a href="javascript:void(0);">공주</a></li>
-                      <li class="ps14"><a href="javascript:void(0);">논산</a></li>
-                      <li class="ps15"><a href="javascript:void(0);">익산</a></li>
-                      <li class="ps33"><a href="javascript:void(0);">전주</a></li>
-                      <li class="ps34"><a href="javascript:void(0);">남원</a></li>
-                      <li class="ps35"><a href="javascript:void(0);">곡성</a></li>
-                      <li class="ps36"><a href="javascript:void(0);">구례구</a></li>
-                      <li class="ps37"><a href="javascript:void(0);">순천</a></li>
-                      <li class="ps38"><a href="javascript:void(0);">여천</a></li>
-                      <li class="ps39"><a href="javascript:void(0);">여수엑스포</a></li>
+                  <h5><img src="/WebContent/trainInfo/images/prd/ktx_name01.png" alt="kTX 경부선"></h5>
+                  <div class="kb_p">
+                    <p><img src="/WebContent/trainInfo/images/prd/map_ktx01.png" alt="kTX 경부선 노선"></p>
+                    <ul class="ul-map-list">
+                      <li class="ps01"><a href="#">행신</a></li>
+                      <li class="ps02"><a href="#">서울</a></li>
+                      <li class="ps04"><a href="#">영등포</a></li>
+                      <li class="ps05"><a href="#">광명</a></li>
+                      <li class="ps06"><a href="#">수원</a></li>
+                      <li class="ps07"><a href="#">천안아산(온양온천)</a></li>
+                      <li class="ps08"><a href="#">오송</a></li>
+                      <li class="ps09"><a href="#">대전</a></li>
+                      <li class="ps11"><a href="#">김천(구미)</a></li>
+                      <li class="ps12"><a href="#">동대구</a></li>
+                      <li class="ps16"><a href="#">경주</a></li>
+                      <li class="ps17"><a href="#">울산</a></li>
+                      <li class="ps18"><a href="#">부산</a></li>
+                      <li class="ps19"><a href="#">구포</a></li>
+                      <li class="ps13"><a href="#">밀양</a></li>
+                      <li class="ps40"><a href="#">포항</a></li>
+                      <li class="ps56"><a href="#">서대구</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
 
 
-              <div id="mapktx3" class="clsMapKtx">
+              <div id="mapktx2" class="clsMapKtx">
                 <div class="rig_map">
-                  <h5><img src="/WebContent/trainInfo/images/prd/ktx_name03.png" alt="kTX 경전선"></h5>
+                    <h5><img src="/WebContent/trainInfo/images/prd/ktx_name02.png" alt="kTX 호남선"></h5>
+                    <div class="kb_p">
+                        <p><img src="/WebContent/trainInfo/images/prd/map_ktx02.png" alt="kTX 호남선 노선"></p>
+                          <ul class="ul-map-list">
+                            <li class="ps01"><a href="javascript:void(0);">행신</a></li>
+                            <li class="ps03"><a href="javascript:void(0);">용산</a></li>
+                            <li class="ps05"><a href="javascript:void(0);">광명</a></li>
+                            <li class="ps07"><a href="javascript:void(0);">천안아산(온양온천)</a></li>
+                            <li class="ps08"><a href="javascript:void(0);">오송</a></li>
+                            <li class="ps10"><a href="javascript:void(0);">서대전</a></li>
+                            <li class="ps20"><a href="javascript:void(0);">계룡</a></li>
+                            <li class="ps41"><a href="javascript:void(0);">공주</a></li>
+                            <li class="ps14"><a href="javascript:void(0);">논산</a></li>
+                            <li class="ps15"><a href="javascript:void(0);">익산</a></li>
+                            <li class="ps22"><a href="javascript:void(0);">정읍</a></li>
+                            <li class="ps25"><a href="javascript:void(0);">광주송정</a></li>
+                            <li class="ps26"><a href="javascript:void(0);">나주</a></li>
+                            <li class="ps27"><a href="javascript:void(0);">목포</a></li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="mapktx4" class="clsMapKtx">
+                  <div class="rig_map">
+                    <h5><img src="/WebContent/trainInfo/images/prd/ktx_name04.png" alt="kTX 전라선"></h5>
                       <div class="kb_p">
-                      <p><img src="/WebContent/trainInfo/images/prd/map_ktx03.png" alt="kTX 경전선 노선"></p>
+                      <p><img src="/WebContent/trainInfo/images/prd/map_ktx04.png" alt="kTX 전라선 노선"></p>
                       <ul class="ul-map-list">
                         <li class="ps01"><a href="javascript:void(0);">행신</a></li>
-                        <li class="ps02"><a href="javascript:void(0);">서울</a></li>
+                        <li class="ps03"><a href="javascript:void(0);">용산</a></li>
                         <li class="ps05"><a href="javascript:void(0);">광명</a></li>
                         <li class="ps07"><a href="javascript:void(0);">천안아산(온양온천)</a></li>
                         <li class="ps08"><a href="javascript:void(0);">오송</a></li>
-                        <li class="ps09"><a href="javascript:void(0);">대전</a></li>
-                        <li class="ps11"><a href="javascript:void(0);">김천(구미)</a></li>
-                        <li class="ps12"><a href="javascript:void(0);">동대구</a></li>
-                        <li class="ps13"><a href="javascript:void(0);">밀양</a></li>
-                        <li class="ps28"><a href="javascript:void(0);">진영</a></li>
-                        <li class="ps29"><a href="javascript:void(0);">창원중앙</a></li>
-                        <li class="ps30"><a href="javascript:void(0);">창원</a></li>
-                        <li class="ps31"><a href="javascript:void(0);">마산</a></li>
-                        <li class="ps32"><a href="javascript:void(0);">진주</a></li>
-                        <li class="ps56"><a href="javascript:void(0);">서대구</a></li>
-                    </ul>
+                        <li class="ps10"><a href="javascript:void(0);">서대전</a></li>
+                        <li class="ps20"><a href="javascript:void(0);">계룡</a></li>
+                        <li class="ps41"><a href="javascript:void(0);">공주</a></li>
+                        <li class="ps14"><a href="javascript:void(0);">논산</a></li>
+                        <li class="ps15"><a href="javascript:void(0);">익산</a></li>
+                        <li class="ps33"><a href="javascript:void(0);">전주</a></li>
+                        <li class="ps34"><a href="javascript:void(0);">남원</a></li>
+                        <li class="ps35"><a href="javascript:void(0);">곡성</a></li>
+                        <li class="ps36"><a href="javascript:void(0);">구례구</a></li>
+                        <li class="ps37"><a href="javascript:void(0);">순천</a></li>
+                        <li class="ps38"><a href="javascript:void(0);">여천</a></li>
+                        <li class="ps39"><a href="javascript:void(0);">여수엑스포</a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
 
+
+                <div id="mapktx3" class="clsMapKtx">
+                  <div class="rig_map">
+                    <h5><img src="/WebContent/trainInfo/images/prd/ktx_name03.png" alt="kTX 경전선"></h5>
+                        <div class="kb_p">
+                        <p><img src="/WebContent/trainInfo/images/prd/map_ktx03.png" alt="kTX 경전선 노선"></p>
+                        <ul class="ul-map-list">
+                          <li class="ps01"><a href="javascript:void(0);">행신</a></li>
+                          <li class="ps02"><a href="javascript:void(0);">서울</a></li>
+                          <li class="ps05"><a href="javascript:void(0);">광명</a></li>
+                          <li class="ps07"><a href="javascript:void(0);">천안아산(온양온천)</a></li>
+                          <li class="ps08"><a href="javascript:void(0);">오송</a></li>
+                          <li class="ps09"><a href="javascript:void(0);">대전</a></li>
+                          <li class="ps11"><a href="javascript:void(0);">김천(구미)</a></li>
+                          <li class="ps12"><a href="javascript:void(0);">동대구</a></li>
+                          <li class="ps13"><a href="javascript:void(0);">밀양</a></li>
+                          <li class="ps28"><a href="javascript:void(0);">진영</a></li>
+                          <li class="ps29"><a href="javascript:void(0);">창원중앙</a></li>
+                          <li class="ps30"><a href="javascript:void(0);">창원</a></li>
+                          <li class="ps31"><a href="javascript:void(0);">마산</a></li>
+                          <li class="ps32"><a href="javascript:void(0);">진주</a></li>
+                          <li class="ps56"><a href="javascript:void(0);">서대구</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
           </div>
         </div>
+ 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary map-btn-close" data-bs-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-primary btn-select-station">선택</button>
+        </div>
 
+    </div> <!-- ktx_station_info END -->
 
-    </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary map-btn-close" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary btn-select-station">선택</button>
+    <div id="all_station_info">
+
+      <div class="ktx-info">
+        · 코레일(KTX)
+      <div class="korail">
+        <ul>
+          <li>
+            <a href="#">서울</a>
+          </li>
+        </ul>
       </div>
+    </div>
+
+    <br><br>
+
+    <div class="ktx-all-info">
+      · 전체역
+      <div class="korail">
+        <div class="jaum">
+          <a href="#">가</a> | 
+          <a href="#">나</a>
+        </div>
+        <br>
+        <ul>
+          <li>
+            <a href="#">서울</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    </div> <!-- all_station_info END -->
+
     </div>
   </div>
 </div>

@@ -7,6 +7,16 @@ $(function () {
     $(this).addClass('active');
   });
 
+  $('.ktx-station').click(function () {
+    $('#all_station_info').hide();
+    $('#ktx_station_info').show();
+  });
+
+  $('.all-station').click(function () {
+    $('#ktx_station_info').hide();
+    $('#all_station_info').show();
+  });
+
   // 호선 이미지 노출
   $('.route-options .btn-line').click(function () {
     let lineName = $(this).text();

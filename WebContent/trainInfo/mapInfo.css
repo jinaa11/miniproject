@@ -115,3 +115,39 @@
 .fixColor{
   background-color: rgba(255, 237, 237, 0.955)
 }
+
+.korail ul li {
+  float: left;
+  width: 20%;
+  list-style: none;
+}
+
+.korail ul li a {
+  display: block;
+  padding: 5px 0;
+  margin-left: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d4d2d0;
+  background-color: #f6f6f6;
+  text-decoration: unset;
+  color: black;
+}
+
+.jaum {
+  display: block;
+  padding: 5px 0;
+  margin-left: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d4d2d0;
+  background-color: #f6f6f6;
+  text-decoration: unset;
+  color: black;
+}
