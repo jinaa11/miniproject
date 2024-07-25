@@ -30,6 +30,12 @@
           "totalFare": "59800원",
           "passengerName": "김진아"
         }
-    ]
+    ],
+    "paymentInfo": {
+        "paymentMethod": "신용카드",
+        "cardNo": "5272-****-****-9900",
+        "approvalNumber": "16655607733",
+        "amount": "119000"    
+    }
   }
 ]

@@ -19,9 +19,9 @@ $(document).ready(function () {
     handlePaymentCompletion();
   }
 
+  // 발권 내역 조회 페이지
   if(currentPath.includes("ticketIssuedDetail.html")) {
     getIssuedTickect();
-
   }
 });
 
@@ -74,9 +74,6 @@ async function main() {
 
     // JSON 데이터 로드 후 토스 페이먼츠 API 초기화
     initializeTossPayments(totalFare);
-    console.log('totalFare')
-    console.log(totalFare)
-    getIssuedTickect(totalFare);
   });
 }
 
@@ -153,15 +150,25 @@ function handlePaymentCompletion() {
   $(".amount-value").text(parseInt(amount).toLocaleString('ko-KR') + "원");
   $("#approved-amount").text(parseInt(amount).toLocaleString('ko-KR') + "원");
   $("#approved-date").text(today);
+  $.getJSON('/WebContent/json/payment-info.json', function(data) {
+    $.each(data, function(index, item) {
+      $("#approved-number").text(item.paymentInfo.approvalNumber);
+      $("#card-No").text(item.paymentInfo.cardNo);
+    });
+  });
+  
 
   // 발권내역 조회 버튼 클릭시
-  $("#get-ticket-issued").on("click", function () {
+  $("#get-ticket-issued").click(function () {
     window.location.href = "ticketIssuedDetail.html";
   });
+  $('#check-receipt').click(function() {
+    window.location.href = 'receipt.html';
+  }); 
 }
 
 // 발권 내역 조회
-function getIssuedTickect(totalFare) {
+async function getIssuedTickect(totalFare) {
   const idKey = "USER-ID";
   const loginInfo = localStorage.getItem(idKey);
 
@@ -178,7 +185,7 @@ function getIssuedTickect(totalFare) {
       getTicket += '<td>' + item.travelInfo.trainType + '<br>' + item.travelInfo.trainNumber + '</td>';
       getTicket += '<td>' + item.travelInfo.departureStation + '<br>' + item.travelInfo.departureTime + '</td>';
       getTicket += '<td>' + item.travelInfo.arrivalStation + '<br>' + item.travelInfo.arrivalTime + '</td>';
-      getTicket += '<td>' + totalFare + '</td>';
+      getTicket += '<td>' + parseInt(item.paymentInfo.amount).toLocaleString('ko-KR') + '원</td>';
       getTicket += '<td>' + item.passengerInfo.length + '</td>';
       getTicket += '<td>' + item.passengerInfo[index].seatType + '</td>';
       getTicket += '<td>결제완료</td>';
