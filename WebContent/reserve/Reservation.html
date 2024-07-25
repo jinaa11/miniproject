@@ -34,135 +34,167 @@
     </section>
 
     <section class="re-0 container">
-        <section class="re-1">
-            <div class="p-2 d-flex justify-content-center align-items-center">
-                <span id="startLoc" class="location">수서</span>&nbsp;&nbsp;
-                <span class="timeline-icon">출발</span>
-                <div class="container-with-line"></div>
-                <span class="timeline-icon">도착</span>&nbsp;&nbsp;
-                <span id="endLoc" class="location">경주</span>
-            </div>
-            <div class="mt-1 mb-3 d-flex justify-content-center align-items-center">
-                <span class="sub-info-rev">출발일</span>&nbsp;<span id="startDate" class="rev-text">2024.07.23 (화)</span>&nbsp;&nbsp;
-                <span class="sub-info-rev">출발시간</span>&nbsp;<span id="startDate" class="rev-text">10:00</span>&nbsp;&nbsp;
-                <span class="sub-info-rev">도착시간</span>&nbsp;<span id="startDate" class="rev-text">13:20</span>&nbsp;&nbsp;
-            </div>
-            <div class="train-top container border border-1 d-flex justify-content-center align-items-center">
-                <button id="rail-1" class="train-top-rail d-flex justify-content-center align-items-center">1호차</button>
-                <button id="rail-2" class="train-top-rail d-flex justify-content-center align-items-center">2호차</button>
-                <button id="rail-3" class="train-top-rail d-flex justify-content-center align-items-center">3호차</button>
-                <button id="rail-4" class="train-top-rail d-flex justify-content-center align-items-center">4호차</button>
-                <button id="rail-5" class="train-top-rail d-flex justify-content-center align-items-center">5호차</button>
-                <button id="rail-6" class="train-top-rail d-flex justify-content-center align-items-center">6호차</button>
-                <button id="rail-7" class="train-top-rail d-flex justify-content-center align-items-center">7호차</button>
-                <button id="rail-8" class="train-top-rail d-flex justify-content-center align-items-center">8호차</button>
-            </div>
-        </section>
-        <br><br><br><br>
-        <section class="container my-control-panel border border-1 p-3">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="control-group">
-                        <label class="seat-label" id="label-adult">일반</label>
-                        <div class="controls">
-                            <button class="seat-btn decrement">-</button>
-                            <span class="seat-count-display" id="count-adult">2</span>
-                            <button class="seat-btn increment">+</button>
+        <div class="border border 2">
+            <section class="re-1">
+                <div class="p-2 d-flex justify-content-center align-items-center">
+                    <span id="startLoc" class="location">서울</span>&nbsp;&nbsp;
+                    <span class="timeline-icon">출발</span>
+                    <div class="container-with-line"></div>
+                    <span class="timeline-icon">도착</span>&nbsp;&nbsp;
+                    <span id="endLoc" class="location">부산</span>
+                </div>
+                <div class="mt-1 mb-3 d-flex justify-content-center align-items-center">
+                    <span class="sub-info-rev">출발일</span>&nbsp;<span id="startDate" class="rev-text">2024.07.29 (월)</span>&nbsp;&nbsp;
+                    <span class="sub-info-rev">출발시간</span>&nbsp;<span id="startDate" class="rev-text">10:12</span>&nbsp;&nbsp;
+                    <span class="sub-info-rev">도착시간</span>&nbsp;<span id="startDate" class="rev-text">13:34</span>&nbsp;&nbsp;
+                </div>
+                <div class="train-top container border border-1 d-flex justify-content-center align-items-center">
+                    <button id="rail-1" class="train-top-rail d-flex justify-content-center align-items-center">1호차</button>
+                    <button id="rail-2" class="train-top-rail d-flex justify-content-center align-items-center">2호차</button>
+                    <button id="rail-3" class="train-top-rail d-flex justify-content-center align-items-center">3호차</button>
+                    <button id="rail-4" class="train-top-rail d-flex justify-content-center align-items-center">4호차</button>
+                    <button id="rail-5" class="train-top-rail d-flex justify-content-center align-items-center">5호차</button>
+                    <button id="rail-6" class="train-top-rail d-flex justify-content-center align-items-center">6호차</button>
+                    <button id="rail-7" class="train-top-rail d-flex justify-content-center align-items-center">7호차</button>
+                    <button id="rail-8" class="train-top-rail d-flex justify-content-center align-items-center">8호차</button>
+                </div>
+            </section>
+            <br><br><br><br>
+            <section class="container my-control-panel border border-1 p-3">
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="control-group">
+                            <label class="seat-label" id="label-adult">일반</label>
+                            <div class="controls">
+                                <button class="seat-btn decrement">-</button>
+                                <span class="seat-count-display" id="count-adult">2</span>
+                                <button class="seat-btn increment">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="control-group">
+                            <label class="seat-label" id="label-child">어린이(만 6~12세)</label>
+                            <div class="controls">
+                                <button class="seat-btn decrement">-</button>
+                                <span class="seat-count-display" id="count-child">2</span>
+                                <button class="seat-btn increment">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="control-group">
+                            <label class="seat-label" id="label-senior">경로(만 65세 이상)</label>
+                            <div class="controls">
+                                <button class="seat-btn decrement">-</button>
+                                <span class="seat-count-display" id="count-senior">0</span>
+                                <button class="seat-btn increment">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="control-group">
+                            <label class="seat-label" id="label-disabled">장애인</label>
+                            <div class="controls">
+                                <button class="seat-btn decrement">-</button>
+                                <span class="seat-count-display" id="count-disabled">0</span>
+                                <button class="seat-btn increment">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col text-center">
-                    <div class="control-group">
-                        <label class="seat-label" id="label-child">어린이(만 6~12세)</label>
-                        <div class="controls">
-                            <button class="seat-btn decrement">-</button>
-                            <span class="seat-count-display" id="count-child">2</span>
-                            <button class="seat-btn increment">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col text-center">
-                    <div class="control-group">
-                        <label class="seat-label" id="label-senior">경로(만 65세 이상)</label>
-                        <div class="controls">
-                            <button class="seat-btn decrement">-</button>
-                            <span class="seat-count-display" id="count-senior">0</span>
-                            <button class="seat-btn increment">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col text-center">
-                    <div class="control-group">
-                        <label class="seat-label" id="label-disabled">장애인</label>
-                        <div class="controls">
-                            <button class="seat-btn decrement">-</button>
-                            <span class="seat-count-display" id="count-disabled">0</span>
-                            <button class="seat-btn increment">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>                            
+            </section>                            
 
-        <section class="re-2 container mt-3">
-            <div class="d-flex">
-                <label class="seat-av seat-dis me-auto">휠체어</label>
-                <label class="seat-av seat-av-1">선택 좌석</label>
-                <label class="seat-av seat-av-2">선택 불가</label>
-                <label class="seat-av seat-av-3">선택 가능</label>
-            </div>
-        </section>
-        <section class="re-3 mt-4 container">
-            <div id="windows-1" class="windows d-flex container mb-1">
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-            </div>
-            <div id="train-seats" class="container"></div>
-            <div id="windows-2" class="windows d-flex container mt-1">
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-                <span class="window"></span>
-            </div>
-        </section>
-        <hr>
-        <section class="container mt-3 mb-1">
-            <span class="selected-label">선택 좌석 : </span>
-            <span id="selected-seats" class="selected-seats"></span>
-        </section>    
-        <hr>
-        <section>
-            <span class="container selected-label">탑승 인원</span>
-            <label class="type-label">어른</label>
-            <span id="adult" class="type-value"></span>
-            <label class="type-label">아이</label>
-            <span id="child" class="type-value"></span>
-            <label class="type-label">경로</label>
-            <span id="senior" class="type-value"></span>
-            <label class="type-label">장애인</label>
-            <span id="disabled" class="type-value"></span>
-        </section>
+            <section class="re-2 container mt-3">
+                <div class="d-flex">
+                    <label class="seat-av seat-dis me-auto">휠체어</label>
+                    <label class="seat-av seat-av-0">창문</label>
+                    <label class="seat-av seat-av-1">선택 좌석</label>
+                    <label class="seat-av seat-av-2">선택 불가</label>
+                    <label class="seat-av seat-av-3">선택 가능</label>
+                </div>
+            </section>
+            <section class="re-3 mt-4 container">
+                <div id="windows-1" class="windows d-flex container mb-1">
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                </div>
+                <div id="train-seats" class="container"></div>
+                <div id="windows-2" class="windows d-flex container mt-1">
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                    <span class="window"></span>
+                </div>
+            </section>
+            <section class="container mt-3 mb-1 p-4">
+                <span class="selected-label">선택 좌석 : </span>
+                <span id="selected-seats" class="selected-seats"></span>
+            </section>   
+            <section class="container">
+                <span class="container selected-label">탑승 인원</span>
+                <label class="type-label">어른</label>
+                <span id="adult" class="type-value"></span>
+                <label class="type-label">아이</label>
+                <span id="child" class="type-value"></span>
+                <label class="type-label">경로</label>
+                <span id="senior" class="type-value"></span>
+                <label class="type-label">장애인</label>
+                <span id="disabled" class="type-value"></span>
+                <div>
+                    <ul class="container p-3">
+                        <li>발매가 가능한 좌석을 선택하실 수 있습니다.</li>
+                        <li>원하시는 좌석을 선택 후 [선택좌석 예약하기] 버튼을 클릭하시면 예약이 완료됩니다. (복수선택 가능)</li>
+                        <li>원하지 않는 좌석이 선택된 경우에는 좌석을 한번 더 클릭하시면 취소됩니다.</li>
+                </div>
+            </section>
 
-        <section class="d-flex justify-content-center">
-            <div class="mt-5 d-grid col-2 mx-auto">
-                <button id="btn-reserve" class="btn btn-lg btn-primary">예약하기</button>
-            </div>
-        </section>
+            <section class="d-flex justify-content-center mb-4">
+                <div class="mt-2 d-grid col-2 mx-auto">
+                    <button id="btn-reserve" class="btn btn-lg btn-primary">예약하기</button>
+                </div>
+            </section>
+        </div>
     </section>
+
+    <div class="schedule-container">
+        <table class="train-schedule">
+            <thead>
+                <tr>
+                    <th colspan="3" class="table-header">제 123열차 [KTX]</th>
+                </tr>
+                <tr>
+                    <th>역명</th>
+                    <th>도착시각</th>
+                    <th>출발시각</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>서울</td><td>-</td><td>10:12</td></tr>
+                <tr><td>영등포</td><td>10:21</td><td>10:23</td></tr>
+                <tr><td>수원</td><td>10:44</td><td>10:47</td></tr>
+                <tr><td>대전</td><td>11:55</td><td>11:59</td></tr>
+                <tr><td>동대구</td><td>12:40</td><td>12:42</td></tr>
+                <tr><td>경주</td><td>12:59</td><td>13:00</td></tr>
+                <tr><td>울산(통도사)</td><td>13:11</td><td>13:13</td></tr>
+                <tr><td>부산</td><td>13:34</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>        
 
     <div class="modal fade" id="exceedLimitModal" tabindex="-1" aria-labelledby="exceedLimitModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exceedLimitModalLabel">예약 제한 경고</h5>
+            <h5 class="modal-title" id="exceedLimitModalLabel">예약 경고</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

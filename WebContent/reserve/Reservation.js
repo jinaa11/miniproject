@@ -1,4 +1,5 @@
 $(function() {
+    sessionStorage.clear(); // 세션 스토리지 초기화
     const trainNumber = '101';
     let trainData; // 열차 데이터를 저장할 변수
 
@@ -29,7 +30,6 @@ $(function() {
     });
 
     $('.train-top-rail').click(function() {
-        sessionStorage.setItem('total', 0); // total 초기화
         // 호차 버튼 스타일 초기화
         $('.train-top-rail').css({
             'background-image': 'url(../images/reserve/scar.png)',
@@ -39,16 +39,12 @@ $(function() {
             'background-image': 'url(../images/reserve/scar-blue.png)',
             'color': 'white'
         });
-    });
 
-    // 호차 버튼 이벤트 리스너 설정
-    $(".train-top-rail").click(function() {
         let coachNumber = parseInt($(this).text().replace('호차', '').trim()); // 버튼에서 호차 번호 추출
         displaySeats(coachNumber); // 선택된 호차의 좌석 표시
     });
 
     function updateControls(labelId, valueId) {
-        sessionStorage.setItem('total', 0); // 세션에 초기 값 저장
         sessionStorage.setItem(labelId, parseInt($(`#${valueId}`).text()));
     
         // 증가 버튼 이벤트
@@ -56,7 +52,6 @@ $(function() {
             let count = parseInt($(`#${valueId}`).text());
             $(`#${valueId}`).text(count + 1);
             sessionStorage.setItem(labelId, count + 1); // 세션에 새 값 저장
-            resetSelectedSeats();
         });
     
         // 감소 버튼 이벤트
@@ -65,16 +60,22 @@ $(function() {
             if (count > 0) {
                 $(`#${valueId}`).text(count - 1);
                 sessionStorage.setItem(labelId, count - 1); // 세션에 새 값 저장
-                resetSelectedSeats();
+                resetControls();
             }
         });
     }
-    
-    function resetSelectedSeats() {
-        sessionStorage.setItem('total', 0); // total 초기화
-        $('.seat-blue').removeClass('seat-blue').css('color', 'black'); // 모든 선택된 좌석을 초기화
+
+    function resetControls() {
+        // 선택 인원 초기화
+        sessionStorage.setItem('selectedSeats', '[]');
+        sessionStorage.setItem('total', 0);
+        const selectedSeats = $('#selected-seats').text().split(',').map(s => s.trim());
+        selectedSeats.forEach(seat => {
+            $(`#${seat}`).removeClass('seat-blue').addClass('seat').css('color', 'black');
+        });
+        $('#selected-seats').text('');
     }
-    
+
     // 각 컨트롤에 이벤트 할당
     updateControls('label-adult', 'count-adult');
     updateControls('label-child', 'count-child');
@@ -86,7 +87,8 @@ $(function() {
         const container = $('#train-seats');
         const windows_1 = $('#windows-1');
         const windows_2 = $('#windows-2');
-    
+        const selectedSeats = sessionStorage.getItem('selectedSeats') ? JSON.parse(sessionStorage.getItem('selectedSeats')) : [];
+
         // 초기화
         windows_1.empty();
         windows_2.empty();
@@ -117,8 +119,11 @@ $(function() {
         // 좌석 생성
         Object.keys(coach.seats).forEach(row => {
             coach.seats[row].forEach(seat => {
-                const seatNumber = `${row}${seat.number < 10 ? `0${seat.number}` : seat.number}`;
-                const seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off' : 'seat'}" id="${seatNumber}">${seatNumber}</div>`);
+                let seatNumber = `${row}${seat.number < 10 ? `0${seat.number}` : seat.number}`;
+                let seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off' : 'seat'}" id="${coach.coachNumber}-${seatNumber}">${seatNumber}</div>`);
+                if (selectedSeats.includes(`${coach.coachNumber}-${row}0${seat.number}`)) {
+                    seatDiv.addClass('seat-blue').css('color', 'white');
+                }
 
                 if (maxSeats < 15) {
                     container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
@@ -129,10 +134,31 @@ $(function() {
                 }
                 container.append(seatDiv);
                 if (row === 'B' && seat.number === maxSeats) {
-                    container.append('<br><br>'); // A열 다음에 줄바꿈 추가
+                    container.append(
+                    '<div class="seat-center d-flex justify-content-evenly align-items-center">' + 
+                    '<span class="loc-seat">' + $('#startLoc').text() + '</span><span style="color: #3769e5; font-weight: bold;"> ' + 
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' +
+                     '<span class="loc-seat">' + $('#endLoc').text() + '</span>' +
+                    '</div>'); // A열 다음에 줄바꿈 추가
                 }
             });
-            container.append('<br>');
         });
     }    
     
@@ -145,6 +171,7 @@ $(function() {
                 $(this).removeClass('seat-blue');
                 $(this).css('color', 'black'); // 텍스트 색상 검은색으로 변경
                 sessionStorage.setItem('total', total - 1); // total 감소
+                removeSelectSessionStorage($(this).attr('id'));
             } else {
                 // 선택 가능한 좌석 수와 비교
                 if (calculateTotalSeats() > total) {
@@ -152,13 +179,13 @@ $(function() {
                     $(this).addClass('seat-blue');
                     $(this).css('color', 'white'); // 텍스트 색상 하얀색으로 변경
                     sessionStorage.setItem('total', total + 1); // total 증가
+                    InsertSelectSessionStorage($(this).attr('id'));
                 } else {
                     const exceedModal = new bootstrap.Modal(document.getElementById('exceedLimitModal'));
                     exceedModal.show();
                 }
             }
-
-            updateSelectedSeatsDisplay();
+            
         }
     });
 
@@ -174,12 +201,60 @@ $(function() {
         return totalSeats;
     }
 
-    function updateSelectedSeatsDisplay() {
-        let selectedSeats = [];
-        $('.seat-blue').each(function() {
-            selectedSeats.push($(this).attr('id')); // 선택된 좌석의 ID 수집
-        });
-        selectedSeats.sort(); // 좌석 번호로 정렬 (자동으로 a1, a2, ..., d10 순서대로 정렬됨)
-        $('#selected-seats').text(selectedSeats.join(', ')); // 화면에 표시
+    function removeSelectSessionStorage(id) {
+        let selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats') || '[]');
+        let index = selectedSeats.indexOf(id);
+        if (index > -1) {
+            selectedSeats.splice(index, 1);
+        }
+        sessionStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+        $('#selected-seats').text(selectedSeats.join(', '));
     }
+
+    function InsertSelectSessionStorage(id) {
+        let selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats') || '[]');
+        selectedSeats.push(id);
+        sessionStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+        $('#selected-seats').text(selectedSeats.join(', '));
+    }  
+    
+    // 예시로 사용하기 위해 이벤트 리스너에 연결
+    $('#btn-reserve').on('click', function() {
+        const selectedSeats = JSON.parse(sessionStorage.getItem('total'));
+    
+        // 탑승 인원 데이터 수집
+        const passengerData = {
+            adult: parseInt($('#count-adult').text()),
+            child: parseInt($('#count-child').text()),
+            senior: parseInt($('#count-senior').text()),
+            disabled: parseInt($('#count-disabled').text())
+        };
+    
+        // 전체 인원 계산
+        const totalPassengers = passengerData.adult + passengerData.child + passengerData.senior + passengerData.disabled;
+    
+        // JSON 객체 생성
+        const dataToSave = {
+            seats: selectedSeats,
+            passengers: passengerData
+        };
+    
+        // 인원수와 좌석 선택 수 검증
+        if (selectedSeats !== totalPassengers) {
+            // 모달 창을 표시
+            $('#exceedLimitModal').modal('show');
+            $('#exceedLimitModal .modal-body').text('선택된 좌석 수와 탑승 인원 수가 일치하지 않습니다.');
+        } else {
+            // JSON을 문자열로 변환하여 콘솔에 출력
+            console.log(JSON.stringify(dataToSave));
+    
+            // 실제로 서버에 데이터를 전송할 때 사용할 코드
+            // $.post('URL_TO_SEND_DATA', dataToSave, function(response) {
+            //     console.log('Data saved:', response);
+            // });
+
+            window.location.href = 'reservation_complete.html';
+        }
+    });
+    
 });

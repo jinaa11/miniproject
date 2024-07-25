@@ -1,4 +1,11 @@
 {
-    "adult": 2,
-    "child": 2
+    "seats":[
+        "A06","A07","A08","B07"
+    ],
+    "passengers":{
+        "adult":2,
+        "child":2,
+        "senior":0,
+        "disabled":0
+    }
 }
