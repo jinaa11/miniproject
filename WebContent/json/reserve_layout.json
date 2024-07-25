@@ -60,9 +60,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 9,
                                 "direction": "backward",
                                 "reserved": true,
@@ -147,9 +144,6 @@
                                 "direction": "forward",
                                 "reserved": false,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 9,
@@ -238,9 +232,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 9,
                                 "direction": "backward",
                                 "reserved": true,
@@ -325,9 +316,6 @@
                                 "direction": "forward",
                                 "reserved": false,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 9,
@@ -1008,9 +996,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 9,
                                 "direction": "backward",
                                 "reserved": false,
@@ -1101,9 +1086,6 @@
                                 "direction": "forward",
                                 "reserved": true,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 9,
@@ -1198,9 +1180,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 9,
                                 "direction": "backward",
                                 "reserved": false,
@@ -1291,9 +1270,6 @@
                                 "direction": "forward",
                                 "reserved": false,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 9,
@@ -1398,9 +1374,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 8,
                                 "direction": "backward",
                                 "reserved": true,
@@ -1497,9 +1470,6 @@
                                 "direction": "backward",
                                 "reserved": true,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 8,
@@ -1600,9 +1570,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 8,
                                 "direction": "backward",
                                 "reserved": false,
@@ -1699,9 +1666,6 @@
                                 "direction": "backward",
                                 "reserved": true,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 8,
@@ -1807,9 +1771,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 8,
                                 "direction": "backward",
                                 "reserved": true,
@@ -1900,9 +1861,6 @@
                                 "direction": "backward",
                                 "reserved": false,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 8,
@@ -1997,9 +1955,6 @@
                                 "type": "seat"
                             },
                             {
-                                "type": "passage"
-                            },
-                            {
                                 "number": 8,
                                 "direction": "backward",
                                 "reserved": false,
@@ -2090,9 +2045,6 @@
                                 "direction": "backward",
                                 "reserved": false,
                                 "type": "seat"
-                            },
-                            {
-                                "type": "passage"
                             },
                             {
                                 "number": 8,

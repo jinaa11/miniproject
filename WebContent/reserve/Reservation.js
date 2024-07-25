@@ -1,7 +1,26 @@
 $(function() {
     sessionStorage.clear(); // 세션 스토리지 초기화
     const trainNumber = '101';
+    let userChoice = '일반실';
     let trainData; // 열차 데이터를 저장할 변수
+
+    let cars;
+    if (userChoice === '특실') {
+        cars = [2, 3, 4];
+    } else if (userChoice === '일반실') {
+        cars = [1, 5, 6, 7, 8, 9];
+    }
+    
+    const $container = $('.train-top');
+    $container.empty(); // 기존의 내용을 지웁니다.
+
+    cars.forEach(function(carNumber) {
+        $('<button>', {
+            id: 'rail-' + carNumber,
+            class: 'train-top-rail d-flex justify-content-center align-items-center',
+            text: carNumber + '호차'
+        }).appendTo($container);
+    });
 
     function updateSeatDisplay() {
         // 탑승 인원 업데이트
@@ -26,7 +45,11 @@ $(function() {
     // AJAX로 JSON 데이터 가져오기
     $.getJSON("../json/reserve_layout.json", function(data) {
         trainData = data.KTX.find(train => train.trainNumber === trainNumber);
-        displaySeats(1); // 초기에 1호차 좌석 표시
+        if (userChoice === '특실') {
+            displaySeats(2); // 초기에 2호차 좌석 표시
+        } else if (userChoice === '일반실') {
+            displaySeats(1); // 초기에 1호차 좌석 표시
+        }
     });
 
     $('.train-top-rail').click(function() {
@@ -86,7 +109,6 @@ $(function() {
         // 선택된 호차의 좌석 정보 가져오기
         let selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats') || '[]');
         let coach = trainData.coaches.find(coach => coach.coachNumber.includes(coachNumber));
-        console.log(coach);
 
         const container = $('#train-seats');
         const windows_1 = $('#windows-1');
@@ -124,11 +146,11 @@ $(function() {
                 let seatDiv;
                 let seatNumber = `${row}${seat.number < 10 ? `0${seat.number}` : seat.number}`;
                 if (seat.direction === 'forward') {
-                    seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off' : 'seat'}" id="${coach.coachNumber}-${seatNumber}">${seatNumber}</div>`);
+                    seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off' : 'seat'}" id="${coachNumber}-${seatNumber}">${seatNumber}</div>`);
                 } else {
-                    seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off-reverse' : 'seat-reverse'}" id="${coach.coachNumber}-${seatNumber}">${seatNumber}</div>`);
+                    seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off-reverse' : 'seat-reverse'}" id="${coachNumber}-${seatNumber}">${seatNumber}</div>`);
                 }
-                if (selectedSeats.includes(`${coach.coachNumber}-${row}0${seat.number}`)) {
+                if (selectedSeats.includes(`${coachNumber}-${row}0${seat.number}`)) {
                     if (seat.direction === 'forward') {
                         seatDiv.addClass('seat-blue').css('color', 'white');
                     } else {
@@ -136,11 +158,21 @@ $(function() {
                     }
                 }
 
-                if (maxSeats == 16) {
-                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                if (maxSeats === 15) {
+                    if (seat.number === 9) {
+                        container.append('<span class="passage">통로</span>');
+                        container.append('&nbsp;');
+                    } else {
+                        container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                    }
                     seatDiv.css({'width': '40px'});
-                } else if (maxSeats == 15) {
-                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                } else if (maxSeats === 14) {
+                    if (seat.number === 9) {
+                        container.append('<span class="passage">통로</span>');
+                        container.append('&nbsp;');
+                    } else {
+                        container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                    }
                     seatDiv.css('margin-right', '10px'); // 기본 간격
                 } else {
                     container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
@@ -148,6 +180,9 @@ $(function() {
                     
                     seatDiv.css('margin-right', '20px'); // 기본 간격
                 }
+
+                
+
                 container.append(seatDiv);
 
                 if (row === 'B' && seat.number === maxSeats) {
@@ -174,19 +209,24 @@ $(function() {
                     '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' +
                      '<span class="loc-seat">' + $('#endLoc').text() + '</span>' +
                     '</div>'); // A열 다음에 줄바꿈 추가
+                } else if (seat.number === maxSeats) {
+                    container.append('<br>');
                 }
             });
-            container.append('<br>');
         });
     }
     
-    $('#train-seats').on('click', '.seat', function() {
-        if (!$(this).hasClass('seat-off')) { // 예약 불가 좌석이 아닐 경우에만 동작
+    $('#train-seats').on('click', '.seat, .seat-reverse, .seat-blue, .seat-blue-reverse', function() {
+        if (!$(this).hasClass('seat-off') || !$(this).hasClass('seat-off-reverse')) {
             let total = parseInt(sessionStorage.getItem('total') || 0); // 현재 저장된 total 값 가져오기, 없으면 0으로 초기화
     
-            if ($(this).hasClass('seat-blue')) {
+            if ($(this).hasClass('seat-blue') || $(this).hasClass('seat-blue-reverse')) {
                 // 좌석이 이미 선택된 상태이면 해제
-                $(this).removeClass('seat-blue');
+                if ($(this).hasClass('seat-blue')) {
+                    $(this).removeClass('seat-blue').addClass('seat');
+                } else {
+                    $(this).removeClass('seat-blue-reverse').addClass('seat-reverse');
+                }
                 $(this).css('color', 'black'); // 텍스트 색상 검은색으로 변경
                 sessionStorage.setItem('total', total - 1); // total 감소
                 removeSelectSessionStorage($(this).attr('id'));
@@ -194,7 +234,11 @@ $(function() {
                 // 선택 가능한 좌석 수와 비교
                 if (calculateTotalSeats() > total) {
                     // 좌석 선택
-                    $(this).addClass('seat-blue');
+                    if ($(this).hasClass('seat-reverse')) {
+                        $(this).removeClass('seat-reverse').addClass('seat-blue-reverse');
+                    } else {
+                        $(this).removeClass('seat').addClass('seat-blue');
+                    }
                     $(this).css('color', 'white'); // 텍스트 색상 하얀색으로 변경
                     sessionStorage.setItem('total', total + 1); // total 증가
                     InsertSelectSessionStorage($(this).attr('id'));
@@ -226,14 +270,14 @@ $(function() {
             selectedSeats.splice(index, 1);
         }
         sessionStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
-        $('#selected-seats').text(selectedSeats.join(', '));
+        $('#selected-seats').text(sortSeats(selectedSeats).join(', '));
     }
 
     function InsertSelectSessionStorage(id) {
         let selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats') || '[]');
         selectedSeats.push(id);
         sessionStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
-        $('#selected-seats').text(selectedSeats.join(', '));
+        $('#selected-seats').text(sortSeats(selectedSeats).join(', '));
     }  
     
     // 예시로 사용하기 위해 이벤트 리스너에 연결
@@ -274,5 +318,29 @@ $(function() {
             window.location.href = 'reservation_complete.html';
         }
     });
+
+    function sortSeats(seats) {
+        return seats.sort((a, b) => {
+            // 좌석 번호를 코치 번호, 열, 그리고 숫자 부분으로 분리
+            let seatA = a.split('-');
+            let seatB = b.split('-');
+            let coachA = parseInt(seatA[0], 10);
+            let coachB = parseInt(seatB[0], 10);
+            let rowA = seatA[1].charAt(0);
+            let rowB = seatB[1].charAt(0);
+            let numA = parseInt(seatA[1].slice(1), 10);
+            let numB = parseInt(seatB[1].slice(1), 10);
     
+            // 코치 번호로 먼저 정렬
+            if (coachA !== coachB) {
+                return coachA - coachB;
+            }
+            // 같은 코치 내에서 열 이름으로 정렬
+            if (rowA !== rowB) {
+                return rowA.localeCompare(rowB);
+            }
+            // 같은 열 내에서 좌석 번호 순으로 정렬
+            return numA - numB;
+        });
+    }
 });

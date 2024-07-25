@@ -28,10 +28,6 @@ body {
     font-weight: bold;
 }
 
-.seat-center {
-    height: 50px;
-}
-
 .re-0 {
     height: 1200px;
 }
@@ -189,6 +185,8 @@ body {
 }
 
 .seat-reverse {
+    -webkit-user-drag: none;
+    user-select: none;
     display: inline-block;
     width: 40px;
     height: 45px;
@@ -197,11 +195,14 @@ body {
     margin: 2px;
     margin-right: 10px; /* 기본 간격 */
     background-image: url(../images/reserve/ic_seat-reverse.png);
+    font-weight: bold;
     background-size: cover;
     transition: background-image 0.1s ease;
 }
 
 .seat-blue {
+    -webkit-user-drag: none;
+    user-select: none;
     display: inline-block;
     width: 40px;
     height: 45px;
@@ -215,6 +216,8 @@ body {
 }
 
 .seat-blue-reverse {
+    -webkit-user-drag: none;
+    user-select: none;
     display: inline-block;
     width: 40px;
     height: 45px;
@@ -228,6 +231,8 @@ body {
 }
 
 .seat-off {
+    -webkit-user-drag: none;
+    user-select: none;
     display: inline-block;
     width: 40px;
     height: 45px;
@@ -242,6 +247,8 @@ body {
 }
 
 .seat-off-reverse {
+    -webkit-user-drag: none;
+    user-select: none;
     display: inline-block;
     width: 40px;
     height: 45px;
@@ -427,3 +434,17 @@ body {
     font-weight: bold; /* 글꼴 두께 */
 }
 
+.passage {
+    width: 30px;
+    height: 50px;
+    background-color: #fff;
+    left: 100%;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 20px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+}
