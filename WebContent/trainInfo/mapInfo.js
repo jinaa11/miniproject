@@ -32,6 +32,10 @@ $(function () {
 
   let imageCount = 0;
 
+  $('.station_end_map .btn').click(function () {
+    imageCount ++;
+  })
+
   // 지역 선택
   $('.ul-map-list li a').click(function () {
     const startMarkImg = '/WebContent/trainInfo/images/ic_start_dpt.png';
