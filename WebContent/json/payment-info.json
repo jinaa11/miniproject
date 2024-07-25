@@ -1,0 +1,35 @@
+[
+  {
+    "travelInfo": {
+      "date": "8월 13일",
+      "trainType": "KTX",
+      "trainNumber": "319",
+      "departureStation": "서울",
+      "arrivalStation": "부산",
+      "departureTime": "09:05",
+      "arrivalTime": "11:51",
+      "passengerCount": 1,
+      "paymentAmount": "59,800원"
+    },
+    "passengerInfo": [
+        {
+          "trainNumber": "319",
+          "seatType": "일반실",
+          "seatInfo": "3호차 9A",
+          "passengerType": "어른",
+          "fare": "59,800원",
+          "totalFare": "59,800원",
+          "passengerName": "김진아"
+        },
+        {
+          "trainNumber": "319",
+          "seatType": "일반실",
+          "seatInfo": "3호차 9B",
+          "passengerType": "어른",
+          "fare": "59,800원",
+          "totalFare": "59,800원",
+          "passengerName": "김진아"
+        }
+    ]
+  }
+]

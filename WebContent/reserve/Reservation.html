@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>예매좌석선택</title>
+    <link rel="icon" href="../images/logo_opac.png">
     <link rel="stylesheet" type="text/css" href="Reservation.css">
     <link rel="stylesheet" type="text/css" href="/WebContent/common/common.css">
 
@@ -57,8 +58,53 @@
                 <button id="rail-8" class="train-top-rail d-flex justify-content-center align-items-center">8호차</button>
             </div>
         </section>
-        <br><br><br><br><br>
-        <section class="re-2 mt-1 container">
+        <br><br><br><br>
+        <section class="container my-control-panel border border-1 p-3">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label" id="label-adult">일반</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display" id="count-adult">2</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label" id="label-child">어린이(만 6~12세)</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display" id="count-child">2</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label" id="label-senior">경로(만 65세 이상)</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display" id="count-senior">0</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="control-group">
+                        <label class="seat-label" id="label-disabled">장애인</label>
+                        <div class="controls">
+                            <button class="seat-btn decrement">-</button>
+                            <span class="seat-count-display" id="count-disabled">0</span>
+                            <button class="seat-btn increment">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>                            
+
+        <section class="re-2 container mt-3">
             <div class="d-flex">
                 <label class="seat-av seat-dis me-auto">휠체어</label>
                 <label class="seat-av seat-av-1">선택 좌석</label>
@@ -66,12 +112,69 @@
                 <label class="seat-av seat-av-3">선택 가능</label>
             </div>
         </section>
-        <section class="re-3 mt-5 container">
+        <section class="re-3 mt-4 container">
+            <div id="windows-1" class="windows d-flex container mb-1">
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+            </div>
             <div id="train-seats" class="container"></div>
+            <div id="windows-2" class="windows d-flex container mt-1">
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+                <span class="window"></span>
+            </div>
+        </section>
+        <hr>
+        <section class="container mt-3 mb-1">
+            <span class="selected-label">선택 좌석 : </span>
+            <span id="selected-seats" class="selected-seats"></span>
+        </section>    
+        <hr>
+        <section>
+            <span class="container selected-label">탑승 인원</span>
+            <label class="type-label">어른</label>
+            <span id="adult" class="type-value"></span>
+            <label class="type-label">아이</label>
+            <span id="child" class="type-value"></span>
+            <label class="type-label">경로</label>
+            <span id="senior" class="type-value"></span>
+            <label class="type-label">장애인</label>
+            <span id="disabled" class="type-value"></span>
+        </section>
+
+        <section class="d-flex justify-content-center">
+            <div class="mt-5 d-grid col-2 mx-auto">
+                <button id="btn-reserve" class="btn btn-lg btn-primary">예약하기</button>
+            </div>
         </section>
     </section>
-    
 
+    <div class="modal fade" id="exceedLimitModal" tabindex="-1" aria-labelledby="exceedLimitModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exceedLimitModalLabel">예약 제한 경고</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            예약할 수 있는 좌석 수를 초과했습니다.
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+        </div>
+    </div>
+  
     <div id='footer1'></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
