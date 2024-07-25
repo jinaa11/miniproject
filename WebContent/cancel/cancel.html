@@ -16,12 +16,15 @@
   <div id="header1"></div>
   <div id="stage"></div>
   <div class="container">
-
-  <h1>이수호 고객님의 인터넷 발권내역입니다.</h1>
-  <p>* 반환할 승차권을 선택하신 후 반환단추를 눌러주십시오.</p>
+    <div class="border ">
+      <ul class="left-margin">
+        <li><strong id="passengerName"></strong> 고객님의 인터넷 발권내역입니다.</h1>
+        <li>반환할 승차권을 선택하신 후 <strong>'반환요청'</strong> 버튼을 눌러주십시오.</p>
+      </ul>
+    </div>
 
   <table class="table table-custom table-hover">
-      <thead>
+      <thead class="top-border table-primary">
           <tr>
               <th>선택</th>
               <th>승차일자</th>
@@ -32,14 +35,13 @@
               <th>출발시간</th>
               <th>도착시간</th>
               <th>승객</th>
+              <th>승차 유형</th>
               <th>승객구분</th>
-              <th>승차권유형</th>
               <th>좌석번호</th>
-              <th>이벤트당첨</th>
           </tr>
       </thead>
-      <tbody>
-          <tr>
+      <tbody id="reserveList">
+          <!-- <tr>
               <td><input type="checkbox"></td>
               <td>8월 16일(금)</td>
               <td>KIX-이움</td>
@@ -52,64 +54,71 @@
               <td>스마트폰</td>
               <td>인쇄불요</td>
               <td>82410-0722-10287-**</td>
-              <td></td>
-          </tr>
+          </tr> -->
       </tbody>
   </table>
 
-  <div class="header">
-      <button type="button">반환요청</button>
+  <div class="header d-flex flex-row-reverse">
+      <button class="btn btn-primary" id="refundBtn">반환요청</button>
   </div>
   <div class="left-margin">
     <ol>
       <li>인터넷에서 실제로 반환이 가능한 승차권 내역만이 조회됩니다.</li>
       <li>반환요청 가능한 승차권 반환을 선택하신 후, 반환요청을 해주시기 바랍니다.</li>
-      <li>계좌이체 결제건의 반환시 전자금융거래 등으로 인한 은행 온라인 거래 날짜에 따라 입금이 지연될 수 있습니다.</li>
-      <li>매체에 표시된 승차시각까지가 인터넷 반환가능 범위입니다. 이외에는 역창구를 이용해서 반환을 요청하실 수 있습니다. (환승승차권 반환 시 선택시역 출발시각 준 적용)</li>
-      <li>반환하신 승차권과 발생할 수 있으며 수수료를 공제한 잔액을 반환해 드립니다.</li>
+      <li>계좌이체 결제건의 반환시 전자금융공통망 및 해당 은행 온라인 거래 불가 시간일 때는 입금이 지연될 수 있습니다.</li>
+      <li>매체에 표시된 승차시각까지가 인터넷 반환가능 범위입니다. 이후에는 역창구를 이용해서 반환을 요청하실 수 있습니다.<br> (환승승차권 반환 시 선행열차 출발시각기준 적용)</li>
+      <li>반환하시면 수수료가 발생할 수 있으며 수수료를 공제한 잔액을 반환해 드립니다.</li>
     </ol>
   </div>
     
-    <h1>반환 위약금</h1>
-  <table class="table table-custom">
-      <thead>
-          <tr>
-              <th>구분</th>
-              <th>출발 전</th>
-              <th>출발 후 (역 창구에서 반환 신청)</th>
-          </tr>
+    <p class="subtitle">반환 위약금</p>
+  <table class="table table-custom align-middle">
+      <thead class="top-border align-middle">
+        <tr>
+          <th rowspan="3">구분</th>
+        </tr>
+        <tr>
+              <th colspan="3">출발 전</th>
+              <th colspan="3">출발 후 <span style="color: red;">(역 창구에서 환불 신청)</span></th>
+            </tr>
+            <tr>
+                <td>1개월 ~ 출발 1일 전</td>
+                <td>당일 ~ 출발 3시간 전</td>
+                <td>출발 3시간 전 경과 후 <br>~출발시간 전</td>
+                <td>20분까지</td>
+                <td>20분 경과 후~60분</td>
+                <td>60분 경과 후~도착</td>
+            </tr>
       </thead>
       <tbody>
           <tr>
-              <td></td>
-              <td>1개월 ~ 출발 1일 전<br>당일 ~ 출발 3시간 전<br>출발 3시간 전 경과 후 ~출발시간 전</td>
-              <td>20분까지<br>20분 경과 후~60분<br>60분 경과 후~도착</td>
-          </tr>
-          <tr>
               <td>월~목요일</td>
-              <td>400원 (구매 후 9시간 이내 출발 시전)<br>5%<br>5%</td>
-              <td>10%<br>15%<br>40%<br>70% (역에서는 반환 가능)</td>
+              <td colspan="2">무료</td>
+              <td>5%</td>
+              <td rowspan="2">15%</td>
+              <td rowspan="2">40%</td>
+              <td rowspan="2">70%</td>
           </tr>
           <tr>
-              <td>금~일, 공휴일, 명절 특별수송기간 승차권</td>
-              <td>5%<br>5%<br>15%</td>
-              <td>40%<br>70% (역에서는 반환 가능)</td>
+              <td>금~일, 공휴일 <br> 명절 특별수송기간 승차권</td>
+              <td>400원 <br> (구매 후 7일 이내 <br> 환불 시 감면)</td>
+              <td>5%</td>
+              <td>10%</td>
           </tr>
       </tbody>
   </table>
 
   <ul class="left-margin">
-      <li>특별이용 타러블 별도 수수료 적용</li>
+      <li><strong>특별할인 티켓</strong>은 별도 수수료 적용</li>
       <li>승차권의 유효시간은 승차권에 표시된 도착역 도착시각까지로 하며 도착역 도착시각이 경과한 후에는 무효가 됩니다.</li>
-      <li>홈티켓 승차권을 출발전이 반환하는 경우 반환수수료 무료</li>
-      <li>승차권, SMS티켓, 승차권은 홈페이지 인터넷 반환가능. 이외에 본인확인 후 반환</li>
-      <li>반환수수료가 400원 미만인 경우 반환수수료 공제없이 반환</li>
-      <li>반환수수료가 400원인 경우 반환수수료 공제합니다.</li>
+      <li>통근열차 승차권을 출발전에 반환하는 경우 반환수수료 무료</li>
+      <li>홈티켓, SMS티켓은 출발시각 전까지 인터넷 반환가능, 이후 역에서 본인확인 후 반환</li>
+      <li>반환수수료가 400원 미만일 경우 최저수수료인 400원의 반환수수료를 공제합니다.</li>
   </ul>
 
-  <h2>넷이서 5만원 할인 반환 위약금</h2>
+  <p class="subtitle">넷이서 5만원 할인 반환 위약금</p>
   <table class="table table-custom">
-      <thead>
+      <thead class="top-border">
           <tr>
               <th>결제 후~출발 1일전</th>
               <th>출발 당일</th>
@@ -120,14 +129,15 @@
           <tr>
               <td>15%</td>
               <td>40%</td>
-              <td>70%(역에서는 반환 가능)</td>
+              <td>70%(역에서만 반환 가능)</td>
           </tr>
       </tbody>
   </table>
-
-  <p>* 출발 1일 전까지 구입 당일에 반환하는 경우 위약금 면제 (영수구 400원)</p>
-  <p>* 출발 1일 전 ~ 출발 당일까지는 구입 후 30분 내에 반환하는 경우 위약금 면제 (영수구 400원)</p>
-  <p>* 출발시각 이후에는 위약금 및 별구 구매시각에 상관없음</p>
+  <div style="margin-bottom: 30px;">
+    <p>* 출발 2일 전까지 구입 당일에 반환하는 경우 위약금 면제 (역창구 400원)</p>
+    <p>* 출발 1일 전 ~ 출발 당일까지는 구입 후 30분 내에 반환하는 경우 위약금 면제 (역창구 400원)</p>
+    <p>단, 출발시각 이후에는 위약금 면제 불가(구입시간 상관없음)</p>
+  </div>
 </div>
 
 
