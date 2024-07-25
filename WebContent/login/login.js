@@ -35,27 +35,27 @@ $(function () {
 
   function loginCheck() {
     if ($('#memberId').val() == "" && $('#password').val() == "") {
-      alert('회원번호와 비밀번호를 입력해주세요.');
+      $('.user-check1').trigger('click');
       return false;
     }
 
     if ($('#memberId').val() == "" && $('#password').val() != "") {
-      alert('회원번호를 입력해주세요.');
+      $('.user-check2').trigger('click');
       return false;
     }
 
     if ($('#memberId').val() != "" && $('#password').val() == "") {
-      alert('비밀번호를 입력해주세요.');
+      $('.user-check3').trigger('click');
       return false;
     }
 
     if ($('#memberId').val() != userId) {
-      alert('회원번호가 일치하지 않습니다.');
+      $('.user-check4').trigger('click');
       return false;
     }
 
     if ($('#password').val() != password) {
-      alert('패스워드가 일치하지 않습니다.');
+      $('.user-check5').trigger('click');
       return false;
     }
     
@@ -81,6 +81,11 @@ $(function () {
   $('#mem_phone').hide();
   $('.remember-email').hide();
   $('.remember-phone').hide();
+  $('.user-check1').hide();
+  $('.user-check2').hide();
+  $('.user-check3').hide();
+  $('.user-check4').hide();
+  $('.user-check5').hide();
 
   $("input[name='loginMethod']").change(function () {
     let type = $(this).val();
