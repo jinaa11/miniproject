@@ -24,4 +24,9 @@ $(document).ready(function() {
         option1.text = '어린이(만 6~12세 이상) ' + j + '명';
         child1.appendChild(option1);
     }
+
+    //지역 선택 지도 모달
+    $("#map_info").load("/WebContent/trainInfo/mapInfo.html", function() {
+    });
+
 });

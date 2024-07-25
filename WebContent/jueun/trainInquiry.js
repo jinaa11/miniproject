@@ -1,6 +1,7 @@
 $(function(){
   $('#stage').load('/WebContent/common/stage.html', function () {
     $(this).find('span:eq(0)').addClass('on');
+    $(this).find('.fw-bold-stage').text("열차 시간 조회")
   });
 
   $.getJSON('/WebContent/json/trainTime.json', function(data){

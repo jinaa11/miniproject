@@ -16,14 +16,16 @@
 }
 
 .re-0 {
-    height: 500px;
+    height: 700px;
 }
 
 .re-1 {
-    height: 20%;
+    height: 100px;
     background-color: #5ca3ff;
-    
-    
+}
+
+.re-2 {
+    height: 20px;
 }
 
 .timeline-icon {
@@ -64,7 +66,7 @@
 }
 
 .train-top {
-    height: 85%;
+    height: 80px;
     background-image: url(../images/reserve/train-top.png);
     background-repeat: no-repeat;
     background-position: center; /* This will center the image */
@@ -72,8 +74,117 @@
 }
 
 .train-top-rail{
+    color: #000;
     width: 70px;
     height: 40px;
     background-repeat: no-repeat;
     background-image: url(../images/reserve/scar.png);
+    transition: background-image 0.1s ease; /* Smooth transition for background color change */
+    cursor: pointer;
+}
+
+.train-top-rail:hover {
+    color: #fff;
+    background-image: url(../images/reserve/scar-blue.png);
+    transition: cobackground-imagelor 0.1s ease; /* Smooth transition for background color change */
+}
+
+.seat-dis {
+    padding-bottom: 2px;
+    height: 20px;
+    width: 90px;
+    color: #717171;
+    background-repeat: no-repeat;
+    background-image: url(../images/reserve/seat-dis.png);
+}
+
+.seat-av {
+    display: inline-block;
+    margin-right: 15px; /* Adjust space between labels */
+    position: relative;
+    padding-left: 25px; /* Space for icon */
+}
+
+.seat-av-1::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px; /* Width of the rectangle */
+    height: 15px; /* Height of the rectangle */
+    background-color: #3769e5; /* Default gray color */
+}
+
+.seat-av-2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px; /* Width of the rectangle */
+    height: 15px; /* Height of the rectangle */
+    background-color: #989898; /* Default gray color */
+}
+
+.seat-av-3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px; /* Width of the rectangle */
+    height: 15px; /* Height of the rectangle */
+    background-color: #ffffff; /* Default gray color */
+    border: 1px solid #5b5b5b; /* Border for the rectangle */
+}
+
+.seat {
+    display: inline-block;
+    width: 40px;
+    height: 45px;
+    line-height: 30px;
+    text-align: center;
+    margin: 2px;
+    margin-right: 10px; /* 기본 간격 */
+    background-image: url(../images/reserve/ic_seat.png);
+    background-size: cover;
+    transition: background-image 0.1s ease; /* Smooth transition for background color change */
+}
+
+.seat.wide-spacing {
+    margin-right: 20px; /* 늘어난 간격 */
+    width: 40px; /* 늘어난 너비 */
+}
+
+.window {
+    height: 3px; /* 창문의 높이 */
+    border-top: 3px dotted #b0e0e6; /* 상단에 점선 */
+    border-bottom: 3px dotted #b0e0e6; /* 하단에 점선 */
+    margin: 5px 0; /* 위아래 마진 */
+    border-radius: 2px; /* 창문의 모서리를 약간 둥글게 */
+}
+
+.seat-row {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between; /* 좌석들 사이에 공간 동일하게 분배 */
+    align-items: center;
+    padding: 0 10px; /* 좌우 패딩 */
+}
+
+.seat-icon {
+    background-image: url('../images/reserve/ic_seat.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40px; /* Adjust as per your icon size */
+    height: 40px;
+    margin: 2px;
+    text-align: center;
+    line-height: 40px; /* Adjust to center text vertically */
+}
+
+.seat-category {
+    font-weight: bold;
+    margin-right: 5px;
 }

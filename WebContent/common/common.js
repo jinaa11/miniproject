@@ -1,6 +1,18 @@
 $(document).ready(function() {
   $("#header1").load("/WebContent/common/header.html", function() {
       $(document).trigger("headerLoaded");
+
+      //로그인시 변경
+      const idKey = "USER-ID";
+      const loginInfo = localStorage.getItem(idKey);
+      if(loginInfo != null) {
+          console.log('저장된 아이디값 불러옴');
+          $('.login-link').text('로그아웃');
+          $('.login-user-info').html('<span class="user-name">홍길동</span>님 환영합니다.!');
+          $('.user-name').css("font-weight", "bold");
+          $('.login-user-info').css('margin-right', '50px');
+          $(".login-link").parent().attr("href", "/WebContent/login/login.html?type=logout");
+      }
   });
   
   $("#footer1").load("/WebContent/common/footer.html", function() {
