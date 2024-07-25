@@ -9,7 +9,7 @@
       "departureTime": "09:05",
       "arrivalTime": "11:51",
       "passengerCount": 1,
-      "paymentAmount": "59,800원"
+      "paymentAmount": "59800원"
     },
     "passengerInfo": [
         {
@@ -17,8 +17,8 @@
           "seatType": "일반실",
           "seatInfo": "3호차 9A",
           "passengerType": "어른",
-          "fare": "59,800원",
-          "totalFare": "59,800원",
+          "fare": "59800원",
+          "totalFare": "59800원",
           "passengerName": "김진아"
         },
         {
@@ -26,8 +26,8 @@
           "seatType": "일반실",
           "seatInfo": "3호차 9B",
           "passengerType": "어른",
-          "fare": "59,800원",
-          "totalFare": "59,800원",
+          "fare": "59800원",
+          "totalFare": "59800원",
           "passengerName": "김진아"
         }
     ]

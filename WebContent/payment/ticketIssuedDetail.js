@@ -7,7 +7,6 @@ $(function() {
   const defaultText = $('.customer-name').text();
   console.log(defaultText);
   $('.customer-name').text(loginInfo + ' ' + defaultText);
-  
   $.getJSON("/WebContent/json/payment-info.json", function (data) {
     $.each(data, function (index, item) {
       let getTicket = "<tr>";
@@ -17,7 +16,7 @@ $(function() {
       getTicket += '<td>' + item.travelInfo.trainType + '<br>' + item.travelInfo.trainNumber + '</td>';
       getTicket += '<td>' + item.travelInfo.departureStation + '<br>' + item.travelInfo.departureTime + '</td>';
       getTicket += '<td>' + item.travelInfo.arrivalStation + '<br>' + item.travelInfo.arrivalTime + '</td>';
-      getTicket += '<td>59800원</td>';
+      getTicket += '<td>' + totalFare + '</td>';
       getTicket += '<td>' + item.passengerInfo.length + '</td>';
       getTicket += '<td>' + item.passengerInfo[index].seatType + '</td>';
       getTicket += '<td>결제완료</td>';

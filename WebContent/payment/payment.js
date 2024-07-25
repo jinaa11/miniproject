@@ -1,8 +1,10 @@
+let totalFare = 0; // 전체 요금을 저장할 변수
+
 $(document).ready(function () {
   $("#stage").load("/WebContent/common/stage.html", function () {
     $(this).find(".fw-bold-stage").text("결제하기");
     $(this).find("span:eq(2)").addClass("on");
-  });
+  });  
 
   // 현재 페이지 URL을 가져옴
   const currentPath = window.location.pathname;
@@ -16,6 +18,11 @@ $(document).ready(function () {
   if (currentPath.includes("paymentCompleted.html")) {
     handlePaymentCompletion();
   }
+
+  if(currentPath.includes("ticketIssuedDetail.html")) {
+    getIssuedTickect();
+
+  }
 });
 
 async function main() {
@@ -23,7 +30,7 @@ async function main() {
 
   // JSON 데이터 불러오기
   $.getJSON("/WebContent/json/payment-info.json", function (data) {
-    let totalFare = 0; // 전체 요금을 저장할 변수
+    totalFare = 0; // 전체 요금을 저장할 변수
 
     $.each(data, function (index, item) {
       let travel = "<tr>";
@@ -40,7 +47,7 @@ async function main() {
       let travelTotalFare = item.passengerInfo.reduce((sum, passenger) => {
         return sum + parseInt(passenger.fare.replace(/[^0-9]/g, ""), 10); // 문자열을 10진수로 변환
       }, 0);
-      travel += "<td>" + travelTotalFare.toLocaleString() + "원" + "</td>"; // 총 요금을 금액 형식으로 표시
+      travel += "<td>" + travelTotalFare.toLocaleString("ko-KR") + "원" + "</td>"; // 총 요금을 금액 형식으로 표시
 
       $("#travel-info").append(travel);
 
@@ -53,8 +60,8 @@ async function main() {
         passengerRow += "<td>" + passenger.seatType + "</td>";
         passengerRow += "<td>" + passenger.seatInfo + "</td>";
         passengerRow += '<td colspan="2">' + passenger.passengerType + "</td>";
-        passengerRow += '<td colspan="2">' + passenger.fare + "</td>";
-        passengerRow += "<td>" + passenger.totalFare + "</td>";
+        passengerRow += '<td colspan="2">' + parseInt(passenger.fare).toLocaleString('ko-KR') + '원' + "</td>";
+        passengerRow += "<td>" + parseInt(passenger.totalFare).toLocaleString('ko-KR') + '원' + "</td>";
         passengerRow += "<td>" + passenger.passengerName + "</td>";
         passengerRow += "</tr>";
 
@@ -67,10 +74,14 @@ async function main() {
 
     // JSON 데이터 로드 후 토스 페이먼츠 API 초기화
     initializeTossPayments(totalFare);
+    console.log('totalFare')
+    console.log(totalFare)
+    getIssuedTickect(totalFare);
   });
 }
 
 async function initializeTossPayments(totalFare) {
+  console.log(totalFare)
   const $button = $("#payment-button");
 
   // ------ 결제위젯 초기화 ------
@@ -110,9 +121,6 @@ async function initializeTossPayments(totalFare) {
       successUrl:
         window.location.origin + "/WebContent/payment/paymentCompleted.html",
       failUrl: window.location.origin + "/WebContent/payment/fail.html",
-      customerEmail: "customer123@gmail.com",
-      customerName: "김토스",
-      customerMobilePhone: "01012341234",
     });
   });
 
@@ -142,12 +150,46 @@ function handlePaymentCompletion() {
   const today = date.toLocaleString();
 
   // 결제 금액을 표의 승인 금액 <td>에 출력
-  $(".amount-value").text(amount + "원");
-  $("#approved-amount").text(amount + "원");
+  $(".amount-value").text(parseInt(amount).toLocaleString('ko-KR') + "원");
+  $("#approved-amount").text(parseInt(amount).toLocaleString('ko-KR') + "원");
   $("#approved-date").text(today);
 
   // 발권내역 조회 버튼 클릭시
   $("#get-ticket-issued").on("click", function () {
     window.location.href = "ticketIssuedDetail.html";
+  });
+}
+
+// 발권 내역 조회
+function getIssuedTickect(totalFare) {
+  const idKey = "USER-ID";
+  const loginInfo = localStorage.getItem(idKey);
+
+  const defaultText = $('.customer-name').text();
+
+  $('.customer-name').text(loginInfo + ' ' + defaultText);
+
+  $.getJSON("/WebContent/json/payment-info.json", function (data) {
+    $.each(data, function (index, item) {
+      let getTicket = "<tr>";
+      getTicket += '<td><input type="radio" name="select-ticket" value="' + index + '"></td>';
+      getTicket += '<td>편도</td>';
+      getTicket += '<td>' + item.travelInfo.date + '</td>';
+      getTicket += '<td>' + item.travelInfo.trainType + '<br>' + item.travelInfo.trainNumber + '</td>';
+      getTicket += '<td>' + item.travelInfo.departureStation + '<br>' + item.travelInfo.departureTime + '</td>';
+      getTicket += '<td>' + item.travelInfo.arrivalStation + '<br>' + item.travelInfo.arrivalTime + '</td>';
+      getTicket += '<td>' + totalFare + '</td>';
+      getTicket += '<td>' + item.passengerInfo.length + '</td>';
+      getTicket += '<td>' + item.passengerInfo[index].seatType + '</td>';
+      getTicket += '<td>결제완료</td>';
+      getTicket += '<td>발권완료</td>';
+      getTicket += '<td><button class="refund-button btn btn-primary me-2">환불하기</button></td>';
+
+      $('#issued-ticket').append(getTicket);
+
+      $('.refund-button').on('click', function() {
+        window.location.href = '/WebContent/cancel/cancel.html';  
+      });
+    });
   });
 }
