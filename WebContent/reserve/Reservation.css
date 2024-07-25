@@ -20,7 +20,7 @@
 }
 
 .re-0 {
-    height: 700px;
+    height: 1000px;
 }
 
 .re-1 {
@@ -148,6 +148,8 @@
 }
 
 .seat {
+    -webkit-user-drag: none;
+    user-select: none;
     display: inline-block;
     width: 40px;
     height: 45px;
@@ -156,6 +158,7 @@
     margin: 2px;
     margin-right: 10px; /* 기본 간격 */
     background-image: url(../images/reserve/ic_seat.png);
+    font-weight: bold;
     background-size: cover;
     transition: background-image 0.1s ease; /* Smooth transition for background color change */
 }
@@ -283,5 +286,37 @@
     width: 30px;
     text-align: center;
     font-size: 30px;
+    font-weight: bold;
+}
+
+.selected-label {
+    font-size: large;
+    font-weight: bold;
+    color: #333;
+}
+
+.selected-seats {
+    padding: 8px;
+    border-radius: 5px;
+    color: #000000;
+    font-weight: bold;
+    font-size: large;
+}
+
+.modal-dialog {
+    position: fixed;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.type-label {
+    font-size: large;
+    color: #000000;
+    font-weight: 200;
+}
+
+.type-value {
+    font-size: 20px;
+    color: #000000;
     font-weight: bold;
 }
