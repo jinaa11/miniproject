@@ -1,0 +1,17 @@
+th, td {
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle; /* 수직 중앙 정렬 추가 */
+}
+
+td button {
+    background-color: #91c046;
+    color: #fff;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.payment-time {
+    word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+    white-space: normal; /* 기본 공백 처리를 사용하여 줄바꿈 허용 */
+}
