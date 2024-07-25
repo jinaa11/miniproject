@@ -1,3 +1,14 @@
 .left-margin{
   margin-left: 20px;
 }
+.subtitle {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 15px 0px;
+}
+
+.border{
+  border: 1px solid darkblue;
+  margin: 20px 0px;
+  padding: 15px;
+}
