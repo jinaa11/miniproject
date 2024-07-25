@@ -85,7 +85,7 @@ body {
 }
 
 .train-top {
-    height: 83px;
+    height: 90px;
     background-image: url(../images/reserve/train-top.png);
     background-repeat: no-repeat;
     background-position: center; /* This will center the image */

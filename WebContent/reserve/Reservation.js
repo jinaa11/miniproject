@@ -24,7 +24,7 @@ $(function() {
     updateSeatDisplay();
 
     // AJAX로 JSON 데이터 가져오기
-    $.getJSON("../json/reserve-seat-off.json", function(data) {
+    $.getJSON("../json/reserve-layout.json", function(data) {
         trainData = data.KTX.find(train => train.trainNumber === trainNumber);
         displaySeats(1); // 초기에 1호차 좌석 표시
     });
@@ -83,84 +83,48 @@ $(function() {
     updateControls('label-disabled', 'count-disabled');    
 
     function displaySeats(coachNumber) {
-        const coach = trainData.coaches.find(c => c.coachNumber === coachNumber); // 선택된 호차 데이터
+        const coach = trainData.coaches.find(coach => coach.coachNumber === coachNumber);
         const container = $('#train-seats');
         const windows_1 = $('#windows-1');
         const windows_2 = $('#windows-2');
-        const selectedSeats = sessionStorage.getItem('selectedSeats') ? JSON.parse(sessionStorage.getItem('selectedSeats')) : [];
-
-        // 초기화
+    
+        // Empty previous contents
         windows_1.empty();
         windows_2.empty();
-        container.empty(); // 기존에 표시된 좌석 제거
+        container.empty();
     
-        // 창문 생성 및 스타일 설정
-        let maxSeats = 0; // 최대 좌석 수 초기화
-        Object.values(coach.seats).forEach(seats => {
-            maxSeats = Math.max(maxSeats, seats.length); // 최대 좌석 수 계산
-        });
-
-        // 창문 수와 크기 결정
-        let numWindows = maxSeats < 15 ? 7 : 8; // 좌석 수에 따른 창문 수
-        let windowWidth = maxSeats < 15 ? '140px' : '130px'; // 창문 크기
-
+        // Determine the maximum number of seats to set window and passage layout
+        let maxSeats = coach.seats.reduce((max, seat) => Math.max(max, seat.number), 0);
+        let numWindows = maxSeats <= 8 ? 7 : 8;
+        let windowWidth = maxSeats <= 8 ? '140px' : '130px';
+    
+        // Append windows based on the number of seats
         for (let j = 1; j <= numWindows; j++) {
             windows_1.append('<span class="window"></span>');
             windows_2.append('<span class="window"></span>');
         }
-
+    
         $('.window').css({
             'width': windowWidth,
             'height': '3px',
             'background-color': '#b0e0e6',
             'margin': '6px'
         });
-
-        // 좌석 생성
-        Object.keys(coach.seats).forEach(row => {
-            coach.seats[row].forEach(seat => {
-                let seatNumber = `${row}${seat.number < 10 ? `0${seat.number}` : seat.number}`;
-                let seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off' : 'seat'}" id="${coach.coachNumber}-${seatNumber}">${seatNumber}</div>`);
-                if (selectedSeats.includes(`${coach.coachNumber}-${row}0${seat.number}`)) {
-                    seatDiv.addClass('seat-blue').css('color', 'white');
-                }
-
-                if (maxSeats < 15) {
-                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-                    seatDiv.css({'width': '40px'});
-                } else {
-                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-                    seatDiv.css('margin-right', '10px'); // 기본 간격
-                }
-                container.append(seatDiv);
-                if (row === 'B' && seat.number === maxSeats) {
-                    container.append(
-                    '<div class="seat-center d-flex justify-content-evenly align-items-center">' + 
-                    '<span class="loc-seat">' + $('#startLoc').text() + '</span><span style="color: #3769e5; font-weight: bold;"> ' + 
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' +
-                     '<span class="loc-seat">' + $('#endLoc').text() + '</span>' +
-                    '</div>'); // A열 다음에 줄바꿈 추가
-                }
-            });
+    
+        // Display seats with directional and reservation information
+        coach.seats.forEach(seat => {
+            let seatId = `seat-${coach.coachNumber}-${seat.number}`;
+            let seatClass = `seat ${seat.direction} ${seat.reserved ? 'seat-off' : ''}`;
+            let seatDiv = $(`<div class="${seatClass}" id="${seatId}">${seat.number}</div>`);
+    
+            // Append a spacer or passage indicator based on the seat number
+            if (seat.number === 8) { // Assuming passage after 8th seat as per typical layout
+                container.append('<div class="passage">Passage</div>');
+            }
+    
+            container.append(seatDiv);
         });
-    }    
+    }
     
     $('#train-seats').on('click', '.seat', function() {
         if (!$(this).hasClass('seat-off')) { // 예약 불가 좌석이 아닐 경우에만 동작
