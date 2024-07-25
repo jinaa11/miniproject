@@ -1,0 +1,117 @@
+.route-selection {
+  width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.route-tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.btn-route {
+  flex: 1;
+  padding: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  margin-right: 2px;
+  position: relative;
+}
+
+.btn-route:last-child {
+  margin-right: 0;
+}
+
+.btn-route.active {
+  background-color: #007bff;
+  color: white;
+  outline-offset: 2px;
+}
+
+.route-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-line:last-child {
+  margin-right: 0;
+}
+
+.btn-line.active {
+  background-color: #007bff;
+  color: white;
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.ul-map-list li { 
+  list-style-type : none 
+}
+
+.ul-map-list li a { 
+  text-decoration: unset;
+  font-weight: bold;
+  color: black;
+  position: relative;
+  display: inline-block;
+}
+
+.ul-map-list li a img { 
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 2px;
+  margin-left: 16px;
+}
+
+.ul-map-list li a:visited { 
+  font-weight: bold;
+  color: black !important;
+}
+
+.ul-map-list li a:hover { 
+  font-weight: bold;
+  color: black !important;
+}
+
+.ul-map-list li a:active { 
+  font-weight: bold;
+  color: black !important;
+}
+
+.cont_info {
+  margin-top: 20px;
+}
+
+.fixColor{
+  background-color: rgba(255, 237, 237, 0.955)
+}
