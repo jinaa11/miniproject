@@ -24,7 +24,7 @@ $(function() {
     updateSeatDisplay();
 
     // AJAX로 JSON 데이터 가져오기
-    $.getJSON("../json/reserve-layout.json", function(data) {
+    $.getJSON("../json/reserve_layout.json", function(data) {
         trainData = data.KTX.find(train => train.trainNumber === trainNumber);
         displaySeats(1); // 초기에 1호차 좌석 표시
     });
@@ -83,22 +83,29 @@ $(function() {
     updateControls('label-disabled', 'count-disabled');    
 
     function displaySeats(coachNumber) {
-        const coach = trainData.coaches.find(coach => coach.coachNumber === coachNumber);
+        // 선택된 호차의 좌석 정보 가져오기
+        let selectedSeats = JSON.parse(sessionStorage.getItem('selectedSeats') || '[]');
+        let coach = trainData.coaches.find(coach => coach.coachNumber.includes(coachNumber));
+        console.log(coach);
+
         const container = $('#train-seats');
         const windows_1 = $('#windows-1');
         const windows_2 = $('#windows-2');
     
-        // Empty previous contents
+        // 기존 좌석 정보 삭제
         windows_1.empty();
         windows_2.empty();
         container.empty();
     
-        // Determine the maximum number of seats to set window and passage layout
-        let maxSeats = coach.seats.reduce((max, seat) => Math.max(max, seat.number), 0);
+        // 최대 좌석 수와 창문 수 계산
+        let maxSeats = 0;
+        Object.values(coach.seats).forEach(seatArray => {
+            maxSeats = Math.max(maxSeats, seatArray.length);
+        });
         let numWindows = maxSeats <= 8 ? 7 : 8;
         let windowWidth = maxSeats <= 8 ? '140px' : '130px';
     
-        // Append windows based on the number of seats
+        // 창문 표시
         for (let j = 1; j <= numWindows; j++) {
             windows_1.append('<span class="window"></span>');
             windows_2.append('<span class="window"></span>');
@@ -111,18 +118,65 @@ $(function() {
             'margin': '6px'
         });
     
-        // Display seats with directional and reservation information
-        coach.seats.forEach(seat => {
-            let seatId = `seat-${coach.coachNumber}-${seat.number}`;
-            let seatClass = `seat ${seat.direction} ${seat.reserved ? 'seat-off' : ''}`;
-            let seatDiv = $(`<div class="${seatClass}" id="${seatId}">${seat.number}</div>`);
-    
-            // Append a spacer or passage indicator based on the seat number
-            if (seat.number === 8) { // Assuming passage after 8th seat as per typical layout
-                container.append('<div class="passage">Passage</div>');
-            }
-    
-            container.append(seatDiv);
+        // 좌석 표시
+        Object.keys(coach.seats).forEach(row => {
+            coach.seats[row].forEach(seat => {
+                let seatDiv;
+                let seatNumber = `${row}${seat.number < 10 ? `0${seat.number}` : seat.number}`;
+                if (seat.direction === 'forward') {
+                    seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off' : 'seat'}" id="${coach.coachNumber}-${seatNumber}">${seatNumber}</div>`);
+                } else {
+                    seatDiv = $(`<div class="p-2 ${seat.reserved ? 'seat-off-reverse' : 'seat-reverse'}" id="${coach.coachNumber}-${seatNumber}">${seatNumber}</div>`);
+                }
+                if (selectedSeats.includes(`${coach.coachNumber}-${row}0${seat.number}`)) {
+                    if (seat.direction === 'forward') {
+                        seatDiv.addClass('seat-blue').css('color', 'white');
+                    } else {
+                        seatDiv.addClass('seat-blue-reverse').css('color', 'white');
+                    }
+                }
+
+                if (maxSeats == 16) {
+                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                    seatDiv.css({'width': '40px'});
+                } else if (maxSeats == 15) {
+                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                    seatDiv.css('margin-right', '10px'); // 기본 간격
+                } else {
+                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                    container.append('&nbsp;&nbsp;&nbsp;&nbsp;');
+                    
+                    seatDiv.css('margin-right', '20px'); // 기본 간격
+                }
+                container.append(seatDiv);
+
+                if (row === 'B' && seat.number === maxSeats) {
+                    container.append(
+                    '<div class="seat-center d-flex justify-content-evenly align-items-center">' + 
+                    '<span class="loc-seat">' + $('#startLoc').text() + '</span><span style="color: #3769e5; font-weight: bold;"> ' + 
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' +
+                     '<span class="loc-seat">' + $('#endLoc').text() + '</span>' +
+                    '</div>'); // A열 다음에 줄바꿈 추가
+                }
+            });
+            container.append('<br>');
         });
     }
     

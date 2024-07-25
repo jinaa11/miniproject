@@ -185,7 +185,20 @@ body {
     background-image: url(../images/reserve/ic_seat.png);
     font-weight: bold;
     background-size: cover;
-    transition: background-image 0.1s ease; /* Smooth transition for background color change */
+    transition: background-image 0.1s ease;
+}
+
+.seat-reverse {
+    display: inline-block;
+    width: 40px;
+    height: 45px;
+    line-height: 30px;
+    text-align: center;
+    margin: 2px;
+    margin-right: 10px; /* 기본 간격 */
+    background-image: url(../images/reserve/ic_seat-reverse.png);
+    background-size: cover;
+    transition: background-image 0.1s ease;
 }
 
 .seat-blue {
@@ -198,7 +211,20 @@ body {
     margin-right: 10px; /* 기본 간격 */
     background-image: url(../images/reserve/ic_seat-blue.png);
     background-size: cover;
-    transition: background-image 0.1s ease; /* Smooth transition for background color change */
+    transition: background-image 0.1s ease;
+}
+
+.seat-blue-reverse {
+    display: inline-block;
+    width: 40px;
+    height: 45px;
+    line-height: 30px;
+    text-align: center;
+    margin: 2px;
+    margin-right: 10px; /* 기본 간격 */
+    background-image: url(../images/reserve/ic_seat-blue-reverse.png);
+    background-size: cover;
+    transition: background-image 0.1s ease;
 }
 
 .seat-off {
@@ -213,6 +239,20 @@ body {
     color: #ffffff;
     background-size: cover;
     transition: background-image 0.1s ease; /* Smooth transition for background color change */
+}
+
+.seat-off-reverse {
+    display: inline-block;
+    width: 40px;
+    height: 45px;
+    line-height: 30px;
+    text-align: center;
+    margin: 2px;
+    margin-right: 10px; /* 기본 간격 */
+    background-image: url(../images/reserve/ic_seat_off-reverse.png);
+    color: #ffffff;
+    background-size: cover;
+    transition: background-image 0.1s ease;
 }
 
 .seat.wide-spacing {
