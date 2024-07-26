@@ -38,11 +38,11 @@ header {
 }
 
 body {
-	font-family: 'ng',MalgunGothic, '���� ����','����', Dotum, AppleGothic, Sans-serif, Arial;
+	font-family: 'ng',MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial;
 	font-size: 14px;
 	line-height: 1.5;
 	color: #333;
-	padding-top: 170px; /* ��� ���̸�ŭ ��ܿ� �е��� �༭ ����� ������ �������� �ʵ��� �� */
+	padding-top: 170px;
 }
 /* stage start */
 #stage span {
@@ -51,15 +51,15 @@ body {
 	padding: 4px 12px;
 	border-radius: 20px;
 	font-weight: normal;
-	display: inline-block; /* Inline-block for proper spacing */
-	margin: 2px; /* Slight margin for spacing between steps */
-	cursor: pointer; /* Pointer cursor on hover */
-	border: 1px solid #d8d8d8fa; /* Border for the steps */
+	display: inline-block; 
+	margin: 2px; 
+	cursor: pointer; 
+	border: 1px solid #d8d8d8fa;
 }
 
 #stage .on {
-	background-color: #4291ff; /* Blue background for the active step */
-	color: white; /* White text for visibility */
+	background-color: #4291ff;
+	color: white;
 }
 
 .fw-bold-stage{
