@@ -1,25 +1,25 @@
 [
   {
     "travelInfo": {
-      "date": "7월 30일",
+      "date": "7월 29일",
       "trainType": "KTX",
       "trainNumber": "105",
       "departureStation": "서울",
       "arrivalStation": "부산",
       "departureTime": "10:12",
-      "arrivalTime": "13:34",
+      "arrivalTime": "13:24",
       "passengerCount": 4,
-      "paymentAmount": "59,800원"
+      "paymentAmount": "179,400원"
     },
     "passengerInfo": {
-      "trainNumber": "105",
+      "trainNumber": "319",
       "seatType": "일반실",
-      "seatInfo": "5호차-A03",
+      "seatInfo": "5호자 A3",
       "passengerType": "어른",
       "fare": "59,800원",
       "totalFare": "59,800원",
       "passengerName": "이한희"
     },
-    "charge": 0
+    "charge": "0원"
   }
 ]

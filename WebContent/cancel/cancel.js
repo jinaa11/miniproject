@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
               const modal2 = modalContainer.querySelector('#refundModal2');
               
               document.body.appendChild(modal1);
-              document.body.appendChild(modal2);
+              // document.body.appendChild(modal2);
 
               fetch('/WebContent/json/cancel.json')
                 .then(res => res.json())
@@ -146,7 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     modalInstance2.show();
 
                     modal2.querySelector('.btn-secondary').addEventListener('click', function() {
-                      window.location.href = '/WebContent/main.html';
+                      // window.location.href = '/WebContent/main.html';
+                      const canceled = document.querySelector('#reserveList').querySelector('tr');
+                      // modalInstance2.display = 'none';
+                      canceled.style.display = 'none';
                     });
                   });
                 });
