@@ -1,12 +1,5 @@
 // 발권 내역 조회
 $(function() {
-  const idKey = "USER-ID";
-  const loginInfo = localStorage.getItem(idKey);
-
-  console.log(loginInfo);
-  const defaultText = $('.customer-name').text();
-  console.log(defaultText);
-  $('.customer-name').text(loginInfo + ' ' + defaultText);
   $.getJSON("/WebContent/json/payment-info.json", function (data) {
     $.each(data, function (index, item) {
       let getTicket = "<tr>";
