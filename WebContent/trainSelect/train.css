@@ -161,13 +161,17 @@ select {
   border: none;
   border-radius: 5px;
   text-align: center;
-  margin: auto;
+  /* margin: auto;
   left: 0;
   right: 0;
   top: 243px;
-  bottom: 0;
+  bottom: 0; */
 }
 .search_ticket img{
   width: 23px;
   margin-right: 5px;
+}
+
+.center-button {
+  text-align: center;
 }
