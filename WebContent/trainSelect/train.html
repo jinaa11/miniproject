@@ -19,6 +19,7 @@
     <!-- Map Modal start-->
     <div id="map_info"></div>
     <!-- Map Modal end-->
+    <div id="stage"></div>
 
     <div class="container">
         <div class="tabs">
@@ -62,12 +63,12 @@
                                 <option value="07">7 (오전07) </option>
                                 <option value="08">8 (오전08) </option>
                                 <option value="09">9 (오전09) </option>
-                                <option value="10">10 (오전10) </option>
+                                <option value="10" selected="selected">10 (오전10) </option>
                                 <option value="11">11 (오전11) </option>
                                 <option value="12">12 (오후00) </option>
                                 <option value="13">13 (오후01) </option>
                                 <option value="14">14 (오후02) </option>
-                                <option selected="selected" value="15">15 (오후03) </option>
+                                <option value="15">15 (오후03) </option>
                                 <option value="16">16 (오후04) </option>
                                 <option value="17">17 (오후05) </option>
                                 <option value="18">18 (오후06) </option>
@@ -150,7 +151,6 @@
 
 
     <div id="timelst">
-      <div id="stage"></div>
       <div class="container d-flex">
           <div id="caption" class="me-auto p-2"></div>
           <button class="btn p-2 btn-secondary" id="feeBtn" onclick="toggleFee()">운임요금 조회</button>
