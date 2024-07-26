@@ -315,7 +315,7 @@ $(function() {
             //     console.log('Data saved:', response);
             // });
 
-            window.location.href = 'reservation_complete.html';
+            window.location.href = 'ResBreakdown.html';
         }
     });
 
@@ -345,7 +345,7 @@ $(function() {
     }
 
     $('#openSchedule').on('click', function() {
-        var newWindow = window.open('schedule.html', 'ScheduleWindow', 'width=270,height=310');
+        var newWindow = window.open('schedule.html', 'ScheduleWindow', 'width=300,height=380');
 
         // 데이터 로드를 위해 새 창이 충분히 로드된 후 실행
         $(newWindow).on('load', function() {
