@@ -68,7 +68,7 @@
         "ticketPrice": "45,000원",
         "ticketCount": 4,
         "reservationType": "일반예약",
-        "paymentDue": "2024-07-23T00:00:00",
+        "paymentDue": "2024-07-21T00:00:00",
         "payment": 0
     }
 ]

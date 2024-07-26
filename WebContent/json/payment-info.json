@@ -35,7 +35,8 @@
         "paymentMethod": "신용카드",
         "cardNo": "5272-****-****-9900",
         "approvalNumber": "16655607733",
-        "amount": "119000"    
+        "amount": "119000",
+        "ticketNumber": "82410-0726-10287-24"    
     }
   }
 ]
