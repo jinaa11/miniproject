@@ -312,3 +312,31 @@ margin-right: 5px;
     margin-bottom: 3px;
 }
 
+.round-train_area #date1{
+    width: 245px;
+}
+
+.round-train_area #time1{
+    width: 245px;
+    margin-left: 6px;
+}
+
+.round-train_area.start {
+    text-align: left;
+}
+
+.round-train_area .end {
+    text-align: left;
+}
+
+#date{
+    width: 245px;
+    float: left;
+}
+
+#time{
+    width: 245px;
+    float: right;
+    margin-left: 9px;
+    height: 42px;
+}
