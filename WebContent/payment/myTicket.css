@@ -1,0 +1,79 @@
+body {
+  background-color: #e6f7ff;
+}
+.ticket-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f8f9fa;
+}
+.ticket-header, .ticket-footer {
+  /* background-color: #0047a0; */
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  /* color: white; */
+}
+.ticket-details {
+  padding: 15px;
+}
+.ticket-details img {
+  width: 30px;
+  vertical-align: middle;
+}
+.ticket-section {
+  margin-bottom: 15px;
+}
+.station-info {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0047a0;
+  text-align: center;
+}
+.time-info {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #5a9bd4;
+  text-align: center;
+}
+.destination-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.destination-section div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.table-section {
+  margin-top: 20px;
+}
+.table-title {
+  background-color: #c8c8c8;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+.table-data {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.car-number, .seat-number {
+  color: #0047a0;
+  font-size: 1.5rem;
+}
+.train-number {
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.ticket-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}

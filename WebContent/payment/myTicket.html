@@ -12,59 +12,77 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-  <div id="header1"></div>
-  <section class="container container-e p-5 h-25">
-    <div class="sub_tit_area d-flex justify-content-center align-items-center h-25">
-        <h2 class="fw-bold-stage">나의 티켓</h2>
+  <section class="container">
+    <div class="ticket-card">
+      <div class="ticket-header">
+        <h2 class="fw-bold">나의 티켓</h2>
+      </div>
+      <div class="ticket-details">
+        <div class="ticket-section destination-section">
+          <div>
+            <p class="station-info">서울</p>
+            <p class="time-info">06:01</p>
+          </div>
+          <img src="../images/payment/arrow.png" alt="오른쪽 화살표">
+          <div>
+            <p class="station-info">부산</p>
+            <p class="time-info">08:03</p>
+          </div>
+        </div>
+        <hr>
+        <div class="ticket-section">
+          <p class="train-number">KTX-803</p>
+        </div>
+        <hr>
+        <div class="ticket-section table-section">
+          <div class="row">
+            <div class="col table-title">타는 곳 번호</div>
+            <div class="col table-title">호차 번호</div>
+            <div class="col table-title">좌석 번호</div>
+          </div>
+          <div class="row">
+            <div class="col table-data">
+              <img src="../images/payment/refresh.png" alt="새로고침">
+              <div>15분 전에 표시됩니다.</div>
+            </div>
+            <div class="col table-data car-number">1호차</div>
+            <div class="col table-data seat-number">7D</div>
+          </div>
+        </div>
+        <hr>
+        <div class="ticket-section">
+          <p>우등실 | 순방향 | 어른</p>
+          <div class="ticket-info">
+            <div>
+              <p class="mb-0">승차권 번호</p>
+              <p class="mb-0">82410-0726-10287-24</p>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <p>이런 서비스는 어떠세요?</p>
+          <div class="d-flex justify-content-around">
+            <div class="text-center">
+              <img src="../images/payment/alert.png" alt="철도범죄신고">
+              <p>철도범죄신고</p>
+            </div>
+            <div class="text-center">
+              <img src="../images/payment/handicap.png" alt="승하차 도우미 신청">
+              <p>승하차 도우미 신청</p>
+            </div>
+            <div class="text-center">
+              <img src="../images/payment/sms.png" alt="보호자 안심 SMS">
+              <p>보호자 안심 SMS</p>
+            </div>
+            <div class="text-center">
+              <img src="../images/payment/share.png" alt="일정공유">
+              <p>일정공유</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <hr>
   </section>
-  <div>
-    <p>2024년 8월 13일 (화)</p>
-    <p>서울</p>
-    <p>06:01</p>
-    <img src="../images/payment/arrow.png" alt="오른쪽 화살표">
-    <p>부산</p>
-    <p>08:03</p>
-  </div>
-  <div>
-    <p>KTX-803</p>
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>타는 곳 번호</th>
-        <th>호차 번호</th>
-        <th>좌석 번호</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <img src="../images/payment/refresh.png" alt="새로고침">
-        <td>15분전에 <br> 표시됩니다.</td>
-      </tr>
-      <tr>
-        <td>1호차</td>
-      </tr>
-      <tr>
-        <td>7D</td>
-      </tr>
-    </tbody>
-  </table>
-  <div>
-    <p>우등실 | 순방향 | 어른</p>
-    <p>승차권 번호</p>
-    <p>82410-0726-10287-24</p>
-    <br>
-  </div>
-  <div>
-    <p>이런 서비스는 어떠세요?</p>
-    <img src="../images/payment/alert.png" alt="경보알림">
-    <p>철도범죄신고</p>
-  </div>
-  
-  
-  <div id="footer1"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
