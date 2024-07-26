@@ -14,6 +14,11 @@ $(function () {
     $('#arrival').val( dep_val );
   });
 
+  // 현재 날짜로 기본 설정
+  let date = new Date();
+  let today = date.toISOString().substring(0, 10);
+  $('#date').val(today);
+
   //지역 선택 지도 모달 load
   $("#map_info").load("/WebContent/trainInfo/mapInfo.html", function() {});
 
@@ -76,6 +81,16 @@ $(function () {
       disabledPerson.appendChild(option1);
   }
   //인원 정보 선택 END
+
+  $('.tabs .tab-btn').click(function () {
+    if ( $(this).text() == '단체승차권 조회') {
+      $('.form-group:eq(2)').hide();
+      $('.form-group:eq(3)').hide();
+    } else {
+      $('.form-group:eq(2)').show();
+      $('.form-group:eq(3)').show();
+    }
+  });
 
 });
 
