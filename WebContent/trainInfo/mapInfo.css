@@ -151,3 +151,86 @@
   text-decoration: unset;
   color: black;
 }
+
+
+
+/* 기차역정보*/
+.type_rol{height:494px;}
+.type_rol .rig_map{position:relative;float:left}
+.type_rol .rig_map span{position: absolute;top: 0;left: 0;}
+.type_rol .rig_map h5{position:absolute;left:0;top:0;z-index:10;}
+.type_rol .box_lin{position:relative;overflow:hidden;float:right;width:372px;height:465px;padding:15px 13px 0 13px;margin:2px 3px 0 0;border:1px solid #d1cece;box-shadow:5px 5px 5px 0px rgba(0, 0, 0, .08);}
+.box_lin li{float:left;width:372px;height:465px;}
+.box_rol .img_tra img{width:369px;height:243px;border:1px solid #b9b9b9}
+.box_rol table.tbl_v td{padding:10px 0 10px 17px;}
+.box_rol .btn{position:absolute;right:13px;bottom:20px;}
+.box_lin .btn_play{position:absolute;right:13px;top:13px;}
+.popup_ly .type_rol {height:640px;}
+.popup_ly .type_rol .kb_p {top: 0;}
+.popup_ly .type_rol .kb_p p {margin: 0;}
+.popup_ly .rig_map div{top:0px;}
+
+.rig_map div{position:absolute;left:25px;top:15px;z-index:1}
+.rig_map div li a{display:block;position:absolute;height:16px;text-align:center;font-size:11px;border:1px solid #9e9e9e;border-radius:1px;box-shadow:1px 1px 0 rgba(0,0,0,.2);}
+.ps01 a{width:36px;left:58px;top:59px}/* 행신 */
+.ps02 a{width:25px;left:97px;top:68px}/* 서울 */
+.ps03 a{width:40px;left:110px;top:90px}/* 용산 */
+.ps04 a{width:40px;left:105px;top:98px}/* 영등포 */
+.ps05 a{width:30px;left:58px;top:114px}/* 광명 */
+.ps06 a{width:30px;left:122px;top:150px}/* 수원 */
+.ps07 a{width:100px;left:-5px;top:177px}/* 천안아산 */
+.ps08 a{width:30px;left:123px;top:188px}/* 오송 */
+.ps09 a{width:30px;left:104px;top:246px}/* 대전 */
+.ps10 a{width:40px;left:142px;top:237px}/* 서대전 */
+.ps11 a{width:58px;left:201px;top:250px}/* 김천(구미) */
+.ps12 a{width:40px;left:245px;top:275px}/* 동대구 */
+.ps13 a{width:30px;left:214px;top:323px}/* 밀양 */
+.ps14 a{width:30px;left:71px;top:254px}/* 논산 */
+.ps15 a{width:30px;left:55px;top:275px}/* 익산 */
+.ps16 a{width:40px;left:303px;top:297px}/* 신경주 */
+.ps17 a{width:30px;left:298px;top:327px}/* 울산 */
+.ps18 a{width:30px;left:280px;top:368px}/* 부산 */
+.ps19 a{width:30px;left:232px;top:357px}/* 구포 */
+.ps20 a{width:30px;left:127px;top:257px}/* 계룡 */
+.ps40 a{width:40px;left:300px;top:264px}/* 포항 */
+.ps41 a{width:30px;left:65px;top:224px}/* 공주 */
+.ps48 a{width:50px;left:-9px;top:107px}/* 인천공항 */
+.ps49 a{width:30px;left:26px;top:75px}/* 검암 */
+.ps50 a{width:35px;left:125px;top:68px}/* 청량리 */
+.ps51 a{width:25px;left:163px;top:68px}/* 상봉 */
+.ps52 a{width:25px;left:115px;top:111px}/* 양평 */
+.ps56 a{width:40px;left:180px;top:298px}/* 서대구 */
+
+/* 호남선 */
+.ps21 a{width:30px;left:89px;top:295px}/* 김제 */
+.ps22 a{width:40px;left:34px;top:312px}/* 정읍 */
+.ps23 a{width:30px;left:39px;top:342px}/* 장성 */
+.ps24 a{width:30px;left:100px;top:353px}/* 광주 */
+.ps25 a{width:50px;left:87px;top:380px}/* 광주송정 */
+.ps26 a{width:30px;left:53px;top:395px}/* 나주 */
+.ps27 a{width:30px;left:20px;top:420px}/* 목포 */
+/* 경전선 */
+.ps28 a{width:30px;left:243px;top:348px}/* 진영 */
+.ps29 a{width:50px;left:232px;top:370px}/* 창원중앙 */
+.ps30 a{width:30px;left:180px;top:345px}/* 창원 */
+.ps31 a{width:30px;left:192px;top:382px}/* 마산 */
+.ps32 a{width:30px;left:142px;top:372px}/* 진주 */
+/* 전라선 */
+.ps33 a{width:30px;left:113px;top:285px}/* 전주 */
+.ps34 a{width:30px;left:126px;top:322px}/* 남원 */
+.ps35 a{width:30px;left:87px;top:348px}/* 곡성 */
+.ps36 a{width:40px;left:132px;top:365px}/* 구례구 */
+.ps37 a{width:30px;left:97px;top:397px}/* 순천 */
+.ps38 a{width:30px;left:145px;top:403px}/* 여천 */
+.ps39 a{width:58px;left:130px;top:436px}/* 여수엑스포 */
+/* 경강선 */
+.ps42 a{width:25px;left:143px;top:136px}/* 만종 */
+.ps43 a{width:25px;left:153px;top:104px}/* 횡성 */
+.ps44 a{width:25px;left:198px;top:122px}/* 둔내 */
+.ps45 a{width:25px;left:226px;top:118px}/* 평창 */
+.ps46 a{width:70px;left:162px;top:85px}/* 진부(오대산) */
+.ps47 a{width:25px;left:235px;top:68px}/* 강릉 */
+.ps53 a{width:35px;left:277px;top:91px}/* 정동진 */
+.ps54 a{width:25px;left:291px;top:112px}/* 묵호 */
+.ps55 a{width:25px;left:299px;top:136px}/* 동해 */
+.ps57 a{width:25px;left:87px;top:99px}/* 덕소 */
