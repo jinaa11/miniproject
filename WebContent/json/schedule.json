@@ -1,0 +1,42 @@
+[
+    {
+        "stationName": "서울",
+        "arrivalTime": "-",
+        "departureTime": "10:12"
+    },
+    {
+        "stationName": "영등포",
+        "arrivalTime": "10:21",
+        "departureTime": "10:23"
+    },
+    {
+        "stationName": "수원",
+        "arrivalTime": "10:44",
+        "departureTime": "10:47"
+    },
+    {
+        "stationName": "대전",
+        "arrivalTime": "11:55",
+        "departureTime": "11:59"
+    },
+    {
+        "stationName": "동대구",
+        "arrivalTime": "12:40",
+        "departureTime": "12:42"
+    },
+    {
+        "stationName": "경주",
+        "arrivalTime": "12:59",
+        "departureTime": "13:00"
+    },
+    {
+        "stationName": "울산(통도사)",
+        "arrivalTime": "13:11",
+        "departureTime": "13:13"
+    },
+    {
+        "stationName": "부산",
+        "arrivalTime": "13:34",
+        "departureTime": "-"
+    }
+]

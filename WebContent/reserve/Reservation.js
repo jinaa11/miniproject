@@ -343,4 +343,31 @@ $(function() {
             return numA - numB;
         });
     }
+
+    $('#openSchedule').on('click', function() {
+        var newWindow = window.open('schedule.html', 'ScheduleWindow', 'width=270,height=310');
+
+        // 데이터 로드를 위해 새 창이 충분히 로드된 후 실행
+        $(newWindow).on('load', function() {
+            $.ajax({
+                url: '../json/schedule.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var tbodyHtml = '';
+                    data.forEach(function(row) {
+                        tbodyHtml += '<tr>' +
+                            '<td>' + row.stationName + '</td>' +
+                            '<td>' + (row.arrivalTime || '-') + '</td>' +
+                            '<td>' + row.departureTime + '</td>' +
+                            '</tr>';
+                    });
+                    newWindow.document.getElementById('train-schedule-body').innerHTML = tbodyHtml;
+                },
+                error: function(error) {
+                    console.log('Error loading data', error);
+                }
+            });
+        });
+    });
 });

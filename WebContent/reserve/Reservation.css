@@ -30,6 +30,10 @@ body {
 
 .re-0 {
     height: 1200px;
+    position: relative;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
 }
 
 .re-1 {
@@ -397,41 +401,6 @@ body {
     font-size: 20px;
     color: #000000;
     font-weight: bold;
-}
-
-.schedule-container {
-    position: fixed; /* 고정 위치 */
-    right: 0; /* 오른쪽에 배치 */
-    margin-right: 55px;
-    top: 50%; /* 페이지의 상단에서 50% 위치에 있도록 */
-    transform: translateY(-50%); /* Y축 기준으로 -50% 이동하여 중앙 정렬 */
-    width: 280px; /* 표의 너비 */
-    background-color: #fff; /* 배경색 */
-    border: 1px solid #ccc; /* 테두리 */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* 그림자 효과 */
-    z-index: 1000; /* 다른 요소들 위에 오도록 z-index 설정 */
-}
-
-.train-schedule {
-    width: 100%; /* 테이블 너비 100% 설정 */
-    border-collapse: collapse; /* 테이블 셀 간 경계 합치기 */
-    text-align: center; /* 텍스트 중앙 정렬 */
-}
-
-.train-schedule th, .train-schedule td {
-    border: 1px solid #ddd; /* 셀 테두리 */
-    padding: 8px; /* 셀 안쪽 여백 */
-}
-
-.train-schedule th {
-    background-color: #f8f8f8; /* 헤더 셀 배경색 */
-}
-
-.table-header {
-    background-color: #FFC0CB; /* 헤더 배경색 */
-    color: black; /* 텍스트 색상 */
-    font-size: 16px; /* 글꼴 크기 */
-    font-weight: bold; /* 글꼴 두께 */
 }
 
 .passage {

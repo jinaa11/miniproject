@@ -11,7 +11,7 @@
         "ticketPrice": "50,000원",
         "ticketCount": 2,
         "reservationType": "일반예약",
-        "paymentDue": "2024-07-26T02:32:14",
+        "paymentDue": "2024-07-26T12:32:14",
         "payment": 0
     },
     {
@@ -26,8 +26,7 @@
         "ticketPrice": "40,000원",
         "ticketCount": 1,
         "reservationType": "일반예약",
-        "paymentDue": "2024-07-27T00:00:00",
-        "payment": 0
+        "payment": "발권완료"
     },
     {
         "reservationId": "KO-034-945",
@@ -69,7 +68,7 @@
         "ticketPrice": "45,000원",
         "ticketCount": 4,
         "reservationType": "일반예약",
-        "paymentDue": "2024-07-30T00:00:00",
+        "paymentDue": "2024-07-23T00:00:00",
         "payment": 0
     }
 ]
