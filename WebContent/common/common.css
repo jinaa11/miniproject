@@ -33,6 +33,10 @@ ul, ol, li, a, input, select, textarea {margin: 0;padding: 0; border: 0 none; fo
 li, li span, li strong, li p {font-size:15px;}
 /* select {padding-bottom:2px; box-sizing: content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;} */
 
+header {
+	background-color: #fff;
+}
+
 body {
 	font-family: 'ng',MalgunGothic, '���� ����','����', Dotum, AppleGothic, Sans-serif, Arial;
 	font-size: 14px;

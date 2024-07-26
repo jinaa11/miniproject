@@ -180,7 +180,7 @@ async function getIssuedTickect(totalFare) {
     $.each(data, function (index, item) {
       let getTicket = "<tr>";
       getTicket += '<td><input type="radio" name="select-ticket" value="' + index + '"></td>';
-      getTicket += '<td>편도</td>';
+      getTicket += '<td>' + item.travelInfo.journey + '</td>';
       getTicket += '<td>' + item.travelInfo.date + '</td>';
       getTicket += '<td>' + item.travelInfo.trainType + '<br>' + item.travelInfo.trainNumber + '</td>';
       getTicket += '<td>' + item.travelInfo.departureStation + '<br>' + item.travelInfo.departureTime + '</td>';
@@ -188,8 +188,8 @@ async function getIssuedTickect(totalFare) {
       getTicket += '<td>' + parseInt(item.paymentInfo.amount).toLocaleString('ko-KR') + '원</td>';
       getTicket += '<td>' + item.passengerInfo.length + '</td>';
       getTicket += '<td>' + item.passengerInfo[index].seatType + '</td>';
-      getTicket += '<td>결제완료</td>';
-      getTicket += '<td>발권완료</td>';
+      getTicket += '<td>' + item.paymentInfo.paymentStatus + '</td>';
+      getTicket += '<td>' + item.paymentInfo.issuanceStatus + '</td>';
       getTicket += '<td><button class="refund-button btn btn-primary me-2">환불하기</button></td>';
 
       $('#issued-ticket').append(getTicket);

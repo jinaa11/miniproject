@@ -1,42 +1,63 @@
 [
   {
     "travelInfo": {
-      "date": "8월 13일",
+      "date": "07.29(월)",
       "trainType": "KTX",
-      "trainNumber": "319",
+      "trainNumber": "105",
       "departureStation": "서울",
       "arrivalStation": "부산",
-      "departureTime": "09:05",
-      "arrivalTime": "11:51",
-      "passengerCount": 1,
-      "paymentAmount": "59800원"
+      "departureTime": "10:12",
+      "arrivalTime": "13:34",
+      "passengerCount": 4,
+      "paymentAmount": "179400",
+      "journey": "편도"
     },
     "passengerInfo": [
         {
-          "trainNumber": "319",
+          "trainNumber": "105",
           "seatType": "일반실",
-          "seatInfo": "3호차 9A",
+          "seatInfo": "5호차 A03",
           "passengerType": "어른",
-          "fare": "59800원",
-          "totalFare": "59800원",
-          "passengerName": "김진아"
+          "fare": "59800",
+          "totalFare": "59800",
+          "passengerName": "이한희"
         },
         {
-          "trainNumber": "319",
+          "trainNumber": "105",
           "seatType": "일반실",
-          "seatInfo": "3호차 9B",
+          "seatInfo": "5호차 A04",
           "passengerType": "어른",
-          "fare": "59800원",
-          "totalFare": "59800원",
-          "passengerName": "김진아"
+          "fare": "59800",
+          "totalFare": "59800",
+          "passengerName": "이한희"
+        },
+        {
+          "trainNumber": "105",
+          "seatType": "일반실",
+          "seatInfo": "5호차 B03",
+          "passengerType": "어린이",
+          "fare": "29900",
+          "totalFare": "29900",
+          "passengerName": "이한희"
+        },
+        {
+          "trainNumber": "105",
+          "seatType": "일반실",
+          "seatInfo": "5호차 B04",
+          "passengerType": "어린이",
+          "fare": "29900",
+          "totalFare": "29900",
+          "passengerName": "이한희"
         }
     ],
     "paymentInfo": {
         "paymentMethod": "신용카드",
         "cardNo": "5272-****-****-9900",
         "approvalNumber": "16655607733",
-        "amount": "119000",
-        "ticketNumber": "82410-0726-10287-24"    
+        "amount": "179400",
+        "ticketNumber": "82410-0726-10287-24",
+        "paymentStatus": "결제완료",
+        "issuanceStatus": "발권완료"    
     }
   }
 ]

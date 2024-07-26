@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // header 불러오기
   $("#header1").load("/WebContent/common/header.html", function() {
       $(document).trigger("headerLoaded");
 
@@ -8,22 +9,25 @@ $(document).ready(function() {
       if(loginInfo != null) {
           console.log('저장된 아이디값 불러옴');
           $('.login-link').text('로그아웃');
-          $('.login-user-info').html('<span class="user-name">홍길동</span>님 환영합니다.!');
+          $('.login-user-info').html('<span class="user-name">이한희</span>님 환영합니다.!');
           $('.user-name').css("font-weight", "bold");
           $('.login-user-info').css('margin-right', '50px');
           $(".login-link").parent().attr("href", "/WebContent/login/login.html?type=logout");
       }
   });
   
-  $("#footer1").load("/WebContent/common/footer.html", function() {
-      
-  });
+  // footer 불러오기
+  $("#footer1").load("/WebContent/common/footer.html", function() {});
 });
 
 
 $(document).on("headerLoaded", function() {
   $("#header1").on("mouseenter", ".menu-link", function() {
       showAllMenus($(this));
+      // 지역 선택 modal 열기
+      $('.main-map-info').click(function () {
+        $('.station_start_map .btn-primary').trigger('click');
+      });
   }).on("mouseleave", "#menuDropdown", function() {
       hideAllMenus();
   });
@@ -50,7 +54,9 @@ function showAllMenus(element) {
       section.append(title);
 
       menuData[key].forEach(item => {
-          const link = $('<a>').attr('href', '#').addClass('menu-link-sub').text(item);
+          let search_link = (item == '일반승차권 조회') ? '/WebContent/trainSelect/train.html?time=15' : '#';
+          let search_add_class = (item == '역 정보 조회') ? 'menu-link-sub main-map-info' : 'menu-link-sub';
+          const link = $('<a>').attr('href', search_link).addClass(search_add_class).text(item);
           section.append(link);
       });
 
