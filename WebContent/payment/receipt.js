@@ -7,7 +7,7 @@ $(function () {
 
       // 열차 정보
       const train = item.travelInfo.trainType + ' ' + item.travelInfo.trainNumber
-      + ' | ' + item.passengerInfo[index].seatType + ' | ' + item.passengerInfo[index].seatInfo;
+      + ' | ' + item.passengerInfo[index].seatType + ' | ' + item.passengerInfo[index].seatInfo + ' 외 3건';
       $(".receipt-item").eq(1).find(".item-value").text(train);
       
       // 경로
@@ -29,6 +29,8 @@ $(function () {
       $(".receipt-item").eq(3).find(".item-value").text('어른 ' + adultCnt + '매, 어린이 ' + childCnt + '매');
       // 결제방식
       $(".receipt-item").eq(4).find(".item-value").text(item.paymentInfo.paymentMethod);
+      // 승인일자
+      $(".receipt-item").eq(5).find(".item-value").text(item.paymentInfo.approvalDate);
       // 승인번호
       $(".receipt-item").eq(6).find(".item-value").text(item.paymentInfo.approvalNumber);
       // 결제금액
