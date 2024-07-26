@@ -1,11 +1,11 @@
 {
     "seats":[
-        "A06","A07","A08","B07"
+        "5-A03", "5-A04", "5-B03", "5-B04"
     ],
     "passengers":{
-        "adult":2,
-        "child":2,
-        "senior":0,
-        "disabled":0
+        "adult": 2,
+        "child": 2,
+        "senior": 0,
+        "disabled": 0
     }
 }
