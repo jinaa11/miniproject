@@ -3,13 +3,11 @@ $(document).ready(function() {
     const arrival = $('#arrival');
 
     $.getJSON('/WebContent/json/station_info.json', function(data) {
-        $.each(data.lines, function(index, item){
-            $.each(item.stations, function(index, item){
-                const start_option = $('<option></option>').val(item).text(item);
-                const end_option = $('<option></option>').val(item).text(item);
-                departure.append(start_option);
-                arrival.append(end_option);
-            });
+        $.each(data.stations, function(index, item) {
+            const start_option = $('<option></option>').val(item).text(item);
+            const end_option = $('<option></option>').val(item).text(item);
+            departure.append(start_option);
+            arrival.append(end_option);
         });
     });
 
