@@ -1,6 +1,7 @@
 $(function () {
   $('.clsMapKtx').hide();
   $('#mapktx1').show();
+  $('#all_station_info').hide();
 
   $('.route-tabs .btn-route').click(function () {
     $(this).siblings().removeClass('active');
