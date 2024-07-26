@@ -14,7 +14,7 @@
     "passengerInfo": {
       "trainNumber": "319",
       "seatType": "일반실",
-      "seatInfo": "5-A03",
+      "seatInfo": "5호자 A3",
       "passengerType": "어른",
       "fare": "59,800원",
       "totalFare": "179,400원",
@@ -23,46 +23,112 @@
   },
   {
     "travelInfo": {
-      "date": "8월 13일",
+      "date": "7월 29일",
       "trainType": "KTX",
-      "trainNumber": "319",
+      "trainNumber": "105",
       "departureStation": "서울",
       "arrivalStation": "부산",
-      "departureTime": "09:05",
-      "arrivalTime": "11:51",
-      "passengerCount": 1,
-      "paymentAmount": "59,800원"
+      "departureTime": "10:12",
+      "arrivalTime": "13:24",
+      "passengerCount": 4,
+      "paymentAmount": "179,400원"
     },
     "passengerInfo": {
       "trainNumber": "319",
       "seatType": "일반실",
-      "seatInfo": "3호차 9B",
+      "seatInfo": "5호자 A4",
       "passengerType": "어른",
       "fare": "59,800원",
-      "totalFare": "59,800원",
-      "passengerName": "김진아"
+      "totalFare": "179,400원",
+      "passengerName": "이한희"
+    }
+  },
+  {
+    "travelInfo": {
+      "date": "7월 29일",
+      "trainType": "KTX",
+      "trainNumber": "105",
+      "departureStation": "서울",
+      "arrivalStation": "부산",
+      "departureTime": "10:12",
+      "arrivalTime": "13:24",
+      "passengerCount": 4,
+      "paymentAmount": "179,400원"
+    },
+    "passengerInfo": {
+      "trainNumber": "319",
+      "seatType": "일반실",
+      "seatInfo": "5호자 B3",
+      "passengerType": "어린이",
+      "fare": "29,900원",
+      "totalFare": "179,400원",
+      "passengerName": "이한희"
+    }
+  },
+  {
+    "travelInfo": {
+      "date": "7월 29일",
+      "trainType": "KTX",
+      "trainNumber": "105",
+      "departureStation": "서울",
+      "arrivalStation": "부산",
+      "departureTime": "10:12",
+      "arrivalTime": "13:24",
+      "passengerCount": 4,
+      "paymentAmount": "179,400원"
+    },
+    "passengerInfo": {
+      "trainNumber": "319",
+      "seatType": "일반실",
+      "seatInfo": "5호자 B4",
+      "passengerType": "어린이",
+      "fare": "29,900원",
+      "totalFare": "179,400원",
+      "passengerName": "이한희"
     }
   },
   {
     "travelInfo": {
       "date": "8월 13일",
       "trainType": "KTX",
-      "trainNumber": "319",
-      "departureStation": "서울",
-      "arrivalStation": "부산",
-      "departureTime": "09:05",
-      "arrivalTime": "11:51",
+      "trainNumber": "102",
+      "departureStation": "광명",
+      "arrivalStation": "정음",
+      "departureTime": "11:00",
+      "arrivalTime": "14:15",
       "passengerCount": 1,
-      "paymentAmount": "59,800원"
+      "paymentAmount": "52,600원"
     },
     "passengerInfo": {
       "trainNumber": "319",
       "seatType": "일반실",
       "seatInfo": "3호차 9B",
       "passengerType": "어른",
-      "fare": "59,800원",
-      "totalFare": "59,800원",
-      "passengerName": "김진아"
+      "fare": "52,600원",
+      "totalFare": "52,600원",
+      "passengerName": "이한희"
+    }
+  },
+  {
+    "travelInfo": {
+      "date": "8월 28일",
+      "trainType": "무궁화",
+      "trainNumber": "1012",
+      "departureStation": "서울",
+      "arrivalStation": "대구",
+      "departureTime": "09:45",
+      "arrivalTime": "13:00",
+      "passengerCount": 3,
+      "paymentAmount": "62,700원"
+    },
+    "passengerInfo": {
+      "trainNumber": "319",
+      "seatType": "일반실",
+      "seatInfo": "5호차 2C",
+      "passengerType": "어른",
+      "fare": "20,900원",
+      "totalFare": "62,700원",
+      "passengerName": "이한희"
     }
   }
 ]
