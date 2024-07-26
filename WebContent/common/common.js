@@ -6,13 +6,14 @@ $(document).ready(function() {
       //로그인시 변경
       const idKey = "USER-ID";
       const loginInfo = localStorage.getItem(idKey);
-      if(loginInfo != null) {
+      if (loginInfo != null) {
           console.log('저장된 아이디값 불러옴');
           $('.login-link').text('로그아웃');
-          $('.login-user-info').html('<span class="user-name">이한희</span>님 환영합니다.!');
+          $('.login-user-info').html('<span class="user-name">이한희</span>님 환영합니다!');
           $('.user-name').css("font-weight", "bold");
           $('.login-user-info').css('margin-right', '50px');
           $(".login-link").parent().attr("href", "/WebContent/login/login.html?type=logout");
+          $('.login-link').parent().next().hide();
       }
   });
   

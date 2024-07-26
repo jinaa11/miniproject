@@ -18,7 +18,7 @@ $(function () {
     $('#all_station_info').show();
   });
 
-  // 호선 이미지 노출
+  // 노선 이미지 노출
   $('.route-options .btn-line').click(function () {
     let lineName = $(this).text();
     $(this).siblings().removeClass('active');
@@ -47,7 +47,7 @@ $(function () {
     imageCount ++;
   })
 
-  // 지역 선택
+  // 노선 선택
   $('.ul-map-list li a').click(function () {
     const startMarkImg = '/WebContent/trainInfo/images/ic_start_dpt.png';
     const endMarkImg = '/WebContent/trainInfo/images/ic_end_dpt.png';
@@ -66,20 +66,23 @@ $(function () {
 
     if (imageCount == 0) {
       $(this).append('<span class="map-mark-start"><img src="'+ startMarkImg +'"></span>');
-      $(this).addClass('fixColor');
-      imageCount++;
+      insert_effect();
     } else if (imageCount == 1) {
-      if ( $(this).find('span').hasClass('map-mark-start') ) {
+      if ($(this).find('span').hasClass('map-mark-start')) {
         $('.map-mark-start').remove();
       }
       $(this).append('<span class="map-mark-end"><img src="'+ endMarkImg +'"></span>');
-      $(this).addClass('fixColor');
-      imageCount++;
+      insert_effect();
     }
-
   });
 
-  //선택
+  function insert_effect() {
+    $('.ul-map-list li a').addClass('fixColor');
+    $('.ul-map-list li a').find('img').css('z-index','9999');
+    imageCount++;
+  }
+
+  // 선택 버튼
   $('.btn-select-station').click(function () {
     if (imageCount == 0) {
       alert('출발역과 도착역을 선택해주시길 바랍니다.');
