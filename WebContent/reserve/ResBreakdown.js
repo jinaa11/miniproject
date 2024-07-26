@@ -12,9 +12,11 @@ $(function() {
                     paymentHtml = '<div>' +
                                     formatTime(reservation.paymentDue) + '까지' +  
                                   '</div>' +
-                                  '<div><button id="pay-button">결제하기</button></div>';
+                                  '<div><button class="pay-button">결제하기</button></div>';
                 } else if (reservation.payment) {
                     paymentHtml = '발권완료';
+                } else {
+                    paymentHtml = '예약취소';
                 }
 
                 var $row = $('<tr>').append(
@@ -76,4 +78,9 @@ $(function() {
     
         return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
     }
+
+    // 동적 바인딩문제를 해결하기 위해 document에 이벤트를 걸어줌
+    $(document).on('click', '.pay-button', function() {
+        window.location.href = '../payment/payment.html';
+    });
 });
