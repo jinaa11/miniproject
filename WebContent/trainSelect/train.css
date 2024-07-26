@@ -12,17 +12,6 @@
   margin-top: 10px;
 }
 
-
-/* .container {
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  margin-bottom: 20px;
-} */
-
 .tabs {
   display: flex;
   margin-bottom: 20px;
@@ -161,11 +150,6 @@ select {
   border: none;
   border-radius: 5px;
   text-align: center;
-  /* margin: auto;
-  left: 0;
-  right: 0;
-  top: 243px;
-  bottom: 0; */
 }
 .search_ticket img{
   width: 23px;
