@@ -54,8 +54,9 @@
         "paymentMethod": "신용카드",
         "cardNo": "5272-****-****-9900",
         "approvalNumber": "16655607733",
-        "amount": "179400",
         "ticketNumber": "82410-0726-10287-24",
+        "approvalDate": "2024.7.26."
+        "amount": "179400",
         "paymentStatus": "결제완료",
         "issuanceStatus": "발권완료"    
     }

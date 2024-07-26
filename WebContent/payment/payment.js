@@ -113,8 +113,8 @@ async function initializeTossPayments(totalFare) {
   // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
   $button.on("click", async function () {
     await widgets.requestPayment({
-      orderId: "Ep2yZQD4N_0Swa_eA-v0F",
-      orderName: "토스 티셔츠 외 2건",
+      orderId: "82410-0726-10287-24",
+      orderName: "승차권 4인",
       successUrl:
         window.location.origin + "/WebContent/payment/paymentCompleted.html",
       failUrl: window.location.origin + "/WebContent/payment/fail.html",

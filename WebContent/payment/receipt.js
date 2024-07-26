@@ -29,8 +29,10 @@ $(function () {
       $(".receipt-item").eq(3).find(".item-value").text('어른 ' + adultCnt + '매, 어린이 ' + childCnt + '매');
       // 결제방식
       $(".receipt-item").eq(4).find(".item-value").text(item.paymentInfo.paymentMethod);
+      // 승인일자
+      $(".receipt-item").eq(5).find(".item-value").text(item.paymentInfo.paymentMethod);
       // 승인번호
-      $(".receipt-item").eq(6).find(".item-value").text(item.paymentInfo.approvalNumber);
+      $(".receipt-item").eq(6).find(".item-value").text(item.paymentInfo.approvalDate);
       // 결제금액
       $(".receipt-item").eq(7).find(".item-value").text(parseInt(item.paymentInfo.amount).toLocaleString('ko-KR') + '원');
       // 총 영수금액
