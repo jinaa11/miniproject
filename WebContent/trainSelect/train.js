@@ -2,11 +2,39 @@ $(function () {
   $('#departure').val('서울');
   $('#arrival').val('부산');
 
+  // 승차권 타입
+  let urlSearch = new URLSearchParams(location.search);
+  let type = urlSearch.get('type');
+  if (type == 't2') {
+    setTimeout(() => {
+      $(".tab-btn:eq(1)").trigger('click');
+      }, 10);
+  } else if (type == 't3') {
+    setTimeout(() => {
+      $(".tab-btn:eq(2)").trigger('click');
+      }, 10);
+  }
+
+  // 승차권 타입 선택
+  $('#input_box_person').hide();
   $('.tabs .tab-btn').click(function () {
     $(this).siblings().removeClass('active');
     $(this).addClass('active');
+
+    if ( $(this).text() == '단체승차권 조회') {
+      $('.form-group:eq(3)').hide();
+      $('.form-group:eq(4)').hide();
+      $('#input_box_person').show();
+      $('#select_box_person').hide();
+    } else {
+      $('.form-group:eq(3)').show();
+      $('.form-group:eq(4)').show();
+      $('#input_box_person').hide();
+      $('#select_box_person').show();
+    }
   });
 
+  // 출발역 <-> 도착역 변경
   $('#change_station img').click(function () {
     const dep_val = $('#departure').val();
     const arr_val = $('#arrival').val();
@@ -81,17 +109,6 @@ $(function () {
       disabledPerson.appendChild(option1);
   }
   //인원 정보 선택 END
-
-  $('.tabs .tab-btn').click(function () {
-    if ( $(this).text() == '단체승차권 조회') {
-      $('.form-group:eq(2)').hide();
-      $('.form-group:eq(3)').hide();
-    } else {
-      $('.form-group:eq(2)').show();
-      $('.form-group:eq(3)').show();
-    }
-  });
-
 });
 
 $(function(){
