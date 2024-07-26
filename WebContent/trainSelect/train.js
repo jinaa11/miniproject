@@ -108,6 +108,7 @@ $(function(){
       $('#trainList').append(table);
     });
     updateSoldOut();
+    updateSRT();
     //예약 가능한 것들 클릭시 예약페이지로 이동하기
     $(document).on('click', '.highlight', function() {
       window.location.href = '/WebContent/reserve/Reservation.html';
@@ -115,6 +116,14 @@ $(function(){
   })
   return false;
 });
+// SRT 다르게 표시하기
+function updateSRT(){
+  $('td').each(function(){
+    if($(this).text().includes('SRT')){
+      $(this).css('backgroundColor', '#a896a5');
+    }
+  })
+}
 // 매진된 열차호실에 대해서 붉은 색을 표시하기
 function updateSoldOut() {
   $('td').each(function() {
@@ -127,25 +136,26 @@ function updateSoldOut() {
 $(function(){
   $.getJSON('/WebContent/json/fee_check.json', function(data){
     //해당 예매 페이지의 출발역과 도착역 표시
-    $("#caption").text("출발: "+data[0].출발역+ " > 도착: " +data[0].도착역);
+    $("#caption").text("출발: "+data[0]["KTX"].출발역+ " > 도착: " +data[0]["KTX"].도착역);
 
     $('#fee').hide();
 
-    $.each(data, function(index, item){
-
-      let fee = '<tr>';
-      fee += "<td>운임 요금</td>";
-      fee += "<td>"+item.특실어른+"</td>"
-      fee += "<td>"+item.특실어린이+"</td>"
-      fee += "<td>"+item.특실경로+"</td>"
-      fee += "<td>"+item.일반실어른+"</td>"
-      fee += "<td>"+item.일반실어린이+"</td>"
-      fee += "<td>"+item.일반실경로+"</td>"
-      fee += "<td>"+item.입석어른+"</td>"
-      fee += "<td>"+item.입석어린이+"</td>"
-      fee += "<td>"+item.입석경로+"</td>"
-      fee += "</tr>";
-      $('#feeList').append(fee);
+    $.each(data, function(index, items){
+      $.each(items, function(idx, item){
+        let fee = '<tr>';
+        fee += "<td>"+item.열차+"</td>";
+        fee += "<td>"+item.특실어른+"</td>"
+        fee += "<td>"+item.특실어린이+"</td>"
+        fee += "<td>"+item.특실경로+"</td>"
+        fee += "<td>"+item.일반실어른+"</td>"
+        fee += "<td>"+item.일반실어린이+"</td>"
+        fee += "<td>"+item.일반실경로+"</td>"
+        fee += "<td>"+(item.열차 == 'KTX'? item.입석어른 : Math.round(parseInt(item.일반실어른 * 0.85) / 100) * 100) +"</td>"
+        fee += "<td>"+(item.열차 == 'KTX'? item.입석어린이 : Math.round(parseInt(item.일반실어린이 * 0.85) / 100) * 100) +"</td>"
+        fee += "<td>"+(item.열차 == 'KTX'? item.입석경로 : Math.round(parseInt(item.일반실경로 * 0.85) / 100) * 100) +"</td>"
+        fee += "</tr>";
+        $('#feeList').append(fee);
+      })
     })
 
     //요금 , 원 표시하기
