@@ -15,3 +15,10 @@ td button {
     word-wrap: break-word; /* 단어 단위로 줄바꿈 */
     white-space: normal; /* 기본 공백 처리를 사용하여 줄바꿈 허용 */
 }
+
+.custom-alert {
+    color: rgb(82, 82, 82);
+    font-size: 14px;
+    padding: 1px; /* 패딩을 줄입니다. 기본값은 더 클 수 있습니다. */
+    margin-bottom: 5px; /* 마진을 줄입니다. 기본값은 더 클 수 있습니다. */
+}

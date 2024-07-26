@@ -1,13 +1,13 @@
 $(function() {
     $.ajax({
-        url: '../json/reserve-break.json', // JSON 파일 위치
+        url: '../json/reserve-detail.json', // JSON 파일 위치
         dataType: 'json',
         success: function(data) {
+            console.log(data);
             data.forEach(function(reservation) {
                 var paymentHtml = '';
                 var currentTime = new Date();
                 var paymentDueTime = new Date(reservation.paymentDue);
-                console.log(currentTime, paymentDueTime);
                 if (reservation.paymentDue && currentTime < paymentDueTime) {
                     paymentHtml = '<div>' +
                                     formatTime(reservation.paymentDue) + '까지' +  
@@ -39,6 +39,17 @@ $(function() {
                 var $paymentTd = $('<td rowspan="2">').html(paymentHtml);
                 $row.append($paymentTd);
                 $('#seat-info').append($row, $secondRow);
+
+                // 상세 정보 생성
+                var $detailsRow = $('<tr class="details" style="display: none;">').append(
+                    $('<td colspan="9">').html(createDetailsHtml(reservation))
+                );
+                $secondRow.after($detailsRow);
+
+                // 예약번호(td:first-child) 클릭 이벤트를 통한 상세 정보 토글
+                $row.find('td:first-child').on('click', function() {
+                    $detailsRow.toggle();
+                });
             });
         },
         error: function() {
@@ -46,40 +57,52 @@ $(function() {
         }
     });
 
-    // 예약 파기 시간 가져오기
-    let expiryTime = new Date($('#payment-status').data('expiry')).getTime();
-    let currentTime = new Date().getTime();
-
-    // 예약 파기 시간이 지났으면 예약 취소 처리
-    if (currentTime > expiryTime) {
-        $('#payment-status').html('예약취소').addClass('expired');
-        $('#pay-button').remove();
-    } else {
-        // 타이머 설정으로 실시간 업데이트 (비동기 처리)
-        let timer = setInterval(function() {
-            currentTime = new Date().getTime();
-            if (currentTime > expiryTime) {
-                $('#payment-status').html('예약취소').addClass('expired');
-                $('#pay-button').remove();
-                clearInterval(timer);
+    function createDetailsHtml(reservation) {
+        let passengerDetails = '';
+        
+        // Generate passenger details dynamically
+        for (let key in reservation.passengers) {
+            if (reservation.passengers.hasOwnProperty(key)) {
+                passengerDetails += `<tr>
+                                        <td>${reservation.passengers[key].name}</td>
+                                        <td>${reservation.passengers[key].count}명</td>
+                                        <td>${reservation.passengers[key].fare.toLocaleString()}원</td>
+                                    </tr>`;
             }
-        }, 60000);
+        }
+    
+        // Details HTML using Bootstrap's card
+        let html = `
+            <div class="mt-3">
+                <div>
+                    <h4 class="fw-bold">예약 상세</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr><th>출발일자</th><td colspan="2">${reservation.departureDate}</td></tr>
+                            <tr><th>운행시간</th><td colspan="2">${reservation.departureTime} ~ ${reservation.arrivalTime}</td></tr>
+                            <tr><th>소요시간</th><td colspan="2">${reservation.duration}</td></tr>
+                            <tr><th colspan="3">승객 정보</th></tr>
+                            ${passengerDetails}
+                            <tr><th>예매 좌석 번호</th><td colspan="2">${reservation.seats ? reservation.seats.join(', ') : 'N/A'}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>`;
+        
+        return html;
     }
 
     function formatTime(dateString) {
-        var date = new Date(dateString); // 문자열을 Date 객체로 변환
-        console.log(date); // 디버그를 위한 로그
-    
+        var date = new Date(dateString);
         var year = date.getFullYear();
-        var month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더합니다.
+        var month = date.getMonth() + 1;
         var day = date.getDate();
         var hour = date.getHours();
         var minute = date.getMinutes();
-    
         return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
     }
 
-    // 동적 바인딩문제를 해결하기 위해 document에 이벤트를 걸어줌
+    // 결제 버튼 이벤트
     $(document).on('click', '.pay-button', function() {
         window.location.href = '../payment/payment.html';
     });

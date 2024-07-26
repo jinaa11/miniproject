@@ -1,0 +1,93 @@
+[
+  {
+      "reservationId": "KO-012-723",
+      "journeyType": "편도",
+      "trainType": "KTX",
+      "trainNumber": "105",
+      "departureStation": "서울",
+      "arrivalStation": "부산",
+      "departureTime": "10:12",
+      "arrivalTime": "13:34",
+      "duration": "03:22",
+      "ticketPrice": "179,400원",
+      "ticketCount": 4,
+      "reservationType": "일반예약",
+      "departureDate": "07.29(월)",
+      "paymentDue": "2024-07-30T14:32:14",
+      "payment": 0,
+      "passengers": {
+      "adults": {
+        "name" : "어른",
+        "count": 2,
+        "fare": 59800
+      },
+      "children": {
+        "name" : "어린이(만 6세 이상 12세 이하)",
+        "count": 2,
+        "fare": 29900
+      }
+    },
+    "seats": ["5-A03", "5-A04", "5-B03", "5-B04"]
+  },
+  {
+      "reservationId": "KO-023-834",
+      "journeyType": "편도",
+      "trainType": "KTX",
+      "trainNumber": "102",
+      "departureStation": "광명",
+      "arrivalStation": "정읍",
+      "departureTime": "11:00",
+      "arrivalTime": "14:15",
+      "ticketPrice": "52,600원",
+      "ticketCount": 1,
+      "reservationType": "일반예약",
+      "paymentDue": "2024-07-11T14:32:14",
+      "payment": "발권완료"
+      
+  },
+  {
+      "reservationId": "KO-034-945",
+      "journeyType": "편도",
+      "trainType": "무궁화",
+      "trainNumber": "1012",
+      "departureStation": "서울",
+      "arrivalStation": "대구",
+      "departureTime": "09:45",
+      "arrivalTime": "13:00",
+      "ticketPrice": "62,700원",
+      "ticketCount": 3,
+      "reservationType": "일반예약",
+      "paymentDue": "2024-05-12T14:32:14",
+      "payment": "발권완료"
+  },
+  {
+      "reservationId": "KO-045-056",
+      "journeyType": "편도",
+      "trainType": "SRT",
+      "trainNumber": "75",
+      "departureStation": "수서",
+      "arrivalStation": "경주",
+      "departureTime": "15:30",
+      "arrivalTime": "18:45",
+      "ticketPrice": "101,900원",
+      "ticketCount": 2,
+      "reservationType": "일반예약",
+      "paymentDue": "2023-07-22T14:32:14",
+      "payment": "발권완료"
+  },
+  {
+      "reservationId": "KO-056-167",
+      "journeyType": "편도",
+      "trainType": "KTX",
+      "trainNumber": "102",
+      "departureStation": "인천",
+      "arrivalStation": "울산",
+      "departureTime": "12:10",
+      "arrivalTime": "16:20",
+      "ticketPrice": "111,800원",
+      "ticketCount": 4,
+      "reservationType": "일반예약",
+      "paymentDue": "2024-07-21T00:00:00",
+      "payment": 0
+  }
+]
