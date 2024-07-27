@@ -40,3 +40,25 @@ $(function () {
     });
   });
 });
+
+// QR 코드 생성
+$(document).ready(function() {
+  $.getJSON('/WebContent/json/receipt.json', function(data) {
+    const qrCodeText = data.recepit.qrUrl; // QR 코드에 넣을 링크나 텍스트
+    console.log(qrCodeText)
+    const $qrcodeContainer = $('#qrcode');
+    
+    // QR 코드 생성
+    // 텍스트를 QR코드로 변환하여 HTML '<canvas>' 요소에 그림
+    // qrCodeText: QR코드로 변환할 텍스트, canvas: 생성된 QR코드가 그려진 '<canvas>' 요소로 QR코드를 시각적으로 표시
+    QRCode.toCanvas(qrCodeText, { width: 100 }, function (error, canvas) {
+        if (error) {
+            console.error(error);
+        } else {
+          // QR코드가 성공적으로 생성
+            $qrcodeContainer.append(canvas);
+        }
+    });
+  })
+  
+});

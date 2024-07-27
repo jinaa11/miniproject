@@ -65,3 +65,8 @@ body {
 .footer-list li:last-child {
   border-bottom: none;
 }
+
+#qrcode {
+  text-align: right;
+  margin-top: 20px;
+}

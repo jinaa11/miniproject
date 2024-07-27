@@ -124,9 +124,9 @@ async function initializeTossPayments(totalFare) {
   // 취소 버튼 기능 추가
   const $cancelButton = $("#cancel-button");
   $cancelButton.on("click", function () {
-    if (confirm("선택하신 승차권 예약내역을 취소하시겠습니까?") == true) {
+    if (confirm("승차권 결제를 취소하시겠습니까?") == true) {
       //확인
-      // $("#removefrm").submit();
+      history.back(); // 이전 화면으로 돌아가기
     } else {
       //취소
       return false;
