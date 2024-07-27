@@ -2,13 +2,19 @@ $(function () {
   let startStation = false;
   let endStation = false;
 
-  // 출발역 선택
+  // 출발역 위치 이미지 클릭
   $('.sta-map-start').click(function () {
     startStation = true;
   });
+  $('.station_start_map').click(function () {
+    startStation = true;
+  });
 
-  // 도착역 선택
+  // 도착역 위치 이미지 클릭
   $('.sta-map-end').click(function () {
+    endStation = true;
+  });
+  $('.station_end_map').click(function () {
     endStation = true;
   });
 
@@ -99,7 +105,7 @@ $(function () {
     imageCount++;
   }
 
-  // 전체역 START
+  /*전체역 START*/
   // 주요역 리스트
   $.getJSON('/WebContent/json/station_basic_info.json', function(data) {
     $('.ul-ktx-station').empty();
@@ -134,7 +140,6 @@ $(function () {
       $('#search_station_area').hide();
       return;
     }
-
     $.each(all_station_arr, function (index, item) {
       if (item.includes(keyword)) {
         $('#search_station_area').append( '<span class="search-station">'+ item +'</span>' );
@@ -146,10 +151,12 @@ $(function () {
 
   $('#search_station_area').hide();
 
-  // $("#input_search_station").focusout(function() {
-  //   $('.search-station').remove();
-  //   $('#search_station_area').hide();
-  // });
+  $("#input_search_station").blur(function() {
+    setTimeout(() => {
+      $('.search-station').remove();
+      $('#search_station_area').hide();
+    }, 100);
+  });
 
   // 가~하 클릭 시 선택한 역만 노출
   $('.station-sort a').click(function () {
@@ -169,12 +176,14 @@ $(function () {
     }
   }
 
-  // 역 선택시 출발역/도착역 적용
+  /* 역 선택시 출발역/도착역 적용 */
+  // 검색된 역
   $(document).on('click', '.search-station', function() {
     let station_val = $(this).text();
     select_station(station_val);
   });
 
+  // 기본 버튼 역
   $(document).on('click', '.ul-station-info li a', function() {
     let station_val = $(this).text();
     select_station(station_val);
@@ -183,9 +192,11 @@ $(function () {
   function select_station(station) {
     if (startStation) {
       $("#departure").val(station).prop("selected", true);
+      $("#departure").val(station);
     }
     if (endStation) {
       $("#arrival").val(station).prop("selected", true);
+      $("#arrival").val(station);
     }
     $('.map-btn-close').trigger('click');
     modal_close();
