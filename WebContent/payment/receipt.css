@@ -70,3 +70,20 @@ body {
   text-align: right;
   margin-top: 20px;
 }
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.receipt-header {
+  text-align: center;
+}
+.header-container .btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

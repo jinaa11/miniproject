@@ -94,6 +94,6 @@ $(function() {
     });
 
     // Carousel 초기화
-    $('#carouselExampleControls').carousel();
+    $('#carousel-control').carousel();
   });
 });

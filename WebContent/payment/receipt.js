@@ -59,6 +59,11 @@ $(document).ready(function() {
             $qrcodeContainer.append(canvas);
         }
     });
-  })
-  
+  });
+
+   // 승차권 확인 버튼 클릭 이벤트
+  $('#ticket-check').click(function() {
+    window.location.href = 'myTicket.html'; // 티켓 확인 페이지로 이동
+  });
 });
+
