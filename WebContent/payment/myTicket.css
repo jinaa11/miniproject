@@ -20,15 +20,6 @@ body {
 .ticket-details {
   padding: 15px;
 }
-.ticket-date {
-  text-align: left;
-  margin: 10px 0 10px 15px;
-}
-.date-info {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #02090fcf;
-}
 .ticket-details img {
   width: 30px;
   vertical-align: middle;
@@ -93,4 +84,12 @@ body {
 }
 .ticket-info div:last-child {
   text-align: right;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #5a9bd4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
