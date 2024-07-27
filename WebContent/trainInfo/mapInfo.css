@@ -126,6 +126,7 @@
   display: block;
   padding: 5px 0;
   margin-left: 5px;
+  margin-top: 5px;
   font-size: 12px;
   line-height: 12px;
   text-align: center;
@@ -141,6 +142,7 @@
   display: block;
   padding: 5px 0;
   margin-left: 5px;
+  margin-top: 10px;
   font-size: 12px;
   line-height: 12px;
   text-align: center;
@@ -152,6 +154,60 @@
   color: black;
 }
 
+.station-title {
+  margin-top: 20px;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.korail {
+  margin-top: 8px;
+}
+
+.ktx-info {
+  margin-top: 15px;
+  margin-bottom: 170px;
+}
+
+#station_none {
+  max-width: 250px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d4d2d0;
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#input_search_station {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d4d2d0;
+  border-radius: 3px;
+}
+
+.search-station {
+  float: left;
+  width: 20%;
+  display: block;
+  padding: 5px 0;
+  margin-left: 5px;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d4d2d0;
+  background-color: #f6f6f6;
+  text-decoration: unset;
+  color: black;
+}
+
+#search_station_area {
+  height: auto;
+  margin-bottom: 45px;
+}
 
 
 /* 기차역정보*/
