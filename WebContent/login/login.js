@@ -21,7 +21,7 @@ $(function () {
 
   // 회원번호 숫자만 입력 가능
   $("#memberId").keyup(function() {    
-    var replace_text = $(this).val().replace(/[^-0-9]/g, '');
+    let replace_text = $(this).val().replace(/[^-0-9]/g, '');
     $(this).val(replace_text);
   });
 
@@ -64,13 +64,11 @@ $(function () {
 
   function login() {
     const idInput = document.getElementById('memberId'); //회원번호
-    const chkRemember = document.getElementById('remember-id'); //회원번호 저장 여부 체크박스
-
-    let userId = idInput.value;
+    const chkRemember = document.getElementById('remember-id'); //회원번호 저장 여부
+    const userId = idInput.value;
 
     localStorage.setItem(idKey, userId);
-
-    if(chkRemember.checked == true) {
+    if (chkRemember.checked) {
       localStorage.setItem(rememberChk, userId);
     } else {
       localStorage.removeItem(rememberChk);
