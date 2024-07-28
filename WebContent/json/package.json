@@ -1,0 +1,34 @@
+[
+  {
+    "city": "부산",
+    "title": "해운대+해변열차+태종대",
+    "pay": "₩289,000",
+    "image": "/WebContent/images/package/busanBeach.jpg",
+    "content": "부산 패키지 여행 1탄! 해운대+해변열차+태종대",
+    "map" : "/WebContent/images/package/busan.jpg"
+  },
+  {
+    "city": "포항",
+    "title": "호미곶~경주 황리단길 ktx 기차여행",
+    "pay": "₩137,500",
+    "image": "/WebContent/images/package/pohangHomi.jpg",
+    "content": "여름 맞이 호미곶~경주 황리단길 ktx 기차여행",
+    "map" : "/WebContent/images/package/pohang.jpg"
+  },
+  {
+    "city": "울진",
+    "title": "울진 금강소나무숲길 & 바닷속전망대",
+    "pay": "₩109,800",
+    "image": "/WebContent/images/package/uljinBridge.jpg",
+    "content": "최저가! 울진 금강소나무숲길 & 바닷속전망대",
+    "map" : "/WebContent/images/package/uljin.jpg"
+  },
+  {
+    "city": "경주",
+    "title": "천년경주 명소탐방 힐링기차여행",
+    "pay": "₩299,000",
+    "image": "/WebContent/images/package/gyeongjuMoutain.jpg",
+    "content": "천년경주 명소탐방 1박2일 힐링기차여행",
+    "map" : "/WebContent/images/package/gyeongju.jpg"
+  }
+]
