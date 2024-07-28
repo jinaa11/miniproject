@@ -42,16 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // 반환 요청 버튼 클릭시 실행되는 함수
       document.getElementById('refundBtn').addEventListener('click', function() {
-        let selected = 0;
+        let selectedList = [];
 
         tableList.forEach((lst) => {
           // classList.contains('checked') 대신 체크박스의 checked 속성을 직접 확인해야 제대로 확인이 된다.
           if (lst.querySelector('input').checked) {
-            selected += 1;
+            selectedList.push(lst);
           }
         });
-
-        if (selected == 0) {
+        if (selectedList.length == 0) {
           fetch('/WebContent/cancel/noRefundModal.html')
             .then(res => res.text())
             .then(data => {
@@ -80,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
               
               document.body.appendChild(modal1);
               // document.body.appendChild(modal2);
-
+                 
               fetch('/WebContent/json/cancel.json')
                 .then(res => res.json())
                 .then(data => {
@@ -146,9 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     modalInstance2.show();
 
                     modal2.querySelector('.btn-secondary').addEventListener('click', function() {
-                      // window.location.href = '/WebContent/main.html';
                       const canceled = document.querySelector('#reserveList').querySelector('tr');
-                      // modalInstance2.display = 'none';
                       canceled.style.display = 'none';
                     });
                   });
@@ -158,31 +155,3 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 });
-
-// $(function(){
-//   $('#stage').load('/WebContent/common/stage.html', function () {
-//     $(this).find('span:eq(3)').addClass('on');
-//     $(this).find('.fw-bold-stage').text("예약발매내역 반환요청")
-//   });
-//   $.getJSON('/WebContent/json/reserveDetail.json', function(data){
-//     console.log(data);
-//     $.each(data, function(index, item){
-          // let table = '<tr>';
-          // table += "<td><input type='checkbox'></td>"
-          // table += "<td>"+ item.travelInfo.date+"</td>";
-          // table += "<td>"+ item.travelInfo.trainType+"</td>";
-          // table += "<td>"+ item.travelInfo.trainNumber+"</td>";
-          // table += "<td>"+ item.travelInfo.departureStation+"</td>";
-          // table += "<td>"+ item.travelInfo.arrivalStation+"</td>";
-          // table += "<td>"+ item.travelInfo.departureTime+"</td>";
-          // table += "<td>"+ item.travelInfo.arrivalTime+"</td>";
-          // table += "<td>"+ item.passengerInfo.passengerName+"</td>";
-          // table += "<td>"+ item.passengerInfo.seatType+"</td>";
-          // table += "<td>"+ item.passengerInfo.passengerType+"</td>";
-          // table += "<td>"+ item.passengerInfo.seatInfo+"</td>";
-          // table += "</tr>";
-              
-//       $('#trainList').append(table);
-//     })
-//   })
-// })
