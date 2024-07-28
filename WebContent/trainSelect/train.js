@@ -120,8 +120,6 @@ $(function(){
   $('#timelst').hide();
   
   $.getJSON('/WebContent/json/trainTime.json', function(data){
-    // $("#caption").text("출발: "+data[0].출발역+ " > 도착: " +data[0].도착역);
-
     $.each(data, function(index, item){
       let table = '<tr>';
       table += "<td>"+ (item.구분 ? item.구분 : "-") +"</td>";
@@ -141,7 +139,7 @@ $(function(){
     });
     updateSoldOut();
     updateSRT();
-    //예약 가능한 것들 클릭시 예약페이지로 이동하기
+    //클릭시 예약페이지로 이동하기
     $(document).on('click', '.highlight', function() {
       window.location.href = '/WebContent/reserve/Reservation.html';
     });
@@ -213,7 +211,6 @@ function toggleFee() {
 }
 
 function toggleTime(){
-  console.log(1);
   event.preventDefault();
   $('#timelst').show();
 }
