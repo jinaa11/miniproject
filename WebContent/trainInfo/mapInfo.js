@@ -116,7 +116,6 @@ $(function () {
 
   // 철도역 리스트
   let all_station_arr = [];
-  let station_count = 0;
   $.getJSON('/WebContent/json/station_all_info.json', function(data) {
     $('.ul-all-station').empty();
 
@@ -126,7 +125,6 @@ $(function () {
           $('.ul-all-station li').hide();
           $('.ul-all-station li.st1').show();
           all_station_arr.push(res);
-          station_count++;
         });
     });
   });
