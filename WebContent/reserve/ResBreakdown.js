@@ -1,28 +1,21 @@
 $(function() {
     const trainNumber = '101';
-    let userChoice = '일반실';
     let trainData; // 열차 데이터를 저장할 변수
-
-    let cars;
-    if (userChoice === '특실') {
-        cars = [2, 3, 4];
-    } else if (userChoice === '일반실') {
-        cars = [1, 5, 6, 7, 8, 9];
-    }
 
     $.getJSON("../json/reserve_layout.json", function(data) {
         trainData = data.KTX.find(train => train.trainNumber === trainNumber);
     });
 
-
+    let expiryTime;
     $.ajax({
-        url: '../json/reserve-detail.json', // JSON 파일 위치
+        url: '../json/reserve-detail.json',
         dataType: 'json',
         success: function(data) {
             data.forEach(function(reservation) {
                 var paymentHtml = '';
                 var currentTime = new Date();
                 var paymentDueTime = new Date(reservation.paymentDue);
+
                 if (reservation.paymentDue && currentTime < paymentDueTime) {
                     paymentHtml = '<div>' +
                                     formatTime(reservation.paymentDue) + '까지' +  
@@ -65,6 +58,28 @@ $(function() {
                 $row.find('td:first-child').on('click', function() {
                     $detailsRow.toggle();
                 });
+                
+                expiryTime = parseDateString(formatTime(reservation.paymentDue)).getTime();
+                function checkAndUpdatePaymentStatus() {
+                    let currentTime = new Date().getTime();
+                    
+                    if (currentTime > expiryTime) {
+                        $('#payment-status').html('예약취소').addClass('expired');
+                        $('#pay-button').remove();
+                    }
+                }
+
+                // 타이머 설정
+                function startTimer() {
+                    checkAndUpdatePaymentStatus(); // 초기 상태 확인
+                    let timer = setInterval(checkAndUpdatePaymentStatus, 1000); // 5초마다 상태 업데이트
+
+                    // 타이머 정리를 위한 이벤트 리스너
+                    $(window).on('beforeunload', function() {
+                        clearInterval(timer); // 페이지를 벗어나면 타이머 정지
+                    });
+                }
+                startTimer();
             });
         },
         error: function() {
@@ -75,7 +90,6 @@ $(function() {
     function createDetailsHtml(reservation) {
         let passengerDetails = '';
         
-        // Generate passenger details dynamically
         for (let key in reservation.passengers) {
             if (reservation.passengers.hasOwnProperty(key)) {
                 passengerDetails += `<tr>
@@ -112,7 +126,6 @@ $(function() {
     $(document).on('click', '#check-seats-button', function() {
         let selectedSeats = $('.selectSeats').text().split(', ');
         selectedSeats[3] = selectedSeats[3].substring(0, 5);
-        console.log(selectedSeats);
         displaySeats(selectedSeats[0].substring(0, 1), selectedSeats); // 좌석 배치도 생성 및 표시
         $('#seatModal').modal('show'); // 모달 표시
     });
@@ -129,6 +142,7 @@ $(function() {
 
     // 결제 버튼 이벤트
     $(document).on('click', '.pay-button', function() {
+
         window.location.href = '../payment/payment.html';
     });
 
@@ -230,5 +244,17 @@ $(function() {
                 }
             });
         });
+    }
+
+    function parseDateString(dateStr) {
+        const parts = dateStr.match(/(\d+)/g);
+
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; // JavaScript는 0부터 월을 시작
+        const day = parseInt(parts[2], 10);
+        const hour = parseInt(parts[3], 10);
+        const minute = parseInt(parts[4], 10);
+    
+        return new Date(year, month, day, hour, minute);
     }
 });
