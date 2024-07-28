@@ -7,6 +7,7 @@
     <title>나의 예약내역</title>
     <link rel="icon" href="../images/logo_opac.png">
     <link rel="stylesheet" type="text/css" href="ResBreakdown.css">
+    <link rel="stylesheet" type="text/css" href="Reservation.css">
     <link rel="stylesheet" type="text/css" href="/WebContent/common/common.css">
 
     <script src="/WebContent/jquery.js" type="text/javascript"></script>
@@ -62,10 +63,41 @@
                 <tbody class="text-center" id="seat-info">
                 </tbody>
             </table>
-            
         </div>
-        
     </section>
+
+    <div class="modal fade" id="seatModal" tabindex="-1" aria-labelledby="seatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="seatModalLabel">내 좌석 확인</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center h3 fw-bold"h3>5 호차</div>
+                    <div id="windows-1" class="windows d-flex container mb-1">
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                    </div>
+                    <div id="train-seats" class="container"></div>
+                    <div id="windows-2" class="windows d-flex container mt-1">
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                        <span class="window"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id='footer1'></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

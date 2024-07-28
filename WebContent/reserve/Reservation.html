@@ -44,15 +44,15 @@
                     <span id="endLoc" class="location">부산</span>
                 </div>
                 <div class="mt-1 mb-3 d-flex justify-content-center align-items-center">
-                    <span class="sub-info-rev">출발일</span>&nbsp;<span id="startDate" class="rev-text">2024.07.30 (화)</span>&nbsp;&nbsp;
+                    <span class="sub-info-rev">출발일</span>&nbsp;<span id="startDate" class="rev-text">2024.07.29 (월)</span>&nbsp;&nbsp;
                     <span class="sub-info-rev">출발시간</span>&nbsp;<span id="startDate" class="rev-text">10:12</span>&nbsp;&nbsp;
                     <span class="sub-info-rev">도착시간</span>&nbsp;<span id="startDate" class="rev-text">13:34</span>&nbsp;&nbsp;
                     <span class="btn btn-light" id="openSchedule">열차 시간표</span>
                 </div>
-                <div class="train-top container d-flex justify-content-center align-items-center mb-3">
+                <div class="train-top container border border-1 d-flex justify-content-center align-items-center">
                 </div>
             </section>
-            <br><br><br><br><br>
+            <br><br><br><br>
             <section class="container my-control-panel border border-1 p-3">
                 <div class="row">
                     <div class="col text-center">
@@ -133,15 +133,23 @@
                 <span id="selected-seats" class="selected-seats"></span>
             </section>   
             <section class="container">
-                <span class="container selected-label">탑승 인원</span>
+                <span class="container selected-label">탑승 인원 및 요금</span>
                 <label class="type-label">어른</label>
                 <span id="adult" class="type-value"></span>
+                <span id="adult-price" class="type-value"></span>&nbsp;&nbsp;
+
                 <label class="type-label">아이</label>
                 <span id="child" class="type-value"></span>
+                <span id="child-price" class="type-value"></span>&nbsp;&nbsp;
+                
                 <label class="type-label">경로</label>
                 <span id="senior" class="type-value"></span>
+                <span id="senior-price" class="type-value"></span>&nbsp;&nbsp;
+                
                 <label class="type-label">장애인</label>
                 <span id="disabled" class="type-value"></span>
+                <span id="disabled-price" class="type-value"></span>
+                
                 <div>
                     <ul class="container p-3">
                         <li>발매가 가능한 좌석을 선택하실 수 있습니다.</li>
@@ -152,7 +160,7 @@
 
             <section class="d-flex justify-content-center mb-4">
                 <div class="mt-2 d-grid col-2 mx-auto">
-                    <button id="btn-reserve" class="btn btn-lg btn-primary">예약하기</button>
+                    <button id="btn-reserve" class="btn btn-lg btn-primary">선택좌석 예약하기</button>
                 </div>
             </section>
         </div>

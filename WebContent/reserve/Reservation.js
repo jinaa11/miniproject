@@ -3,6 +3,9 @@ $(function() {
     const trainNumber = '101';
     let userChoice = '일반실';
     let trainData; // 열차 데이터를 저장할 변수
+    let currSeat;
+    let currentCoachNumber = 5;
+    const priceType = {};
 
     let cars;
     if (userChoice === '특실') {
@@ -24,10 +27,19 @@ $(function() {
 
     function updateSeatDisplay() {
         // 탑승 인원 업데이트
+        let adultPrice = (priceType.adult * parseInt($('#count-adult').text())).toLocaleString('ko-KR');
+        let childPrice = (priceType.child * parseInt($('#count-child').text())).toLocaleString('ko-KR');
+        let seniorPrice = (priceType.senior * parseInt($('#count-senior').text())).toLocaleString('ko-KR');
+        let disabledPrice = (priceType.adult * parseInt($('#count-disabled').text())).toLocaleString('ko-KR');
+
         $('#adult').text($('#count-adult').text() + '명');
+        $('#adult-price').text(adultPrice + '원');
         $('#child').text($('#count-child').text() + '명');
+        $('#child-price').text(childPrice + '원');
         $('#senior').text($('#count-senior').text() + '명');
+        $('#senior-price').text(seniorPrice + '원');
         $('#disabled').text($('#count-disabled').text() + '명');
+        $('#disabled-price').text(disabledPrice + '원');
     }
 
     $('.seat-btn').on('click', function() {
@@ -40,9 +52,6 @@ $(function() {
         'color': 'white'
     });
 
-    updateSeatDisplay();
-
-    // AJAX로 JSON 데이터 가져오기
     $.getJSON("../json/reserve_layout.json", function(data) {
         trainData = data.KTX.find(train => train.trainNumber === trainNumber);
         if (userChoice === '특실') {
@@ -50,6 +59,19 @@ $(function() {
         } else if (userChoice === '일반실') {
             displaySeats(1); // 초기에 1호차 좌석 표시
         }
+    });
+
+    $.getJSON("../json/seats-price.json", function(data) {
+        priceType.adult = parseInt(data.adult);
+        priceType.child = parseInt(data.child);
+        priceType.senior = parseInt(data.senior);
+    }).done(function() {
+        updateSeatDisplay();
+    });
+
+    $.getJSON("../json/reserve_layout_curr.json", function(data) {
+        currSeat = data.KTX.find(train => train.trainNumber === trainNumber);
+        currSeat = currSeat.coaches.find(coach => coach.coachNumber.includes(currentCoachNumber));
     });
 
     $('.train-top-rail').click(function() {
@@ -113,6 +135,7 @@ $(function() {
         const container = $('#train-seats');
         const windows_1 = $('#windows-1');
         const windows_2 = $('#windows-2');
+        const maxWindow = 14;
     
         // 기존 좌석 정보 삭제
         windows_1.empty();
@@ -124,7 +147,7 @@ $(function() {
         Object.values(coach.seats).forEach(seatArray => {
             maxSeats = Math.max(maxSeats, seatArray.length);
         });
-        let numWindows = maxSeats <= 8 ? 7 : 8;
+        let numWindows = maxSeats <= maxWindow ? 7 : 8;
         let windowWidth = maxSeats <= 8 ? '140px' : '130px';
     
         // 창문 표시
@@ -179,34 +202,19 @@ $(function() {
                     container.append('&nbsp;&nbsp;&nbsp;&nbsp;');
                     
                     seatDiv.css('margin-right', '20px'); // 기본 간격
-                }
-
-                
-
+                }                
                 container.append(seatDiv);
 
+                const nbspCount = 12; // 필요한 공백 수
+                const nbspString = '&nbsp;'.repeat(nbspCount); // nbsp 문자를 반복
                 if (row === 'B' && seat.number === maxSeats) {
                     container.append(
                     '<div class="seat-center d-flex justify-content-evenly align-items-center">' + 
                     '<span class="loc-seat">' + $('#startLoc').text() + '</span><span style="color: #3769e5; font-weight: bold;"> ' + 
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    '> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' +
+                    '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + 
+                    '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString +
+                    '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString + '> ' + nbspString +
+                    '</span>' +
                      '<span class="loc-seat">' + $('#endLoc').text() + '</span>' +
                     '</div>'); // A열 다음에 줄바꿈 추가
                 } else if (seat.number === maxSeats) {
@@ -228,10 +236,22 @@ $(function() {
                     $(this).removeClass('seat-blue-reverse').addClass('seat-reverse');
                 }
                 $(this).css('color', 'black'); // 텍스트 색상 검은색으로 변경
-                sessionStorage.setItem('total', total - 1); // total 감소
+                sessionStorage.setItem('total', --total); // total 감소
                 removeSelectSessionStorage($(this).attr('id'));
             } else {
-                // 선택 가능한 좌석 수와 비교
+                // 선택 가능한 좌석 수와 비교 (서버값과 비교)
+                const clickSeat = $(this).attr('id');
+                const seatNumber = clickSeat.split('-')[1].split('').slice(1).join('');                
+                if (currSeat.seats[clickSeat.split('-')[1].split('')[0]][seatNumber-1].reserved === true) {
+                    alert('이미 예약된 좌석입니다.');
+                    if (seatNumber <= 8) {
+                        $(this).removeClass('seat').addClass('seat-off');
+                    } else {
+                        $(this).removeClass('seat-reverse').addClass('seat-off-reverse');
+                    }
+                    return;
+                }
+                
                 if (calculateTotalSeats() > total) {
                     // 좌석 선택
                     if ($(this).hasClass('seat-reverse')) {
@@ -240,14 +260,13 @@ $(function() {
                         $(this).removeClass('seat').addClass('seat-blue');
                     }
                     $(this).css('color', 'white'); // 텍스트 색상 하얀색으로 변경
-                    sessionStorage.setItem('total', total + 1); // total 증가
+                    sessionStorage.setItem('total', ++total); // total 증가
                     InsertSelectSessionStorage($(this).attr('id'));
                 } else {
                     const exceedModal = new bootstrap.Modal(document.getElementById('exceedLimitModal'));
                     exceedModal.show();
                 }
             }
-            
         }
     });
 
@@ -280,7 +299,6 @@ $(function() {
         $('#selected-seats').text(sortSeats(selectedSeats).join(', '));
     }  
     
-    // 예시로 사용하기 위해 이벤트 리스너에 연결
     $('#btn-reserve').on('click', function() {
         const selectedSeats = JSON.parse(sessionStorage.getItem('total'));
     
@@ -307,9 +325,6 @@ $(function() {
             $('#exceedLimitModal').modal('show');
             $('#exceedLimitModal .modal-body').text('선택된 좌석 수와 탑승 인원 수가 일치하지 않습니다.');
         } else {
-            // JSON을 문자열로 변환하여 콘솔에 출력
-            console.log(JSON.stringify(dataToSave));
-    
             // 실제로 서버에 데이터를 전송할 때 사용할 코드
             // $.post('URL_TO_SEND_DATA', dataToSave, function(response) {
             //     console.log('Data saved:', response);
