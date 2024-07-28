@@ -78,7 +78,7 @@ $(function () {
       option1.value = j;
       option1.text = '어린이(만 6~12세 이상) ' + j + '명';
       child1.appendChild(option1);
-      $("#child1").val(2).attr("selected", "selected");
+      $("#child1").val(1).attr("selected", "selected");
   }
 
   // 경로
