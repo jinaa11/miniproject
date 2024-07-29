@@ -56,12 +56,13 @@ function showAllMenus(element) {
 
       menuData[key].forEach(item => {
           let search_link = '#';
+          let train_search_link = '/WebContent/trainSelect/train.html?type=';
           if (item == '일반승차권 조회')  {
-            search_link = '/WebContent/trainSelect/train.html';
+            search_link = train_search_link + 't1';
           } else if (item == '단체승차권 조회') {
-            search_link = '/WebContent/trainSelect/train.html?type=t2';
+            search_link = train_search_link + 't2';
           } else if (item == '할인승차권 조회') {
-            search_link = '/WebContent/trainSelect/train.html?type=t3';
+            search_link = train_search_link + 't3';
           }
           let search_add_class = (item == '역 정보 조회') ? 'menu-link-sub main-map-info' : 'menu-link-sub';
           const link = $('<a>').attr('href', search_link).addClass(search_add_class).text(item);
