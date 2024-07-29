@@ -1,91 +1,201 @@
+const trainNumber = '101';
+
 $(function() {
-    const trainNumber = '101';
-    let trainData; // 열차 데이터를 저장할 변수
+    let trainData; // 열차 데이터를 저장할 변수\
+    const selectedYear = '2024'; // 선택된 연도
 
     $.getJSON("../json/reserve_layout.json", function(data) {
         trainData = data.KTX.find(train => train.trainNumber === trainNumber);
     });
 
-    let expiryTime;
-    $.ajax({
-        url: '../json/reserve-detail.json',
-        dataType: 'json',
-        success: function(data) {
-            data.forEach(function(reservation) {
-                var paymentHtml = '';
-                var currentTime = new Date();
-                var paymentDueTime = new Date(reservation.paymentDue);
+    // select option에 년도 추가
+    $.getJSON("../json/reserve-detail.json", function(data) {
+        var $select = $('#years'); // 연도를 선택할 select 요소
+        $select.empty(); // 기존 옵션을 비웁니다.
+    
+        Object.keys(data).sort().reverse().forEach(function(key) {
+            // 각 키(연도)에 대해 옵션을 생성하고 select 요소에 추가
+            $('<option>', {
+                value: key,
+                text: key
+            }).appendTo($select);
+        });
+    });  
 
-                if (reservation.paymentDue && currentTime < paymentDueTime) {
-                    paymentHtml = '<div>' +
-                                    formatTime(reservation.paymentDue) + '까지' +  
-                                  '</div>' +
-                                  '<div><button class="pay-button">결제하기</button></div>';
-                } else if (reservation.payment) {
-                    paymentHtml = '발권완료';
-                } else {
-                    paymentHtml = '예약취소';
-                }
+    showDetails(selectedYear);
 
-                var $row = $('<tr>').append(
-                    $('<td rowspan="2">').text(reservation.reservationId),
-                    $('<td rowspan="2">').text(reservation.journeyType),
-                    $('<td>').text(reservation.trainType),
-                    $('<td>').text(reservation.departureStation),
-                    $('<td>').text(reservation.arrivalStation),
-                    $('<td rowspan="2">').text(reservation.ticketPrice),
-                    $('<td rowspan="2">').text(reservation.ticketCount),
-                    $('<td rowspan="2">').text(reservation.reservationType)
-                );
+    $('#years').change(function() {
+        const selectedYear = $(this).val(); // 선택된 연도
+        if (selectedYear) {
+            $.ajax({
+                url: '../json/reserve-detail.json',
+                dataType: 'json',
+                success: function(data) {
+                    const reservations = data[selectedYear]; // 선택된 연도에 해당하는 예약 데이터
+                    $('#seat-info').empty(); // 기존 정보를 지우고 새로 채움
 
-                var $secondRow = $('<tr>').append(
-                    $('<td>').text(reservation.trainNumber),
-                    $('<td>').text(reservation.departureTime),
-                    $('<td>').text(reservation.arrivalTime)
-                );
+                    reservations.forEach(function(reservation) {
+                        let paymentHtml = '';
+                        const currentTime = new Date();
+                        const paymentDueTime = new Date(reservation.paymentDue);
 
-                var $paymentTd = $('<td rowspan="2">').html(paymentHtml);
-                $row.append($paymentTd);
-                $('#seat-info').append($row, $secondRow);
+                        if (reservation.paymentDue && currentTime < paymentDueTime) {
+                            paymentHtml = '<div>' +
+                                            formatTime(reservation.paymentDue) + '까지' +  
+                                            '</div>' +
+                                            '<div><button class="pay-button">결제하기</button></div>';
+                        } else if (reservation.payment) {
+                            paymentHtml = '발권완료';
+                        } else {
+                            paymentHtml = '예약취소';
+                        }
 
-                // 상세 정보 생성
-                var $detailsRow = $('<tr class="details" style="display: none;">').append(
-                    $('<td colspan="9">').html(createDetailsHtml(reservation))
-                );
-                $secondRow.after($detailsRow);
+                        var $row = $('<tr>').append(
+                            $('<td rowspan="2">').text(reservation.reservationId),
+                            $('<td rowspan="2">').text(reservation.journeyType),
+                            $('<td>').text(reservation.trainType),
+                            $('<td>').text(reservation.departureStation),
+                            $('<td>').text(reservation.arrivalStation),
+                            $('<td rowspan="2">').text(reservation.ticketPrice),
+                            $('<td rowspan="2">').text(reservation.ticketCount),
+                            $('<td rowspan="2">').text(reservation.reservationType)
+                        );
 
-                // 예약번호(td:first-child) 클릭 이벤트를 통한 상세 정보 토글
-                $row.find('td:first-child').on('click', function() {
-                    $detailsRow.toggle();
-                });
-                
-                expiryTime = parseDateString(formatTime(reservation.paymentDue)).getTime();
-                function checkAndUpdatePaymentStatus() {
-                    let currentTime = new Date().getTime();
-                    
-                    if (currentTime > expiryTime) {
-                        $('#payment-status').html('예약취소').addClass('expired');
-                        $('#pay-button').remove();
-                    }
-                }
+                        var $secondRow = $('<tr>').append(
+                            $('<td>').text(reservation.trainNumber),
+                            $('<td>').text(reservation.departureTime),
+                            $('<td>').text(reservation.arrivalTime)
+                        );
 
-                // 타이머 설정
-                function startTimer() {
-                    checkAndUpdatePaymentStatus(); // 초기 상태 확인
-                    let timer = setInterval(checkAndUpdatePaymentStatus, 1000); // 5초마다 상태 업데이트
+                        var $paymentTd = $('<td rowspan="2">').html(paymentHtml);
+                        $row.append($paymentTd);
+                        $('#seat-info').append($row, $secondRow);
 
-                    // 타이머 정리를 위한 이벤트 리스너
-                    $(window).on('beforeunload', function() {
-                        clearInterval(timer); // 페이지를 벗어나면 타이머 정지
+                        // 상세 정보 생성
+                        const $detailsRow = $('<tr class="details" style="display: none;">').append(
+                            $('<td colspan="9">').html(createDetailsHtml(reservation))
+                        );
+                        $secondRow.after($detailsRow);
+
+                        // 예약번호(td:first-child) 클릭 이벤트를 통한 상세 정보 토글
+                        $row.find('td:first-child').on('click', function() {
+                            $detailsRow.toggle();
+                        });
+
+                        // 만료 시간 파싱
+                        const expiryTime = parseDateString(formatTime(reservation.paymentDue)).getTime();
+
+                        // 타이머 설정
+                        function startTimer() {
+                            function checkAndUpdatePaymentStatus() {
+                                const currentTime = new Date().getTime();
+                                if (currentTime > expiryTime) {
+                                    $('#payment-status').html('예약취소').addClass('expired');
+                                    $('#pay-button').remove();
+                                }
+                            }
+                            checkAndUpdatePaymentStatus(); // 초기 상태 확인
+                            const timer = setInterval(checkAndUpdatePaymentStatus, 1000); // 1초마다 상태 업데이트
+
+                            // 타이머 정리를 위한 이벤트 리스너
+                            $(window).on('beforeunload', function() {
+                                clearInterval(timer); // 페이지를 벗어나면 타이머 정지
+                            });
+                        }
+                        startTimer();
                     });
+                },
+                error: function() {
+                    alert('Failed to retrieve reservation data.');
                 }
-                startTimer();
             });
-        },
-        error: function() {
-            alert('Failed to retrieve reservation data.');
         }
     });
+    
+    function showDetails(year) {
+        $.ajax({
+            url: '../json/reserve-detail.json',
+            dataType: 'json',
+            success: function(data) {
+                const reservations = data[selectedYear]; // 선택된 연도에 해당하는 예약 데이터
+                $('#seat-info').empty(); // 기존 정보를 지우고 새로 채움
+
+                reservations.forEach(function(reservation) {
+                    let paymentHtml = '';
+                    const currentTime = new Date();
+                    const paymentDueTime = new Date(reservation.paymentDue);
+
+                    if (reservation.paymentDue && currentTime < paymentDueTime) {
+                        paymentHtml = '<div>' +
+                                        formatTime(reservation.paymentDue) + '까지' +  
+                                        '</div>' +
+                                        '<div><button class="pay-button">결제하기</button></div>';
+                    } else if (reservation.payment) {
+                        paymentHtml = '발권완료';
+                    } else {
+                        paymentHtml = '예약취소';
+                    }
+
+                    var $row = $('<tr>').append(
+                        $('<td rowspan="2">').text(reservation.reservationId),
+                        $('<td rowspan="2">').text(reservation.journeyType),
+                        $('<td>').text(reservation.trainType),
+                        $('<td>').text(reservation.departureStation),
+                        $('<td>').text(reservation.arrivalStation),
+                        $('<td rowspan="2">').text(reservation.ticketPrice),
+                        $('<td rowspan="2">').text(reservation.ticketCount),
+                        $('<td rowspan="2">').text(reservation.reservationType)
+                    );
+
+                    var $secondRow = $('<tr>').append(
+                        $('<td>').text(reservation.trainNumber),
+                        $('<td>').text(reservation.departureTime),
+                        $('<td>').text(reservation.arrivalTime)
+                    );
+
+                    var $paymentTd = $('<td rowspan="2">').html(paymentHtml);
+                    $row.append($paymentTd);
+                    $('#seat-info').append($row, $secondRow);
+
+                    // 상세 정보 생성
+                    const $detailsRow = $('<tr class="details" style="display: none;">').append(
+                        $('<td colspan="9">').html(createDetailsHtml(reservation))
+                    );
+                    $secondRow.after($detailsRow);
+
+                    // 예약번호(td:first-child) 클릭 이벤트를 통한 상세 정보 토글
+                    $row.find('td:first-child').on('click', function() {
+                        $detailsRow.toggle();
+                    });
+
+                    // 만료 시간 파싱
+                    const expiryTime = parseDateString(formatTime(reservation.paymentDue)).getTime();
+
+                    // 타이머 설정
+                    function startTimer() {
+                        function checkAndUpdatePaymentStatus() {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > expiryTime) {
+                                $('#payment-status').html('예약취소').addClass('expired');
+                                $('#pay-button').remove();
+                            }
+                        }
+                        checkAndUpdatePaymentStatus(); // 초기 상태 확인
+                        const timer = setInterval(checkAndUpdatePaymentStatus, 1000); // 1초마다 상태 업데이트
+
+                        // 타이머 정리를 위한 이벤트 리스너
+                        $(window).on('beforeunload', function() {
+                            clearInterval(timer); // 페이지를 벗어나면 타이머 정지
+                        });
+                    }
+                    startTimer();
+                });
+            },
+            error: function() {
+                alert('Failed to retrieve reservation data.');
+            }
+        });
+    }
 
     function createDetailsHtml(reservation) {
         let passengerDetails = '';
@@ -99,9 +209,8 @@ $(function() {
                                     </tr>`;
             }
         }
-    
-        // Details HTML using Bootstrap's card
-        let html = `
+
+        return html = `
             <div class="mt-3">
                 <div>
                     <h4 class="fw-bold">예약 상세</h5>
@@ -119,8 +228,6 @@ $(function() {
                     </table>
                 </div>
             </div>`;
-        
-        return html;
     }
 
     $(document).on('click', '#check-seats-button', function() {
@@ -131,12 +238,12 @@ $(function() {
     });
 
     function formatTime(dateString) {
-        var date = new Date(dateString);
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
-        var hour = date.getHours();
-        var minute = date.getMinutes();
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
         return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
     }
 
@@ -166,8 +273,8 @@ $(function() {
         Object.values(coach.seats).forEach(seatArray => {
             maxSeats = Math.max(maxSeats, seatArray.length);
         });
-        let numWindows = maxSeats <= maxWindow ? 7 : 8;
-        let windowWidth = maxSeats <= 8 ? '140px' : '130px';
+        const numWindows = maxSeats <= maxWindow ? 7 : 8;
+        const windowWidth = maxSeats <= 8 ? '140px' : '130px';
     
         // 창문 표시
         for (let j = 1; j <= numWindows; j++) {
