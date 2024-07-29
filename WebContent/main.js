@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('.round-train_area').hide();
 
     // 직통/왕복/환승 클릭
-    $('.dis_content_txt a').click(function () {
+    $('.dis_content_txt a').click(function () { 
         $(this).siblings().removeClass('on');
         $(this).addClass('on');
         if ($(this).text() == '왕복') {
@@ -49,7 +49,7 @@ $(document).ready(function() {
         child1.appendChild(option1);
     }
 
-    // 지역 선택 지도 모달
+    // 경로 선택 모달 불러오기
     $("#map_info").load("/WebContent/trainInfo/mapInfo.html", function() {});
 
     // 현재 시간으로 기본 설정

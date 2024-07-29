@@ -25,10 +25,6 @@ $(document).ready(function() {
 $(document).on("headerLoaded", function() {
   $("#header1").on("mouseenter", ".menu-link", function() {
       showAllMenus($(this));
-      // 지역 선택 modal 열기
-      $('.main-map-info').click(function () {
-        $('.station_start_map .btn-primary').trigger('click');
-      });
   }).on("mouseleave", "#menuDropdown", function() {
       hideAllMenus();
   });
